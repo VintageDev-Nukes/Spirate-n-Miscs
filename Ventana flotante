@@ -1,0 +1,1850 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script language="Javascript"> 
+function mostrar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="visible"; 
+} 
+function ocultar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="hidden"; 
+} 
+</script> 
+
+<script src="Drag.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+</head>
+
+<body>
+
+
+<div id="capa1" onclick="mostrar('window')">Mostrar</div>
+<div id="window" style="position:absolute; z-index:10; left:350px; top:160px; width:400px;background-color:#dde3eb; border:1px solid #464f5a; visibility:hidden"> 
+    
+   <div style="padding-bottom:8px; width:400px; height:10px; background-color:#718191; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);">
+
+      <div style="position:absolute; top:1px; left:5px; font-size:16px; font-weight:bold; color:#FFFFFF;">Ventana flotante</div> 
+       
+      <div style="position:absolute; top:3px; left:377px; float:right;"> 
+        <div onclick="ocultar('window')"><img src="img/cerrar.jpg" border="0" title="cerrar" /></div>
+
+      </div> 
+       
+   </div> 
+<br/> 
+   <div style="margin-left:20px;">
+           Esta es una ventana flotante 
+   
+   </div>     
+   
+<br/> 
+
+</div> 
+
+
+</body>
+</html>  
+
+
+
+
+
+-------------------------------
+
+
+
+function beginDrag(elementToDrag, event){
+    var deltaX = event.clientX - parseInt(elementToDrag.style.left);
+    var deltaY = event.clientY - parseInt(elementToDrag.style.top);
+    if (document.addEventListener){
+        document.addEventListener("mousemove", moveHandler, true);
+        document.addEventListener("mouseup", upHandler, true);
+    }
+    else if (document.attachEvent){
+        document.attachEvent("onmousemove", moveHandler);
+        document.attachEvent("onmouseup", upHandler);
+    }
+    else {
+        var oldmovehandler = document.onmousemove;
+        var olduphandler = document.onmouseup;
+        document.onmousemove = moveHandler;
+        document.onmouseup = upHandler;
+    }
+    if (event.stopPropagation) event.stopPropagation();
+    else event.cancelBubble = true;
+    if (event.preventDefault) event.preventDefault();
+    else event.returnValue = false;
+    function moveHandler(e){
+        if (!e) e = window.event;
+        elementToDrag.style.left = (e.clientX - deltaX) + "px";
+        elementToDrag.style.top = (e.clientY - deltaY) + "px";
+        if (e.stopPropagation) e.stopPropagation();
+        else e.cancelBubble = true;
+    }
+    function upHandler(e){
+        if (!e) e = window.event;
+        if (document.removeEventListener){
+            document.removeEventListener("mouseup", upHandler, true);
+            document.removeEventListener("mousemove", moveHandler, true);
+        }
+        else if (document.detachEvent){
+            document.detachEvent("onmouseup", upHandler);
+            document.detachEvent("onmousemove", moveHandler);
+        }
+        else {
+            document.onmouseup = olduphandler;
+            document.onmousemove = oldmovehandler;
+        }
+        if (e.stopPropagation) e.stopPropagation();
+        else e.cancelBubble = true;
+    }
+}  
+
+
+----------------------------------
+
+Drag.js
+_______
+
+// Drag Object
+// an object that makes an unlimited number DynLayers draggable
+// 19991010
+
+// Copyright (C) 1999 Dan Steinman
+// Distributed under the terms of the GNU Library General Public License
+// Available at http://www.dansteinman.com/dynapi/
+
+function Drag() {
+	this.obj = null
+	this.array = new Array()
+	this.dropTargets = new Array()
+	this.active = false
+	this.offsetX = 0
+	this.offsetY = 0
+	this.zIndex = 0
+	this.resort = true
+	this.add = DragAdd
+	this.addTargets = DragAddTargets
+	this.checkTargets = DragCheckTargets
+	this.targetHit == null
+	this.remove = DragRemove
+	this.setGrab = DragSetGrab
+	this.mouseDown = DragMouseDown
+	this.mouseMove = DragMouseMove
+	this.mouseUp = DragMouseUp
+	this.onDragStart = new Function()
+	this.onDragMove = new Function()
+	this.onDragEnd = new Function()
+	this.onDragDrop = new Function()
+}
+function DragAdd() {
+	for (var i=0; i<arguments.length; i++) {
+		var l = this.array.length
+		this.array[l] = arguments[i]
+		this.array[l].dragGrab = new Array(0,this.array[l].w,this.array[l].h,0)
+		this.zIndex += 1
+	}
+}
+function DragAddTargets() {
+	for (var i=0; i<arguments.length; i++) {
+		var l = this.dropTargets.length
+		this.dropTargets[l] = arguments[i]
+		this.dropTargets[l].dragGrab = new Array(0,this.dropTargets[l].w,this.dropTargets[l].h,0)
+	}
+}
+function DragSetGrab(dynlayer,top,right,bottom,left) { 
+	dynlayer.dragGrab = new Array(top,right,bottom,left)
+}
+function DragRemove() {
+	for (var i=0; i<arguments.length; i++) {
+		for (var j=0; j<this.array.length; j++) {
+			if (this.array[j]==arguments[i]) {
+				for (var k=j;k<=this.array.length-2;k++) this.array[k] = this.array[k+1]
+				this.array[this.array.length-1] = null
+				this.array.length -= 1
+				break
+			}
+		}
+	}
+}
+function DragMouseDown(x,y) {
+	for (var i=this.array.length-1;i>=0;i--) {
+		var lyr = this.array[i]
+		if (checkWithinLayer(x,y,lyr)) {
+			this.obj = this.array[i]
+			this.offsetX = x-this.obj.x
+			this.offsetY = y-this.obj.y
+			this.active = true
+			break
+		}
+	}
+	if (!this.active) return false
+	else {
+		if (this.resort) {
+			this.obj.css.zIndex = this.zIndex++
+			for (var j=i;j<=this.array.length-2;j++) this.array[j] = this.array[j+1]
+			this.array[this.array.length-1] = this.obj
+		}
+		this.onDragStart(x,y)
+		return true
+	}
+}
+function DragMouseMove(x,y) {
+	if (!this.active) return false
+	else {
+		this.obj.moveTo(x-this.offsetX,y-this.offsetY)
+		this.onDragMove(x,y)
+		return true
+	}
+}
+function DragMouseUp(x,y) {
+	if (!this.active) return false
+	else {
+		this.active = false
+		if (this.checkTargets()) this.onDragDrop()
+		this.onDragEnd(x,y)
+		return true
+	}
+}
+function DragCheckTargets() {
+	for (i in this.dropTargets) {
+		var lyr = this.dropTargets[i]
+		if (checkWithinLayer(lyr.x,lyr.y,this.obj) ||
+		checkWithinLayer(lyr.x+lyr.w,lyr.y,this.obj) ||
+		checkWithinLayer(lyr.x,lyr.y+lyr.h,this.obj) ||
+		checkWithinLayer(lyr.x+lyr.w,lyr.y+lyr.h,this.obj) ||
+		checkWithinLayer(this.obj.x,this.obj.y,lyr) ||
+		checkWithinLayer(this.obj.x+this.obj.w,this.obj.y,lyr) ||
+		checkWithinLayer(this.obj.x,this.obj.y+this.obj.h,lyr) ||
+		checkWithinLayer(this.obj.x+this.obj.w,this.obj.y+this.obj.h,lyr)) {
+			this.targetHit = lyr
+			return true
+		}
+	}
+	return false
+}
+
+function checkWithin(x,y,left,right,top,bottom) {
+	if (x>=left && x<right && y>=top && y<bottom) return true
+	else return false
+}
+function checkWithinLayer(x,y,lyr) {
+	if (checkWithin(x,y,lyr.x+lyr.dragGrab[3],lyr.x+lyr.dragGrab[1],lyr.y+lyr.dragGrab[0],lyr.y+lyr.dragGrab[2])) return true
+	else return false
+}
+
+// automatically define the default "drag" Drag Object
+drag = new Drag()
+
+
+----------------------------------
+
+
+//*Iframe*//
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Shifting!</title>
+<style type="text/css">
+<!--
+#iframe {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:1260px;
+	height:1000px;
+	z-index:1;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#CCCCCC">
+<iframe id="iframe" src="http://shifting.22web.net/"></iframe><br><br>
+<center>&copy; 2010 Lopezito and Shift & <a href="http://www.foroactivo.com" target="_blank">Foroactivo.com; <a href="http://spirate.net/">Spirate (SP)</a> y <a href="http://www.simplemachines.org/about/copyright.php">Simplemachines (SMF)</a></a></center>
+</body>
+</html>
+<script src="http://cdn.wibiya.com/Toolbars/dir_0621/Toolbar_621909/Loader_621909.js" type="text/javascript"></script>
+
+
+
+--------------------------------------------
+
+
+//*Actualizado: Widows AJAX 0.7 BETA; By Shift!// - 15:47:39 PM 01-01-2011
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script language="Javascript"> 
+function mostrar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="visible"; 
+} 
+function ocultar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="hidden"; 
+} 
+</script> 
+
+<script src="Drag.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Ventana flotante</title>
+</head>
+
+<body>
+
+<div id="capa1" onclick="mostrar('window')">Mostrar</div><div id="window" style="position:absolute; z-index:10; left:350px; top:50px; height:350px; width:500px;background-color:#CECEF6; border:1px solid #464f5a; visibility:hidden"> 
+    
+   <div style="padding-bottom:8px; width:500px; height:15px; background-color:#F6CECE; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);">
+
+      <div style="position:absolute; top:1px; left:5px; font-size:14px; font-weight:bold; color:#FFFFFF; font-family: arial;">Haz la prueba aqu&iacute;</div> 
+       
+      <div style="position:absolute; top:3px; left:485px; float:right;"> 
+        <div onclick="ocultar('window')"><img src="http://i.imgur.com/Fd6Q2.png" border="0" title="cerrar" /></div>
+
+      </div> 
+       
+   </div> 
+<br/> 
+   <div style="position:absolute; top:25px; margin-left:5px;">
+           Esta es una ventana flotante 
+   
+   </div>     
+   
+<br/> 
+
+</div> 
+
+
+</body>
+</html>
+
+------------
+
+//*Actualizado: Widows AJAX  1.1 BETA By Shift!*// - 18:42:47 PM - 01-01-2011
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script language="Javascript"> 
+function mostrar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="visible"; 
+} 
+function ocultar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="hidden"; 
+} 
+</script> 
+
+<script src="Drag.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Ventana flotante</title>
+</head>
+
+<body>
+
+<div id="capa1" onclick="mostrar('window')"><a href="javascript:(open.widowsajax);" style="text-decoration:none"><b><span style="font-family: arial;"><span style="color: Red;"><span style="font-size: 13px;">Mostrar</span></span></span></b></a></div><div id="window" style="position:absolute; z-index:10; left:275px; top:50px; height:350px; width:475px;background-color:#CECEF6; border:1px solid #464f5a; visibility:hidden"> 
+    
+   <div style="padding-bottom:8px; width:475px; height:10px; background-color:#F6CECE; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);">
+
+      <div style="position:absolute; top:1px; left:5px; font-size:14px; font-weight:bold; color:#FF0000;  font-family: arial;">Haz la prueba aqu&iacute;</div> 
+       
+      <div style="position:absolute; top:3px; left:460px; float:right;"> 
+        <div onclick="ocultar('window')"><img src="http://i.imgur.com/Fd6Q2.png" border="0" title="cerrar" /></div>
+
+      </div> 
+       
+   </div> 
+<br/> 
+   <div style="position:absolute; top:25px; margin-left:5px; color:#0000FF; font-size:12px; font-weight:normal; font-family: arial;">
+           Esta es una ventana flotante 
+   
+   </div>     
+   
+<br/> 
+
+</div> 
+
+
+</body>
+</html>
+
+-------
+
+//*Actualizado: Widows AJAX  1.7 By Shift!*// - 12:07:44 PM - 02-01-2011
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script language="Javascript"> 
+function mostrar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="visible"; 
+} 
+function ocultar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="hidden"; 
+} 
+</script> 
+
+<script src="Drag.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Ventana flotante</title>
+</head>
+
+<body>
+
+<div id="capa1" onclick="mostrar('window')"><a href="javascript:(open.widowsajax);" style="text-decoration:none"><b><span style="font-family: arial;"><span style="color: Red;"><span style="font-size: 13px;">Haz clic para mostrar</span></span></span></b></a></div><div id="window" style="position:absolute; z-index:10; left:275px; top:50px; height:290px; width:505px;background-color:#CECEF6; border:1px solid #464f5a; visibility:hidden"> 
+    
+   <div style="padding-bottom:8px; width:505px; height:10px; background-color:#F6CECE; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);">
+
+      <div style="position:absolute; top:1px; left:5px; font-size:14px; font-weight:bold; color:#FF0000;  font-family: arial;">Prueba de pop up simple con AJAX</div> 
+       
+      <div style="position:absolute; top:3px; left:490px; float:right;"> 
+        <div onclick="ocultar('window')"><img src="http://i.imgur.com/Fd6Q2.png" border="0" title="cerrar" /></div>
+
+      </div> 
+       
+   </div> 
+<br/> 
+   <div style="position:absolute; top:20px; margin-left:5px; color:#0000FF; font-size:12px; font-weight:normal; font-family: arial;"><b>Complete el formulario:</b><br><br>
+
+           <script src="http://www.jotform.com/min/g=jotform&3.1.96" type="text/javascript"></script>
+<script type="text/javascript">
+   JotForm.init();
+</script>
+<link type="text/css" rel="stylesheet" href="http://www.jotform.com/css/styles/form.css?v3.1.96"/>
+<link href="http://www.jotform.com/css/calendarview.css?v3.1.96" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    .form-label{
+        width:150px !important;
+    }
+    .form-label-left{
+        width:150px !important;
+    }
+    .form-line{
+        padding:10px;
+    }
+    .form-label-right{
+        width:150px !important;
+    }
+    .form-all{
+        width:605px;
+        color:Blue !important;
+        font-family:Arial;
+        font-size:12px;
+    }
+</style>
+
+<form class="jotform-form" action="http://www.jotform.com/submit.php" method="post" name="form_3563027138" id="3563027138" accept-charset="utf-8">
+    <input type="hidden" name="formID" value="3563027138" />
+    <div class="form-all">
+        <ul class="form-section">
+            <li class="form-line" id="id_1">
+                <label class="form-label-left" id="label_1" for="input_1"> Escriba el t&iacute;tulo de su mensaje: </label>
+                <div id="cid_1" class="form-input">
+                    <input type="text" class="form-textbox" id="input_1" name="q1_escribaEl" size="20" />
+                </div>
+            </li>
+            <li class="form-line" id="id_3">
+                <label class="form-label-left" id="label_3" for="input_3"> Escriba su mensaje: </label>
+                <div id="cid_3" class="form-input">
+                    <textarea id="input_3" class="form-textarea" name="q3_escribaSu" cols="40" rows="6"></textarea>
+                </div>
+            </li>
+            <li class="form-line" id="id_2">
+                <div id="cid_2" class="form-input-wide">
+                    <div style="margin-left:156px" class="form-buttons-wrapper">
+                        <button id="input_2" type="submit" class="form-submit-button">
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </li>
+            <li style="display:none">
+                Should be Empty:
+                <input type="text" name="website" value="" />
+            </li>
+        </ul>
+    </div>
+    <input type="hidden" id="simple_spc" name="simple_spc" value="3563027138" />
+    <script type="text/javascript">
+        document.getElementById("si" + "mple" + "_spc").value = "3563027138-3563027138";
+    </script>
+</form>
+   
+   </div>     
+
+<br/> 
+
+</div> 
+
+
+</body>
+</html>
+
+---------------
+
+//*Actualizado: Widows AJAX  3.4 BETA By Shift!*// - ? - Edited to: 22:27:31 PM - 04-02-2011
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<script language="Javascript"> 
+function mostrar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="visible"; 
+} 
+function ocultar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="hidden"; 
+} 
+</script> 
+
+<script src="Drag.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Ventana flotante</title>
+</head>
+
+<body>
+
+<div border="5px" class="cornerfg" id="capa1" onclick="mostrar('window')"><a href="javascript:(open.widowsajax);" style="text-decoration:none"><b><span style="font-family: arial;"><span style="color: Red;"><span style="font-size: 13px;">Haz clic para mostrar POP-UP con AJAX MOD</span></span></span></b></a></div><div class="cornerfg" id="window" style="position:absolute; z-index:10; left:275px; top:50px; height:360px; width:505px;background-color:#CECEF6; border:1px solid #464f5a; visibility:hidden"> 
+
+   <div class="cornerfg" style="padding-bottom:8px; width:505px; height:10px; background-color:#F6CECE; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);">
+
+<img class="cornerfg" src="http://i.imgur.com/c3QKl.gif" border="0" width="505" height="20" alt="">
+      <div style="position:absolute; top:1px; left:5px; font-size:14px; font-weight:bold; color:#FF0000;  font-family: arial;">
+Prueba de pop up simple con AJAX</div> 
+       
+      <div style="position:absolute; top:3px; left:490px; float:right;"> 
+        <div onclick="ocultar('window')"><img src="http://i.imgur.com/Fd6Q2.png" border="0" title="Cerrar la ventana con POP-UP AJAX" /></div>
+
+      </div> 
+       
+   </div> 
+
+<div style="padding-bottom:8px; width:505px; height:20px; background-color:#CEF6CE; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);">
+
+<img class="cornerfg" src="http://www.cosassencillas.com/wp-content/uploads/2009/07/degradados-web-1.jpg" border="0" width="505" height="30" alt="">
+      <div style="position:absolute; top:21px; left:5px; font-size:14px; font-weight:bold; color:#00FF00;  font-family: arial;">
+
+<!-- Please see http://www.brainjar.com for terms of use. -->
+<style type="text/css">
+div.menuBar,
+div.menuBar a.menuButton,
+div.menu,
+div.menu a.menuItem {
+  font-family: "MS Sans Serif", Arial, sans-serif;
+  font-size: 8pt;
+  font-style: normal;
+  font-weight: normal;
+  color: #000000;
+}
+div.menuBar {
+  background-color: #d0d0d0;
+  border: 2px solid;
+  border-color: #f0f0f0 #909090 #909090 #f0f0f0;
+  padding: 4px 2px 4px 2px;
+  text-align: left;
+}
+div.menuBar a.menuButton {
+  background-color: transparent;
+  border: 1px solid #d0d0d0;
+  color: #000000;
+  cursor: default;
+  left: 0px;
+  margin: 1px;
+  padding: 2px 6px 2px 6px;
+  position: relative;
+  text-decoration: none;
+  top: 0px;
+  z-index: 100;
+}
+div.menuBar a.menuButton:hover {
+  background-color: transparent;
+  border-color: #f0f0f0 #909090 #909090 #f0f0f0;
+  color: #000000;
+}
+div.menuBar a.menuButtonActive,
+div.menuBar a.menuButtonActive:hover {
+  background-color: #a0a0a0;
+  border-color: #909090 #f0f0f0 #f0f0f0 #909090;
+  color: #ffffff;
+  left: 1px;
+  top: 1px;
+}
+div.menu {
+  background-color: #d0d0d0;
+  border: 2px solid;
+  border-color: #f0f0f0 #909090 #909090 #f0f0f0;
+  left: 0px;
+  padding: 0px 1px 1px 0px;
+  position: absolute;
+  top: 0px;
+  visibility: hidden;
+  z-index: 101;
+}
+div.menu a.menuItem {
+  color: #000000;
+  cursor: default;
+  display: block;
+  padding: 3px 1em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+div.menu a.menuItem:hover, div.menu a.menuItemHighlight {
+  background-color: #000080;
+  color: #ffffff;
+}
+div.menu a.menuItem span.menuItemText {}
+div.menu a.menuItem span.menuItemArrow {
+  margin-right: -.75em;
+}
+div.menu div.menuItemSep {
+  border-top: 1px solid #909090;
+  border-bottom: 1px solid #f0f0f0;
+  margin: 4px 2px;
+}
+</style>
+<script type="text/javascript">
+function Browser() {
+  var ua, s, i;
+  this.isIE    = false;  
+  this.isNS    = false;  
+  this.version = null;
+  ua = navigator.userAgent;
+  s = "MSIE";
+  if ((i = ua.indexOf(s)) >= 0) {
+    this.isIE = true;
+    this.version = parseFloat(ua.substr(i + s.length));
+    return;
+  }
+  s = "Netscape6/";
+  if ((i = ua.indexOf(s)) >= 0) {
+    this.isNS = true;
+    this.version = parseFloat(ua.substr(i + s.length));
+    return;
+  }
+  // Treat any other "Gecko" browser as NS 6.1.
+  s = "Gecko";
+  if ((i = ua.indexOf(s)) >= 0) {
+    this.isNS = true;
+    this.version = 6.1;
+    return;
+  }
+}
+var browser = new Browser();
+//----------------------------------------------------------------------------
+// Code for handling the menu bar and active button.
+//----------------------------------------------------------------------------
+var activeButton = null;
+// Capture mouse clicks on the page so any active button can be
+// deactivated.
+if (browser.isIE)
+  document.onmousedown = pageMousedown;
+else
+  document.addEventListener("mousedown", pageMousedown, true);
+function pageMousedown(event) {
+  var el;
+  if (activeButton == null)
+    return;
+  if (browser.isIE)
+    el = window.event.srcElement;
+  else
+    el = (event.target.tagName ? event.target : event.target.parentNode);
+  if (el == activeButton)
+    return;
+  if (getContainerWith(el, "DIV", "menu") == null) {
+    resetButton(activeButton);
+    activeButton = null;
+  }
+}
+function buttonClick(event, menuId) {
+  var button;
+  if (browser.isIE)
+    button = window.event.srcElement;
+  else
+    button = event.currentTarget;
+  button.blur();
+  if (button.menu == null) {
+    button.menu = document.getElementById(menuId);
+    menuInit(button.menu);
+  }
+  if (activeButton != null)
+    resetButton(activeButton);
+  if (button != activeButton) {
+    depressButton(button);
+    activeButton = button;
+  }
+  else
+    activeButton = null;
+  return false;
+}
+function buttonMouseover(event, menuId) {
+  var button;
+  if (browser.isIE)
+    button = window.event.srcElement;
+  else
+    button = event.currentTarget;
+  if (activeButton != null && activeButton != button)
+    buttonClick(event, menuId);
+}
+function depressButton(button) {
+  var x, y;
+  button.className += " menuButtonActive";
+  x = getPageOffsetLeft(button);
+  y = getPageOffsetTop(button) + button.offsetHeight;
+  if (browser.isIE) {
+    x += button.offsetParent.clientLeft;
+    y += button.offsetParent.clientTop;
+  }
+  button.menu.style.left = x + "px";
+  button.menu.style.top  = y + "px";
+  button.menu.style.visibility = "visible";
+}
+function resetButton(button) {
+  removeClassName(button, "menuButtonActive");
+  if (button.menu != null) {
+    closeSubMenu(button.menu);
+    button.menu.style.visibility = "hidden";
+  }
+}
+
+function menuMouseover(event) {
+  var menu;
+  if (browser.isIE)
+    menu = getContainerWith(window.event.srcElement, "DIV", "menu");
+  else
+    menu = event.currentTarget;
+  if (menu.activeItem != null)
+    closeSubMenu(menu);
+}
+function menuItemMouseover(event, menuId) {
+  var item, menu, x, y;
+  if (browser.isIE)
+    item = getContainerWith(window.event.srcElement, "A", "menuItem");
+  else
+    item = event.currentTarget;
+  menu = getContainerWith(item, "DIV", "menu");
+  if (menu.activeItem != null)
+    closeSubMenu(menu);
+  menu.activeItem = item;
+  item.className += " menuItemHighlight";
+  if (item.subMenu == null) {
+    item.subMenu = document.getElementById(menuId);
+    menuInit(item.subMenu);
+  }
+  x = getPageOffsetLeft(item) + item.offsetWidth;
+  y = getPageOffsetTop(item);
+  var maxX, maxY;
+  if (browser.isNS) {
+    maxX = window.scrollX + window.innerWidth;
+    maxY = window.scrollY + window.innerHeight;
+  }
+  if (browser.isIE && browser.version < 6) {
+    maxX = document.body.scrollLeft + document.body.clientWidth;
+    maxY = document.body.scrollTop  + document.body.clientHeight;
+  }
+  if (browser.isIE && browser.version >= 6) {
+    maxX = document.documentElement.scrollLeft + document.documentElement.clientWidth;
+    maxY = document.documentElement.scrollTop  + document.documentElement.clientHeight;
+  }
+  maxX -= item.subMenu.offsetWidth;
+  maxY -= item.subMenu.offsetHeight;
+  if (x > maxX)
+    x = Math.max(0, x - item.offsetWidth - item.subMenu.offsetWidth
+      + (menu.offsetWidth - item.offsetWidth));
+  y = Math.max(0, Math.min(y, maxY));
+  item.subMenu.style.left = x + "px";
+  item.subMenu.style.top  = y + "px";
+  item.subMenu.style.visibility = "visible";
+  if (browser.isIE)
+    window.event.cancelBubble = true;
+  else
+    event.stopPropagation();
+}
+function closeSubMenu(menu) {
+  if (menu == null || menu.activeItem == null)
+    return;
+  if (menu.activeItem.subMenu != null) {
+    closeSubMenu(menu.activeItem.subMenu);
+    menu.activeItem.subMenu.style.visibility = "hidden";
+    menu.activeItem.subMenu = null;
+  }
+  removeClassName(menu.activeItem, "menuItemHighlight");
+  menu.activeItem = null;
+}
+function menuInit(menu) {
+  var itemList, spanList
+  var textEl, arrowEl;
+  var itemWidth;
+  var w, dw;
+  var i, j;
+  if (browser.isIE) {
+    menu.style.lineHeight = "2.5ex";
+    spanList = menu.getElementsByTagName("SPAN");
+    for (i = 0; i < spanList.length; i++)
+      if (hasClassName(spanList[i], "menuItemArrow")) {
+        spanList[i].style.fontFamily = "Webdings";
+        spanList[i].firstChild.nodeValue = "4";
+      }
+  }
+  itemList = menu.getElementsByTagName("A");
+  if (itemList.length > 0)
+    itemWidth = itemList[0].offsetWidth;
+  else
+    return;
+  for (i = 0; i < itemList.length; i++) {
+    spanList = itemList[i].getElementsByTagName("SPAN")
+    textEl  = null
+    arrowEl = null;
+    for (j = 0; j < spanList.length; j++) {
+      if (hasClassName(spanList[j], "menuItemText"))
+        textEl = spanList[j];
+      if (hasClassName(spanList[j], "menuItemArrow"))
+        arrowEl = spanList[j];
+    }
+    if (textEl != null && arrowEl != null)
+      textEl.style.paddingRight = (itemWidth 
+        - (textEl.offsetWidth + arrowEl.offsetWidth)) + "px";
+  }
+  if (browser.isIE) {
+    w = itemList[0].offsetWidth;
+    itemList[0].style.width = w + "px";
+    dw = itemList[0].offsetWidth - w;
+    w -= dw;
+    itemList[0].style.width = w + "px";
+  }
+}
+function getContainerWith(node, tagName, className) {
+  while (node != null) {
+    if (node.tagName != null && node.tagName == tagName &&
+        hasClassName(node, className))
+      return node;
+    node = node.parentNode;
+  }
+  return node;
+}
+function hasClassName(el, name) {
+  var i, list;
+  list = el.className.split(" ");
+  for (i = 0; i < list.length; i++)
+    if (list[i] == name)
+      return true;
+  return false;
+}
+function removeClassName(el, name) {
+  var i, curList, newList;
+  if (el.className == null)
+    return;
+  newList = new Array();
+  curList = el.className.split(" ");
+  for (i = 0; i < curList.length; i++)
+    if (curList[i] != name)
+      newList.push(curList[i]);
+  el.className = newList.join(" ");
+}
+function getPageOffsetLeft(el) {
+  var x;
+  x = el.offsetLeft;
+  if (el.offsetParent != null)
+    x += getPageOffsetLeft(el.offsetParent);
+  return x;
+}
+function getPageOffsetTop(el) {
+  var y;
+  y = el.offsetTop;
+  if (el.offsetParent != null)
+    y += getPageOffsetTop(el.offsetParent);
+  return y;
+}
+</script>
+</head>
+<body>
+
+<!-- Menu bar. -->
+<div class="menuBar" style="width:100%;">
+<a class="menuButton" href="" onclick="return buttonClick(event, 'fileMenu');" onmouseover="buttonMouseover(event, 'fileMenu');">File</a>
+<a class="menuButton" href="" onclick="return buttonClick(event, 'editMenu');" onmouseover="buttonMouseover(event, 'editMenu');">Edit</a>
+<a class="menuButton" href="" onclick="return buttonClick(event, 'viewMenu');" onmouseover="buttonMouseover(event, 'viewMenu');">View</a>
+<a class="menuButton" href="" onclick="return buttonClick(event, 'toolsMenu');" onmouseover="buttonMouseover(event, 'toolsMenu');">Tools</a>
+<a class="menuButton" href="" onclick="return buttonClick(event, 'optionsMenu');" onmouseover="buttonMouseover(event, 'optionsMenu');">Options</a>
+<a class="menuButton" href="" onclick="return buttonClick(event, 'helpMenu');" onmouseover="buttonMouseover(event, 'helpMenu');">Help</a>
+</div>
+<!-- Main menus. -->
+<div id="fileMenu" class="menu" onmouseover="menuMouseover(event)">
+<a class="menuItem" href="blank.html">File Menu Item 1</a>
+<a class="menuItem" href="" onclick="return false;" onmouseover="menuItemMouseover(event, 'fileMenu2');"
+><span class="menuItemText">File Menu Item 2</span><span class="menuItemArrow">&raquo;</span></a>
+<a class="menuItem" href="blank.html">File Menu Item 3</a>
+<a class="menuItem" href="blank.html">File Menu Item 4</a>
+<a class="menuItem" href="blank.html">File Menu Item 5</a>
+<div class="menuItemSep"></div>
+<a class="menuItem" href="blank.html">File Menu Item 6</a>
+</div>
+<div id="editMenu" class="menu" onmouseover="menuMouseover(event)">
+<a class="menuItem" href="blank.html">Edit Menu Item 1</a>
+<div class="menuItemSep"></div>
+<a class="menuItem" href="blank.html">Edit Menu Item 2</a>
+<a class="menuItem" href="" onclick="return false;" onmouseover="menuItemMouseover(event, 'editMenu3');"
+><span class="menuItemText">Edit Menu Item 3</span><span class="menuItemArrow">&raquo;</span></a>
+<a class="menuItem" href="blank.html">Edit Menu Item 4</a>
+<div class="menuItemSep"></div>
+<a class="menuItem" href="blank.html">Edit Menu Item 5</a>
+</div>
+<div id="viewMenu" class="menu">
+<a class="menuItem" href="blank.html">View Menu Item 1</a>
+<a class="menuItem" href="blank.html">View Menu Item 2</a>
+<a class="menuItem" href="blank.html">View Menu Item 3</a>
+</div>
+<div id="toolsMenu" class="menu" onmouseover="menuMouseover(event)">
+<a class="menuItem" href="" onclick="return false;" onmouseover="menuItemMouseover(event, 'toolsMenu1');"
+><span class="menuItemText">Tools Menu Item 1</span><span class="menuItemArrow">&raquo;</span></a>
+<a class="menuItem" href="blank.html">Tools Menu Item 2</a>
+<a class="menuItem" href="blank.html">Tools Menu Item 3</a>
+<div class="menuItemSep"></div>
+<a class="menuItem" href="" onclick="return false;" onmouseover="menuItemMouseover(event, 'toolsMenu4');"
+><span class="menuItemText">Tools Menu Item 4</span><span class="menuItemArrow">&raquo;</span></a>
+<a class="menuItem" href="blank.html">Tools Menu Item 5</a>
+</div>
+<div id="optionsMenu" class="menu">
+<a class="menuItem" href="blank.html">Options Menu Item 1</a>
+<a class="menuItem" href="blank.html">Options Menu Item 2</a>
+<a class="menuItem" href="blank.html">Options Menu Item 3</a>
+</div>
+<div id="helpMenu" class="menu">
+<a class="menuItem" href="blank.html">Help Menu Item 1</a>
+<a class="menuItem" href="blank.html">Help Menu Item 2</a>
+<div class="menuItemSep"></div>
+<a class="menuItem" href="blank.html">Help Menu Item 3</a>
+</div>
+<!-- File sub menus. -->
+<div id="fileMenu2" class="menu">
+<a class="menuItem" href="blank.html">File Menu 2 Item 1</a>
+<a class="menuItem" href="blank.html">File Menu 2 Item 2</a>
+</div>
+<!-- Edit sub menus. -->
+<div id="editMenu3" class="menu" onmouseover="menuMouseover(event)">
+<a class="menuItem" href="blank.html">Edit Menu 3 Item 1</a>
+<a class="menuItem" href="blank.html">Edit Menu 3 Item 2</a>
+<div class="menuItemSep"></div>
+<a class="menuItem" href="" onclick="return false;" onmouseover="menuItemMouseover(event, 'editMenu3_3');"
+><span class="menuItemText">Edit Menu 3 Item 3</span><span class="menuItemArrow">&raquo;</span></a>
+<a class="menuItem" href="blank.html">Edit Menu 3 Item 4</a>
+</div>
+<div id="editMenu3_3" class="menu">
+<a class="menuItem" href="blank.html">Edit Menu 3-3 Item 1</a>
+<a class="menuItem" href="blank.html">Edit Menu 3-3 Item 2</a>
+<a class="menuItem" href="blank.html">Edit Menu 3-3 Item 3</a>
+<div class="menuItemSep"></div>
+<a class="menuItem" href="blank.html">Edit Menu 3-3 Item 4</a>
+</div>
+<!-- Tools sub menus. -->
+<div id="toolsMenu1" class="menu">
+<a class="menuItem" href="blank.html">Tools Menu 1 Item 1</a>
+<a class="menuItem" href="blank.html">Tools Menu 1 Item 2</a>
+<div class="menuItemSep"></div>
+<a class="menuItem" href="blank.html">Tools Menu 1 Item 3</a>
+<a class="menuItem" href="blank.html">Tools Menu 1 Item 4</a>
+<div class="menuItemSep"></div>
+<a class="menuItem" href="blank.html">Tools Menu 1 Item 5</a>
+</div>
+<div id="toolsMenu4" class="menu" onmouseover="menuMouseover(event)">
+<a class="menuItem" href="blank.html">Tools Menu 4 Item 1</a>
+<a class="menuItem" href="blank.html">Tools Menu 4 Item 2</a>
+<a class="menuItem" href="blank.html" onclick="return false;" onmouseover="menuItemMouseover(event, 'toolsMenu4_3');"><span class="menuItemText">Tools Menu 4 Item 3</span><span class="menuItemArrow">&raquo;</span></a>
+</div>
+<div id="toolsMenu4_3" class="menu">
+<a class="menuItem" href="blank.html">Tools Menu 4-3 Item 1</a>
+<a class="menuItem" href="blank.html">Tools Menu 4-3 Item 2</a>
+<a class="menuItem" href="blank.html">Tools Menu 4-3 Item 3</a>
+<a class="menuItem" href="blank.html">Tools Menu 4-3 Item 4</a>
+</div>
+
+</div>
+
+</div>
+
+
+<img class="cornerfg" src="http://i.imgur.com/tHd5J.png" border="0" width="505" height="312" alt="">
+   <div class="cornerfg" style="position:absolute;  top:50px; margin-left:5px; color:#0000FF; font-size:12px; font-weight:normal; font-family: arial;">
+
+<b>Complete el formulario:</b><br><br>
+
+           <script src="http://www.phishing-site.www/min/g=jotform&3.1.96" type="text/javascript"></script>
+<script type="text/javascript">
+   JotForm.init();
+</script>
+<link type="text/css" rel="stylesheet" href="http://www.phishing-site.www/css/styles/form.css?v3.1.96"/>
+<link href="http://www.phishing-site.www/css/calendarview.css?v3.1.96" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    .form-label{
+        width:150px !important;
+    }
+    .form-label-left{
+        width:150px !important;
+    }
+    .form-line{
+        padding:10px;
+    }
+    .form-label-right{
+        width:150px !important;
+    }
+    .form-all{
+        width:495px;
+        color:Blue !important;
+        font-family:Arial;
+        font-size:12px;
+    }
+</style>
+
+<form class="jotform-form" action="http://www.phishing-site.www/submit.php" method="post" name="form_3563027138" id="3563027138" accept-charset="utf-8">
+    <input type="hidden" name="formID" value="3563027138" />
+    <div class="form-all">
+        <ul class="form-section">
+            <span class="form-line" id="id_1">
+                <label class="form-label-left" id="label_1" for="input_1"> Escriba el t&iacute;tulo de su mensaje: </label>
+                <div id="cid_1" class="form-input">
+                    <input type="text" class="form-textbox" id="input_1" name="q1_escribaEl" size="20" />
+                </div>
+            </span>
+            <span class="form-line" id="id_3">
+                <label class="form-label-left" id="label_3" for="input_3"> Escriba el contenido de su mensaje: </label>
+                <div id="cid_3" class="form-input">
+                    <textarea id="input_3" class="form-textarea" name="q3_escribaSu" cols="40" rows="6"></textarea>
+                </div>
+            </span>
+            <span class="form-line" id="id_2">
+                <div id="cid_2" class="form-input-wide">
+                    <div style="margin-left:156px" class="form-buttons-wrapper">
+                        <button class="button" value="Normal" id="input_2" type="submit" class="form-submit-button">
+                            Enviar
+                        </button>
+                        <button class="button gris" value="Gris" id="input_2" type="reset" class="form-reset-button">
+                            Borrar todo
+                        </button>
+                    </div>
+                </div>
+            </span>
+            <span style="display:none">
+                Should be Empty:
+                <input type="text" name="website" value="" />
+            </span>
+        </ul>
+    </div>
+    <input type="hidden" id="simple_spc" name="simple_spc" value="3563027138" />
+    <script type="text/javascript">
+        document.getElementById("si" + "mple" + "_spc").value = "3563027138-3563027138";
+    </script>
+</form>
+   
+   </div>     
+
+<br/> 
+
+</div> 
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function makeAd() {
+  window.open("forum", "Mover");
+}
+
+
+function LOLType() {
+window.location = "forum"
+}
+
+// -->
+</SCRIPT>
+
+
+<form>
+  <p><input TYPE="button" VALUE="Entrar en el foro" onClick="makeAd()"
+ style="BORDER: rgb(255,255,255) 1px solid; FONT-SIZE: 8pt; FONT-FAMILY: Verdana; 
+         BACKGROUND-COLOR: rgb(255,255,255)"></p>
+</form>
+
+
+<form
+<input type="button" value="Prueba" onClick="LOLType()" class="boton change">
+</form><br><br><br>
+
+
+<style type="text/css">
+    a:link        {color:orange ; text-decoration: none;}
+    a:visited   {color: black;   text-decoration: none;}
+    a:hover     {color: red;    text-decoration: none;}
+</style>
+
+<style type="text/css">
+.LOL { width: 200px; height: 20px; }
+.boton { background-color: red; color: white; }
+</style>
+
+
+<span style="color:Green;"><span style="font-family:Arial;"><span style="font-size:12px;"><b>Hola amigo Spiratero! u otro cualquiera, bienvenido a mi demo de "Una supuesta soluci&oacute;n al AJAX", espero que te guste la web, por favor, no te quedes fuera, mira lo que tengas que mirar en la Demo, y entra ac&aacute;, si quieres estar como en una familia en mi <a href="http://shifting.superforo.net/" style="text-decoration: none;">web.</a></b></span></span></span><br><br>
+
+<span style="font-family: Arial;"><b>Tuve que poner un poco m&aacute;s de PX (P&iacute;xeles), para que se viera bien en IE 7, 8 y 9 BETA.</b></span>
+
+<br><br><br><br>
+
+<object id="counters99" allowscriptaccess="always" type="application/x-shockwave-flash" data="http://static.99widgets.com/counters/swf/counters.swf?id=485911_2&ln=es" width="175" height="200" wmode="transparent"><param name="allowscriptaccess" value="always" /><param name="movie" value="http://static.99widgets.com/counters/swf/counters.swf?id=485911_2&ln=es" /><param name="wmode" value="transparent" /><embed src="http://static.99widgets.com/counters/swf/counters.swf?id=485911_2&ln=es" type="application/x-shockwave-flash" allowscriptaccess="always" wmode="transparent" width="175" height="200"></embed>
+
+<br><br>
+
+
+<table border=0 width=1 height=1 cellpadding=0 cellspacing=0><tr><td><a href="http://www.tuugo.nl" title="Directory"><img src="http://contadores.pagerank-tracking.com/ztau2.php?ida=784528869" border="0" alt="Directory" height="21" width="16"></a></td><td><a href="http://www.tuugo.cl" title="Directorio"><img src="http://contadores.pagerank-tracking.com/tau2.php?ida=784528869" border="0" alt="Directorio" height="21" width="16"></a></td>
+
+<br><br>
+
+<center><embed src="http://www.xatech.com/web_gear/chat/chat.swf" quality="high" width="540" height="405" name="chat" FlashVars="id=127304605" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://xat.com/update_flash.shtml" /></center>
+
+<style type="text/css">
+.button{
+    font:15px Calibri, Arial, sans-serif;
+
+    /* A semi-transparent text shadow */
+    text-shadow:1px 1px 0 rgba(255,255,255,0.4);
+   
+    /* Overriding the default underline styling of the links */
+    text-decoration:none !important;
+    white-space:nowrap;
+   
+    display:inline-block;
+    vertical-align:baseline;
+    position:relative;
+    cursor:pointer;
+    padding:10px 20px;
+   
+    background-repeat:no-repeat;
+
+    /* The following two rules are fallbacks, in case
+       the browser does not support multiple backgrounds. */
+
+    background-position:bottom left;
+    background-image:url('http://i.imgur.com/uTt6U.png');
+   
+    /* Multiple backgrounds version. The background images
+       are defined individually in color classes */
+   
+    background-position:bottom left, top right, 0 0, 0 0;
+    background-clip:border-box;
+   
+    /* Applying a default border raidus of 8px */
+   
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+   
+    /* A 1px highlight inside of the button */
+   
+    -moz-box-shadow:0 0 1px #fff inset;
+    -webkit-box-shadow:0 0 1px #fff inset;
+    box-shadow:0 0 1px #fff inset;
+   
+    /* Animating the background positions with CSS3 */
+    /* Currently works only in Safari/Chrome */
+   
+    -webkit-transition:background-position 1s;
+    -moz-transition:background-position 1s;
+    transition:background-position 1s;
+}
+
+.button:hover{
+   
+    /* The first rule is a fallback, in case the browser
+       does not support multiple backgrounds
+    */
+   
+    background-position:top left;
+    background-position:top left, bottom right, 0 0, 0 0;
+}
+
+.button:active{
+    /* Moving the button 1px to the bottom when clicked */
+    bottom:-1px;
+}
+
+/* The three buttons sizes */
+
+.button.big        { font-size:30px;}
+.button.medium    { font-size:18px;}
+.button.small    { font-size:13px;}
+
+/* A more rounded button */
+
+.button.rounded{
+    -moz-border-radius:4em;
+    -webkit-border-radius:4em;
+    border-radius:4em;
+}
+
+
+/* Defining four button colors */
+
+
+/* BlueButton */
+
+.blue.button{
+    color:#0f4b6d !important;
+   
+    border:1px solid #84acc3 !important;
+   
+    /* A fallback background color */
+    background-color: #48b5f2;
+   
+    /* Specifying a version with gradients according to */
+   
+    background-image:    url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'),
+                        -moz-radial-gradient(    center bottom, circle,
+                                                rgba(89,208,244,1) 0,rgba(89,208,244,0) 100px),
+                        -moz-linear-gradient(#4fbbf7, #3faeeb);
+
+    background-image:    url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'),
+                        -webkit-gradient(    radial, 50% 100%, 0, 50% 100%, 100,
+                                            from(rgba(89,208,244,1)), to(rgba(89,208,244,0))),
+                        -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4fbbf7), to(#3faeeb));
+}
+
+.blue.button:hover{
+    background-color:#63c7fe;
+   
+    background-image:    url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'),
+                        -moz-radial-gradient(    center bottom, circle,
+                                                rgba(109,217,250,1) 0,rgba(109,217,250,0) 100px),
+                        -moz-linear-gradient(#63c7fe, #58bef7);
+                       
+    background-image:    url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'),
+                        -webkit-gradient(    radial, 50% 100%, 0, 50% 100%, 100,
+                                            from(rgba(109,217,250,1)), to(rgba(109,217,250,0))),
+                        -webkit-gradient(linear, 0% 0%, 0% 100%, from(#63c7fe), to(#58bef7));
+}
+
+/* Green Button */
+
+.green.button{
+    color:#345903 !important;
+    border:1px solid #96a37b !important;   
+    background-color: #79be1e;
+   
+    background-image:url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'), -moz-radial-gradient(center bottom, circle, rgba(162,211,30,1) 0,rgba(162,211,30,0) 100px),-moz-linear-gradient(#82cc27, #74b317);
+    background-image:url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(162,211,30,1)), to(rgba(162,211,30,0))),-webkit-gradient(linear, 0% 0%, 0% 100%, from(#82cc27), to(#74b317));
+}
+
+.green.button:hover{
+    background-color:#89d228;
+   
+    background-image:url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'), -moz-radial-gradient(center bottom, circle, rgba(183,229,45,1) 0,rgba(183,229,45,0) 100px),-moz-linear-gradient(#90de31, #7fc01e);
+    background-image:url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(183,229,45,1)), to(rgba(183,229,45,0))),-webkit-gradient(linear, 0% 0%, 0% 100%, from(#90de31), to(#7fc01e));
+}
+
+/* Orange Button */
+
+.orange.button{
+    color:#693e0a !important;
+    border:1px solid #bea280 !important;   
+    background-color: #e38d27;
+   
+    background-image:url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'), -moz-radial-gradient(center bottom, circle, rgba(232,189,45,1) 0,rgba(232,189,45,0) 100px),-moz-linear-gradient(#f1982f, #d4821f);
+    background-image:url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(232,189,45,1)), to(rgba(232,189,45,0))),-webkit-gradient(linear, 0% 0%, 0% 100%, from(#f1982f), to(#d4821f));
+}
+
+.orange.button:hover{
+    background-color:#ec9732;
+   
+    background-image:url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'), -moz-radial-gradient(center bottom, circle, rgba(241,192,52,1) 0,rgba(241,192,52,0) 100px),-moz-linear-gradient(#f9a746, #e18f2b);
+    background-image:url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(241,192,52,1)), to(rgba(241,192,52,0))),-webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9a746), to(#e18f2b));
+}
+
+.gray.button{
+    color:#525252 !important;
+    border:1px solid #a5a5a5 !important;   
+    background-color: #a9adb1;
+   
+    background-image:url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'), -moz-radial-gradient(center bottom, circle, rgba(197,199,202,1) 0,rgba(197,199,202,0) 100px),-moz-linear-gradient(#c5c7ca, #92989c);
+    background-image:url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(197,199,202,1)), to(rgba(197,199,202,0))),-webkit-gradient(linear, 0% 0%, 0% 100%, from(#c5c7ca), to(#92989c));
+}
+
+.gray.button:hover{
+    background-color:#b6bbc0;
+   
+    background-image:url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'), -moz-radial-gradient(center bottom, circle, rgba(202,205,208,1) 0,rgba(202,205,208,0) 100px),-moz-linear-gradient(#d1d3d6, #9fa5a9);
+    background-image:url('http://i.imgur.com/uTt6U.png'), url('http://i.imgur.com/uTt6U.png'), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(202,205,208,1)), to(rgba(202,205,208,0))),-webkit-gradient(linear, 0% 0%, 0% 100%, from(#d1d3d6), to(#9fa5a9));
+}
+</style>
+
+<style type="text/css">
+/* Botones */
+.Boton {
+    background-image:url('http://i.imgur.com/4FEuq.png');
+    background-color:transparent;
+    border-style:solid;
+    border-width:1px;
+    display:-moz-inline-box;
+    display:inline-block;
+    outline: none;
+    vertical-align:bottom;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:bold;
+    line-height:14px;
+    *line-height:13px;
+    margin:0;
+    overflow:visible;
+    *padding-bottom:1px;
+    width:auto;
+    padding:4px 7px 5px;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.Boton.Small {padding:3px 5px;}
+.Boton.Big {padding:9px 13px 10px;}
+
+.Boton:hover{}
+.Boton:active {text-decoration:none;}
+.Boton:active {
+    -moz-box-shadow:0 1px 0 rgba(0,0,0,.05);
+    -webkit-box-shadow:0 1px 0 rgba(0,0,0,.05);
+    box-shadow:0 1px 0 rgba(0,0,0,.05);
+}
+/* Gris */
+.Boton.BtnGray {
+    background-color:#eee;
+    border-color:#999 #999 #888;
+    color:#333;
+    -moz-box-shadow:0 1px 0 #CCCCCC;
+    -webkit-box-shadow:0 1px 0 #CCCCCC;
+    box-shadow:0 1px 0 #CCCCCC;
+}
+.Boton.BtnGray:active {
+    background-color:#ddd;
+    background-image:none;
+    border-color:#999;
+}
+/* Azul */
+.Boton.BtnBlue {
+    background-color:#5b74a8;
+    background-position:0 -48px;
+    border-color:#29447e #29447e #1a356e;
+    color:#fff;
+    -moz-box-shadow:0 1px 0 #CCCCCC;
+    -webkit-box-shadow:0 1px 0 #CCCCCC;
+    box-shadow:0 1px 0 #CCCCCC;
+}
+.Boton.BtnBlue:active {
+    background-color:#4f6aa3;
+    background-image:none;
+    border-color:#29447e;
+}
+/* Verde */
+.Boton.BtnGreen {
+    background-color:#69a74e;
+    background-position:0 -96px;
+    color:#FFFFFF;
+    border-color:#3B6E22 #3B6E22 #2C5A15;
+    -moz-box-shadow:0 1px 0 #CCCCCC;
+    -webkit-box-shadow:0 1px 0 #CCCCCC;
+    box-shadow:0 1px 0 #CCCCCC;
+}
+.Boton.BtnGreen:active {
+    background-color:#609946;
+    background-image:none;
+    border-color:#3b6e22;
+}
+/* Rojo */
+.Boton.BtnRed {
+    background-color:#69a74e;
+    background-position:0 -144px;
+    color:#FFFFFF;
+    border-color:#6E2226 #6E2226 #5A1519;
+    -moz-box-shadow:0 1px 0 #CCCCCC;
+    -webkit-box-shadow:0 1px 0 #CCCCCC;
+    box-shadow:0 1px 0 #CCCCCC;
+}
+.Boton.BtnRed:active {
+    background-color:#994649;
+    background-image:none;
+    border-color:#6E2226;
+}
+/* Rojo */
+.Boton.BtnBrown {
+    background-color:#69a74e;
+    background-position:0 -192px;
+    color:#FFFFFF;
+    border-color:#6B5244 #6B5244 #5A4437;
+    -moz-box-shadow:0 1px 0 #CCCCCC;
+    -webkit-box-shadow:0 1px 0 #CCCCCC;
+    box-shadow:0 1px 0 #CCCCCC;
+}
+.Boton.BtnBrown:active {
+    background-color:#917767;
+    background-image:none;
+    border-color:#6B5244;
+}
+/* Violeta */
+.Boton.BtnPurple {
+    background-color:#69a74e;
+    background-position:0 -240px;
+    color:#FFFFFF;/* Botones css compartidos por Shift! */
+
+.button{
+background:url('http://i.imgur.com/7uXKT.gif') repeat-x;
+background-color:#1769BA;
+border:1px solid #173977;
+cursor:pointer;
+color:#FFF;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+margin:5px 5px;
+min-width:100px;
+padding:8px 10px;
+text-shadow:0 1px 1px #000000;
+-moz-box-shadow:1px 1px 1px #A7A7A7;
+-moz-border-radius:5px;
+-webkit-box-shadow:1px 1px 1px #A7A7A7;
+-webkit-border-radius:5px;
+}
+a.button{color:#FFF;}
+a.button:hover{text-decoration:none;}
+.button:hover{
+-moz-box-shadow:0px 0px 10px #5298f0;
+-webkit-box-shadow:0px 0px 10px #5298f0;
+}
+.button:active{
+background:#2b79cc;
+font-weight:bold;
+color:#0B243B;
+text-shadow:1px 1px 1px #4f96ed;
+-moz-box-shadow:none!important;
+}
+input.button:disabled{
+opacity:0.5;
+filter:alpha(opacity=50);
+}
+
+/*Botones 2.0 Colores*/
+
+/*Rojo*/
+
+.button.rojo{
+background:url('http://i.imgur.com/7uXKT.gif') 0 -45px repeat-x;
+background-color:#1769BA;
+border-color:#530e0e;
+}
+.button.rojo:hover{
+-moz-box-shadow:0px 0px 10px #FD9393;
+-webkit-box-shadow:0px 0px 10px #FD9393;   
+}
+.button.rojo:active{ background:#bf1e1e; color:#610B0B; text-shadow:1px 1px 1px #f06161;}
+
+/*Verde*/
+
+.button.verde{
+background:url('http://i.imgur.com/7uXKT.gif') 0 -90px repeat-x;
+background-color:#2f9a12;
+border-color:#0d5020;   
+}
+.button.verde:hover{
+-moz-box-shadow:0px 0px 10px #64e34b;
+-webkit-box-shadow:0px 0px 10px #64e34b;   
+}
+.button.verde:active{ background:#2f9a12; color:#0B3B0B; text-shadow:1px 1px 1px #61df48;}
+
+/*Amarillo*/
+
+.button.amarillo{
+background:url('http://i.imgur.com/7uXKT.gif') 0 -135px repeat-x;
+background-color:#b9ba18;
+border-color:#565c13;
+color:#000;
+text-shadow:1px 1px 1px #FFF;
+}
+.button.amarillo:hover{
+-moz-box-shadow:0px 0px 10px #b9ba18;
+-webkit-box-shadow:0px 0px 10px #b9ba18;   
+}
+.button.amarillo:active{ font-weight:normal; background:#b9ba18; color:#393B0B; text-shadow:1px 1px 1px #f0ef61;}
+
+/*Gris*/
+
+.button.gris{
+background:url('http://i.imgur.com/7uXKT.gif') 0 -180px repeat-x;
+background-color:#a5a4a4;
+color:#000;
+text-shadow:1px 1px 1px #FFF;
+border-color:#61615f;
+}
+.button.gris:hover{
+-moz-box-shadow:0px 0px 10px #a4a4a3;
+-webkit-box-shadow:0px 0px 10px #a4a4a3;   
+}
+.button.gris:active{ font-weight:normal; background:#a5a4a4; color:#2E2E2E; text-shadow:1px 1px 1px #dcdbda;}
+
+/*Naranja*/
+
+.button.naranja{
+background:url('http://i.imgur.com/7uXKT.gif') 0 -225px repeat-x;
+background-color:#c57617;
+border-color:#855614;
+}
+.button.naranja:hover{
+-moz-box-shadow:0px 0px 12px #d69335;
+-webkit-box-shadow:0px 0px 12px #d69335;   
+}
+.button.naranja:active{ background:#c87c1d; color:#61380B; text-shadow:1px 1px 1px #efc063;}
+
+/*Change*/
+
+.boton.change{
+background:url('http://i.imgur.com/rdwmA.gif') 0 -45px repeat-x;
+background-color:#1769BA;
+border-color:#530e0e;
+height: 20px;
+width: 50px;
+}
+.boton.change:hover{
+-moz-box-shadow:0px 0px 10px #FD9393;
+-webkit-box-shadow:0px 0px 10px #FD9393;   
+}
+.boton.change:active{ background:#bf1e1e; color:#610B0B; text-shadow:1px 1px 1px #f06161;}
+
+/* Botones css compartidos por Shift! */
+    border-color:#55226E #55226E #43155A;
+    -moz-box-shadow:0 1px 0 #CCCCCC;
+    -webkit-box-shadow:0 1px 0 #CCCCCC;
+    box-shadow:0 1px 0 #CCCCCC;
+}
+.Boton.BtnPurple:active {
+    background-color:#7F4699;
+    background-image:none;
+    border-color:#55226E;
+}
+/* Naranja */
+.Boton.BtnOrange {
+    background-color:#69a74e;
+    background-position:0 -288px;
+    color:#FFFFFF;
+    border-color:#906000 #906000 #825701;
+    -moz-box-shadow:0 1px 0 #CCCCCC;
+    -webkit-box-shadow:0 1px 0 #CCCCCC;
+    box-shadow:0 1px 0 #CCCCCC;
+}
+.Boton.BtnOrange:active {
+    background-color:#C4901C;
+    background-image:none;
+    border-color:#906000;
+}
+
+    div.form-container { padding: 0 10px;}
+
+    p.legend { margin-bottom: 1em; }
+    p.legend em { color: #C00; font-style: normal; }
+
+    div.errors { margin: 0 0 10px 0; padding: 5px 10px; border: #FC6 1px solid; background-color: #FFC; }
+    div.errors p { margin: 0; }
+    div.errors p em { color: #C00; font-style: normal; font-weight: bold; }
+
+    div.form-container form p { margin: 0; }
+    div.form-container form p.note { margin-left: 170px; font-size: 90%; color: #333; }
+    div.form-container form legend { font-weight: bold; color: #666; }
+    div.form-container form  div.data { clear:both; padding: 0.25em 0;margin-top: 5px; clear:both;}
+    div.form-container form  div.dataL { padding: 0.25em 0;margin-top: 5px; width: 48%;float:left;}
+    div.form-container form  div.dataR { padding: 0.25em 0;margin-top: 5px; width: 48%;float:right;}
+    .c_input, .c_input_desc { margin-top: 5px;padding:4px; width: 95%; background: #FFF;}
+  div.form-container select { margin-top:5px; }
+    div.form-container form  div.postLabel { padding: 5px 0 0 0; display:block; }
+    
+    div.form-container label, div.form-container span.label { font-weight: bold;margin-right: 10px; font-size: 12px;padding-right: 10px; display: block;  text-align: left; position: relative; }
+    div.form-container label.error, 
+    div.form-container span.error { color: #C00; }
+    div.form-container label em, 
+    div.form-container span.label em { position: absolute; right: 0; font-size: 120%; font-style: normal; color: #C00; }
+    div.form-container input.error { border-color: #C00; background-color: #FEF; }
+    div.form-container div.controlset label, 
+    div.form-container div.controlset input { display: inline; float: none; }
+    div.form-container div.controlset div { margin-left: 170px; }
+    div.form-container div.buttonrow { margin-left: 180px; }
+
+.redBox {
+    background:#FFEBE8;
+    border-top:1px solid #DD3C10;
+    border-bottom:1px solid #DD3C10;
+    padding:12px;
+    font-weight:bold;
+    text-align:center;
+}
+</style>
+
+<style type="text/css">
+/* Botones css compartidos por Shift! */
+
+.button{
+background:url('http://i.imgur.com/7uXKT.gif') repeat-x;
+background-color:#1769BA;
+border:1px solid #173977;
+cursor:pointer;
+color:#FFF;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+margin:5px 5px;
+min-width:100px;
+padding:8px 10px;
+text-shadow:0 1px 1px #000000;
+-moz-box-shadow:1px 1px 1px #A7A7A7;
+-moz-border-radius:5px;
+-webkit-box-shadow:1px 1px 1px #A7A7A7;
+-webkit-border-radius:5px;
+}
+a.button{color:#FFF;}
+a.button:hover{text-decoration:none;}
+.button:hover{
+-moz-box-shadow:0px 0px 10px #5298f0;
+-webkit-box-shadow:0px 0px 10px #5298f0;
+}
+.button:active{
+background:#2b79cc;
+font-weight:bold;
+color:#0B243B;
+text-shadow:1px 1px 1px #4f96ed;
+-moz-box-shadow:none!important;
+}
+input.button:disabled{
+opacity:0.5;
+filter:alpha(opacity=50);
+}
+
+/*Botones 2.0 Colores*/
+
+/*Rojo*/
+
+.button.rojo{
+background:url('http://i.imgur.com/7uXKT.gif') 0 -45px repeat-x;
+background-color:#1769BA;
+border-color:#530e0e;
+}
+.button.rojo:hover{
+-moz-box-shadow:0px 0px 10px #FD9393;
+-webkit-box-shadow:0px 0px 10px #FD9393;   
+}
+.button.rojo:active{ background:#bf1e1e; color:#610B0B; text-shadow:1px 1px 1px #f06161;}
+
+/*Verde*/
+
+.button.verde{
+background:url('http://i.imgur.com/7uXKT.gif') 0 -90px repeat-x;
+background-color:#2f9a12;
+border-color:#0d5020;   
+}
+.button.verde:hover{
+-moz-box-shadow:0px 0px 10px #64e34b;
+-webkit-box-shadow:0px 0px 10px #64e34b;   
+}
+.button.verde:active{ background:#2f9a12; color:#0B3B0B; text-shadow:1px 1px 1px #61df48;}
+
+/*Amarillo*/
+
+.button.amarillo{
+background:url('http://i.imgur.com/7uXKT.gif') 0 -135px repeat-x;
+background-color:#b9ba18;
+border-color:#565c13;
+color:#000;
+text-shadow:1px 1px 1px #FFF;
+}
+.button.amarillo:hover{
+-moz-box-shadow:0px 0px 10px #b9ba18;
+-webkit-box-shadow:0px 0px 10px #b9ba18;   
+}
+.button.amarillo:active{ font-weight:normal; background:#b9ba18; color:#393B0B; text-shadow:1px 1px 1px #f0ef61;}
+
+/*Gris*/
+
+.button.gris{
+background:url('http://i.imgur.com/7uXKT.gif') 0 -180px repeat-x;
+background-color:#a5a4a4;
+color:#000;
+text-shadow:1px 1px 1px #FFF;
+border-color:#61615f;
+}
+.button.gris:hover{
+-moz-box-shadow:0px 0px 10px #a4a4a3;
+-webkit-box-shadow:0px 0px 10px #a4a4a3;   
+}
+.button.gris:active{ font-weight:normal; background:#a5a4a4; color:#2E2E2E; text-shadow:1px 1px 1px #dcdbda;}
+
+/*Naranja*/
+
+.button.naranja{
+background:url('http://i.imgur.com/7uXKT.gif') 0 -225px repeat-x;
+background-color:#c57617;
+border-color:#855614;
+}
+.button.naranja:hover{
+-moz-box-shadow:0px 0px 12px #d69335;
+-webkit-box-shadow:0px 0px 12px #d69335;   
+}
+.button.naranja:active{ background:#c87c1d; color:#61380B; text-shadow:1px 1px 1px #efc063;}
+
+/*Change*/
+
+.boton.change{
+background:url('http://i.imgur.com/rdwmA.gif') 0 -45px repeat-x;
+background-color:#1769BA;
+border-color:#530e0e;
+height: 20px;
+width: 50px;
+}
+.boton.change:hover{
+-moz-box-shadow:0px 0px 10px #FD9393;
+-webkit-box-shadow:0px 0px 10px #FD9393;   
+}
+.boton.change:active{ background:#bf1e1e; color:#610B0B; text-shadow:1px 1px 1px #f06161;}
+
+/* Botones css compartidos por Shift! */
+</style>
+
+<style type="text/css">
+.corner{display:block}
+.corner *{
+  display:block;
+  height:1px;
+  overflow:hidden;
+  font-size:.01em;}
+.corner1{
+  margin-left:3px;
+  margin-right:3px;
+  padding-left:1px;
+  padding-right:1px;
+  border-left:1px solid;
+  border-right:1px solid;}
+.corner2{
+  margin-left:1px;
+  margin-right:1px;
+  padding-right:1px;
+  padding-left:1px;
+  border-left:1px solid;
+  border-right:1px solid;}
+.corner3{
+  margin-left:1px;
+  margin-right:1px;
+  border-left:1px solid;
+  border-right:1px solid;}
+.corner4{
+  border-left:1px solid;
+  border-right:1px solid}
+.corner5{
+  border-left:1px solid;
+  border-right:1px solid}
+.cornerfg{
+-moz-border-radius:10px;
+-webkit-border-radius:10px;
+-ms-border-radius:10px;}
+border:5px opacity: 0.6 filter:alpha(opacity=60) #ff0000;
+</style>
+
+<style type="text/css">
+/* Rojo */
+.Boton.BtnRed {
+    background-color:#69a74e;
+    background-position:0 -144px;
+    color:#FFFFFF;
+    border-color:#6E2226 #6E2226 #5A1519;
+    -moz-box-shadow:0 1px 0 #CCCCCC;
+    -webkit-box-shadow:0 1px 0 #CCCCCC;
+    box-shadow:0 1px 0 #CCCCCC;
+}
+.Boton.BtnRed:active {
+    background-color:#994649;
+    background-image:none;
+    border-color:#6E2226;
+}
+/* Rojo */
+.Boton.BtnBrown {
+    background-color:#69a74e;
+    background-position:0 -192px;
+    color:#FFFFFF;
+    border-color:#6B5244 #6B5244 #5A4437;
+    -moz-box-shadow:0 1px 0 #CCCCCC;
+    -webkit-box-shadow:0 1px 0 #CCCCCC;
+    box-shadow:0 1px 0 #CCCCCC;
+}
+.Boton.BtnBrown:active {
+    background-color:#917767;
+    background-image:none;
+    border-color:#6B5244;
+}
+/* Violeta */
+.Boton.BtnPurple {
+    background-color:#69a74e;
+    background-position:0 -240px;
+    color:#FFFFFF;
+    border-color:#55226E #55226E #43155A;
+    -moz-box-shadow:0 1px 0 #CCCCCC;
+    -webkit-box-shadow:0 1px 0 #CCCCCC;
+    box-shadow:0 1px 0 #CCCCCC;
+}
+.Boton.BtnPurple:active {
+    background-color:#7F4699;
+    background-image:none;
+    border-color:#55226E;
+}
+/* Naranja */
+.Boton.BtnOrange {
+    background-color:#69a74e;
+    background-position:0 -288px;
+    color:#FFFFFF;
+    border-color:#906000 #906000 #825701;
+    -moz-box-shadow:0 1px 0 #CCCCCC;
+    -webkit-box-shadow:0 1px 0 #CCCCCC;
+    box-shadow:0 1px 0 #CCCCCC;
+}
+.Boton.BtnOrange:active {
+    background-color:#C4901C;
+    background-image:none;
+    border-color:#906000;
+}
+
+    div.form-container { padding: 0 10px;}
+
+    p.legend { margin-bottom: 1em; }
+    p.legend em { color: #C00; font-style: normal; }
+
+    div.errors { margin: 0 0 10px 0; padding: 5px 10px; border: #FC6 1px solid; background-color: #FFC; }
+    div.errors p { margin: 0; }
+    div.errors p em { color: #C00; font-style: normal; font-weight: bold; }
+
+    div.form-container form p { margin: 0; }
+    div.form-container form p.note { margin-left: 170px; font-size: 90%; color: #333; }
+    div.form-container form legend { font-weight: bold; color: #666; }
+    div.form-container form  div.data { clear:both; padding: 0.25em 0;margin-top: 5px; clear:both;}
+    div.form-container form  div.dataL { padding: 0.25em 0;margin-top: 5px; width: 48%;float:left;}
+    div.form-container form  div.dataR { padding: 0.25em 0;margin-top: 5px; width: 48%;float:right;}
+    .c_input, .c_input_desc { margin-top: 5px;padding:4px; width: 95%; background: #FFF;}
+  div.form-container select { margin-top:5px; }
+    div.form-container form  div.postLabel { padding: 5px 0 0 0; display:block; }
+    
+    div.form-container label, div.form-container span.label { font-weight: bold;margin-right: 10px; font-size: 12px;padding-right: 10px; display: block;  text-align: left; position: relative; }
+    div.form-container label.error, 
+    div.form-container span.error { color: #C00; }
+    div.form-container label em, 
+    div.form-container span.label em { position: absolute; right: 0; font-size: 120%; font-style: normal; color: #C00; }
+    div.form-container input.error { border-color: #C00; background-color: #FEF; }
+    div.form-container div.controlset label, 
+    div.form-container div.controlset input { display: inline; float: none; }
+    div.form-container div.controlset div { margin-left: 170px; }
+    div.form-container div.buttonrow { margin-left: 180px; }
+
+.redBox {
+    background:#FFEBE8;
+    border-top:1px solid #DD3C10;
+    border-bottom:1px solid #DD3C10;
+    padding:12px;
+    font-weight:bold;
+    text-align:center;
+}
+</style>
+
+
+</body>
+</html>

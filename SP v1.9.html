@@ -1,0 +1,1001 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css">
+
+/* Theme creado por: Alvaro */
+
+/* Version 1.4, llegar a la v2.0 para hacerla publica */
+
+/* 
+
+   _____       _           _        _                             _                __ 
+  / ____|     (_)         | |      | |     /\                    | |              /_ |
+ | (___  _ __  _ _ __ __ _| |_  ___| |    /  \   _ __   ___  _ __| |_ ___   __   __| |
+  \___ \| '_ \| | '__/ _` | __|/ _ \ |   / /\ \ | '_ \ / _ \| '__| __/ __|  \ \ / /| |
+  ____) | |_) | | | | (_| | |_|  __/_|  / ____ \| |_) | (_) | |  | |_\__ \  _\ V / | |
+ |_____/| .__/|_|_|  \__,_|\__|\___(_) /_/    \_\ .__/ \___/|_|   \__|___/ (_)\_/  |_|
+        | |                                     | |                                   
+        |_|                                     |_|                                   
+
+          Creado por: Alvaro, todos los derechos reservados, con copyright
+          Version en BETA y ADAPTACION
+          Saludos!
+
+*/
+
+body { font-family: Verdana, Arial, Helvetica, sans-serif, Courier New, Times New Roman; 
+background-size:100% 100%; 
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-position: center center;
+background-image: url(Rainbow_Windows_by_kirtpro.jpg);
+width:100%;
+height:100%;
+cursor:url(01.cur), auto;
+}
+
+input {cursor:url(06.cur), auto;}
+input[type=button] {cursor:url(14.cur), auto;}
+
+<!--
+  A {cursor:url(15.cur), auto;}
+  A:link {COLOR: orange; TEXT-DECORATION: none}
+  A:visited {COLOR: yellow; TEXT-DECORATION: none}
+  A:active {COLOR: black; TEXT-DECORATION: none}
+  A:hover {COLOR: blue; TEXT-DECORATION: none} -->
+
+#content-3 {height:auto;}
+
+.body1 {
+display:block;
+position:relative;
+min-height:100%;
+}
+
+.Menus1 {
+        position:absolute;
+        top:236px;
+        left:100px;
+}
+
+.GloboTrans {
+z-index:1; 
+filter:alpha(opacity=75); 
+-moz-opacity:.75;
+opacity:.75;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+.GloboTrans.GlbTransparent{
+margin:5px; 
+background: #f5f6f6; /* old browsers */
+
+background: -moz-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f6f6), color-stop(21%,#dbdce2), color-stop(49%,#b8bac6), color-stop(80%,#dddfe3), color-stop(100%,#f5f6f6)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', endColorstr='#f5f6f6',GradientType=0 ); /* ie */
+
+background: -o-linear-gradient(top, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%); /* opera */
+	border:6px solid #000000;
+	position:relative;
+	margin-left:114px;
+}
+.GloboTrans.GlbNavy{
+	background:#084B8A;
+	border:3px solid #0080FF;
+        color: Yellow;
+}
+.GloboTrans.GlbMSNTOP{
+	background:#0B615E;
+	border:3px solid #58FAAC;
+        color: Orange;
+   background-color: #090;
+   color: #fff;
+}
+
+.Globo{
+	padding:5px;
+	font-weight: bold;
+	text-shadow: #CCCCCC 0px 1px 1px;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+.Globo.GlbYellow{
+	background:#FFFFCC;
+	border:1px solid #FFCC33;
+}
+.Globo.GlbRed{
+	background:#FFEBE8;
+	border:1px solid #DD3C10;
+}
+.Globo.GlbGreen{
+	background:#E8FFEA;
+	border:1px solid #15DD10;
+}
+.Globo.GlbBlue{
+	background:#E9E8FF;
+	border:1px solid #1015DD;
+}
+.Globo.GlbBlack{
+	background:#ECECEC;
+	border:1px solid #000000;
+}
+.Globo.GlbFace{
+	background:#EDEFF4;
+	border:1px solid #D8DFEA;
+	padding:12px;
+}
+
+.LOLFuckin{
+font-size:18px;
+font-family:Verdana;
+font-weight:bold;
+}
+
+.divWapo {
+-webkit-border-top-right-radius: 15px;
+-webkit-border-bottom-right-radius: 2px;
+-webkit-border-bottom-left-radius: 2px;
+-webkit-border-top-left-radius: 15px;
+-moz-border-radius-topright: 15px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+-moz-border-radius-topleft: 15px;
+-ms-border-radius-topleft: 15px;
+-ms-border-radius-topright: 15px;
+-ms-border-radius-bottomleft: 2px;
+-ms-border-radius-bottomright: 2px;
+-khtml-border-radius-topleft:15px;
+-khtml-border-radius-topright:15px;
+-khtml-border-radius-bottomleft:2px;
+-khtml-border-radius-bottomright:2px;
+background: silver url("images/roundedcorners.svg");
+border-top-right-radius: 15px;
+border-bottom-right-radius: 2px;
+border-bottom-left-radius: 2px;
+border-top-left-radius: 15px;
+behavior:url(border-radius.htc);
+background: #959595; /* old browsers */
+
+background: -moz-linear-gradient(top, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#959595), color-stop(46%,#0d0d0d), color-stop(50%,#010101), color-stop(53%,#0a0a0a), color-stop(76%,#4e4e4e), color-stop(87%,#383838), color-stop(100%,#1b1b1b)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#1b1b1b',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%); /* opera */
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+.divWapo.SinIMG {
+position:relative; 
+margin:-30px; 
+border:5px ridge #ff0000;
+width:150px;
+height:20px;
+z-index:1;
+filter:alpha(opacity=80);
+-moz-opacity:.80;
+opacity:.80;
+}
+
+.divWapo.ConIMG {
+top:200px;
+border:5px ridge #ff0000;
+width:40px;
+height:20px;
+z-index:1;
+filter:alpha(opacity=80);
+-moz-opacity:.80;
+opacity:.80;
+}
+
+#content-4 {top:320px;}
+.divFuckinFooter {
+postion:relative;
+margin-left:129px;
+background: #fceabb; /* Old browsers */
+background: -moz-linear-gradient(top, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fceabb), color-stop(50%,#fccd4d), color-stop(51%,#f8b500), color-stop(100%,#fbdf93)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* Opera11.10+ */
+background: -ms-linear-gradient(top, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* IE10+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 ); /* IE6-9 */
+background: linear-gradient(top, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* W3C */
+border:3px solid #868A08;
+z-index:1; 
+filter:alpha(opacity=75); 
+-moz-opacity:.75;
+opacity:.75;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+.divEditable {
+-webkit-border-top-right-radius: 15px;
+-webkit-border-bottom-right-radius: 2px;
+-webkit-border-bottom-left-radius: 2px;
+-webkit-border-top-left-radius: 15px;
+-moz-border-radius-topright: 15px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+-moz-border-radius-topleft: 15px;
+-ms-border-radius-topleft: 15px;
+-ms-border-radius-topright: 15px;
+-ms-border-radius-bottomleft: 2px;
+-ms-border-radius-bottomright: 2px;
+-khtml-border-radius-topleft:15px;
+-khtml-border-radius-topright:15px;
+-khtml-border-radius-bottomleft:2px;
+-khtml-border-radius-bottomright:2px;
+background: silver url("images/roundedcorners.svg");
+border-top-right-radius: 15px;
+border-bottom-right-radius: 2px;
+border-bottom-left-radius: 2px;
+border-top-left-radius: 15px;
+behavior:url(border-radius.htc);
+background: #959595; /* old browsers */
+
+background: -moz-linear-gradient(top, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#959595), color-stop(46%,#0d0d0d), color-stop(50%,#010101), color-stop(53%,#0a0a0a), color-stop(76%,#4e4e4e), color-stop(87%,#383838), color-stop(100%,#1b1b1b)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#1b1b1b',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,z-index:1; 
+filter:alpha(opacity=75); 
+-moz-opacity:.75;
+opacity:.75;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}#1b1b1b 100%); /* opera */
+position:absolute;
+top: 45px;
+border:5px ridge #ff0000;
+text-align: center;
+text-top: -3px;
+color: DarkGreen;
+z-index:1000;
+filter:alpha(opacity=80);
+-moz-opacity:.80;
+opacity:.80;
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+.divEditableI {
+-webkit-border-top-right-radius: 15px;
+-webkit-border-bottom-right-radius: 2px;
+-webkit-border-bottom-left-radius: 2px;
+-webkit-border-top-left-radius: 15px;
+-moz-border-radius-topright: 15px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+-moz-border-radius-topleft: 15px;
+-ms-border-radius-topleft: 15px;
+-ms-border-radius-topright: 15px;
+-ms-border-radius-bottomleft: 2px;
+-ms-border-radius-bottomright: 2px;
+-khtml-border-radius-topleft:15px;
+-khtml-border-radius-topright:15px;
+-khtml-border-radius-bottomleft:2px;
+-khtml-border-radius-bottomright:2px;
+background: silver url("images/roundedcorners.svg");
+border-top-right-radius: 15px;
+border-bottom-right-radius: 2px;
+border-bottom-left-radius: 2px;
+border-top-left-radius: 15px;
+behavior:url(border-radius.htc);
+background: #959595; /* old browsers */
+
+background: -moz-linear-gradient(top, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#959595), color-stop(46%,#0d0d0d), color-stop(50%,#010101), color-stop(53%,#0a0a0a), color-stop(76%,#4e4e4e), color-stop(87%,#383838), color-stop(100%,#1b1b1b)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#1b1b1b',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%); /* opera */
+position:absolute;
+top: 50px;
+border:5px ridge #ff0000;
+text-align: center;
+text-top: -3px;
+color: DarkGreen;
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+#sombraWapa {
+   background-color: #090;
+   color: #fff;
+   
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+.divXulo {
+background: #f3c5bd; /* old browsers */
+
+background: -moz-linear-gradient(top, #f3c5bd 0%, #e86c57 50%, #ea2803 51%, #ff6600 75%, #c72200 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3c5bd), color-stop(50%,#e86c57), color-stop(51%,#ea2803), color-stop(75%,#ff6600), color-stop(100%,#c72200)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3c5bd', endColorstr='#c72200',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #f3c5bd 0%,#e86c57 50%,#ea2803 51%,#ff6600 75%,#c72200 100%); /* opera */
+border:3px ridge black;
+position:absolute;
+left: 10px;
+top: 10px;
+
+
+-webkit-border-top-right-radius: 10px;
+-webkit-border-bottom-right-radius: 10px;
+-webkit-border-bottom-left-radius: 10px;
+-webkit-border-top-left-radius: 10px;
+-moz-border-radius-topright: 10px;
+-moz-border-radius-bottomright: 10px;
+-moz-border-radius-bottomleft: 10px;
+-moz-border-radius-topleft: 10px;
+-ms-border-radius-topleft: 10px;
+-ms-border-radius-topright: 10px;
+-ms-border-radius-bottomleft: 10px;
+-ms-border-radius-bottomright: 10px;
+-khtml-border-radius-topleft:10px;
+-khtml-border-radius-topright:10px;
+-khtml-border-radius-bottomleft:10px;
+-khtml-border-radius-bottomright:10px;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
+border-bottom-left-radius: 10px;
+border-top-left-radius: 10px;
+behavior:url(border-radius.htc);
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+.divFuck {
+        color:Orange;
+        font-family: Arial;
+        font-weight:bold;
+        text-shadow: 0 2px 0 navy;
+        text-align:center;
+}
+
+div {
+        color:Red;
+        font-family: Arial;
+        font-weight:bold;
+        text-shadow: 0 1px 0 navy;
+}
+
+span {
+        color:DarkGreen;
+        font-family: Arial;
+        font-weight:bold;
+        text-shadow: 0 1px 0 navy;
+}
+
+#inv {
+color: transparent;
+}
+
+.LOLloco {
+position:absolute;
+left: 1px;
+top: 80px;
+border: 3px ridge gray;
+background-color: #848484;
+font-family: Arial;
+font-size: 15px;
+color: Black;
+        text-shadow: 0 1px 0 navy;
+        text-align:center;
+}
+
+.LOLFuckin2{
+font-family:Verdana;
+font-weight:bold;
+font-size:22px;
+}
+
+.LOLFuckin3{
+font-size:15px;
+font-family:Verdana;
+font-weight:bold;
+}
+
+.calloutUp
+{
+height: 0;
+width: 0;
+border-bottom: 12px solid #000000;
+border-left: 12px dotted transparent;
+border-right: 12px dotted transparent;
+left: 0px;
+top: 0px;
+margin-left: 20px;
+z-index: 10;
+}
+.calloutUp2
+{
+position: relative;
+left: -10px;
+top: 2px;
+height: 0;
+width: 0;
+border-bottom: 10px solid #9999ff;
+border-left: 10px dotted transparent;
+border-right: 10px dotted transparent;
+z-index: 11;
+}
+.calloutDownI
+{
+height: 0;
+width: 0;
+border-bottom: 12px solid #585858;
+border-left: 12px dotted transparent;
+border-right: 12px dotted transparent;
+left: 0px;
+top: 12px;
+margin-left: -6px;
+margin-top:30px;
+z-index: 10;
+-webkit-transform: rotate(270deg);
+-moz-transform: rotate(270deg);
+rotation: 270deg;
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+.calloutDownI2
+{
+position: relative;
+left: -10px;
+top: 2px;
+height: 0;
+width: 0;
+border-bottom: 10px solid #585858;
+border-left: 10px dotted transparent;
+border-right: 10px dotted transparent;
+z-index: 11;
+-webkit-transform: rotate(360deg);
+-moz-transform: rotate(360deg);
+rotation: 360deg;
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=4);
+}
+.calloutDown
+{
+height: 0;
+width: 0;
+border-top: 12px solid #000000;
+border-left: 12px dotted transparent;
+border-right: 12px dotted transparent;
+left: 0px;
+top: 0px;
+margin-left: 20px;
+z-index: 11;
+}
+.calloutDown2
+{
+position: relative;
+left: -9px;
+top: -12px;
+height: 0;
+width: 0;
+border-top: 10px solid #9999ff;
+border-left: 10px dotted transparent;
+border-right: 10px dotted transparent;
+z-index: 10;
+}
+.divContainerUp
+{
+background-color: #9999ff;
+border: solid 1px #000000;
+position: relative;
+top: -1px;
+z-index: 9;
+width: 500px;
+padding: 4px;
+}
+.divContainerDownI
+{
+font-family: Arial;
+font-size: 11px;
+font-weight: Bold;
+color: White;
+border: solid 3px #FF8000;
+position: absolute;
+margin-top: 85px;
+margin-left: 50px;
+z-index: 9;
+width: 150px;
+padding: 4px;
+border.radius: 5px;
+ -moz-border-radius:5px;
+ -webkit-border-radius:5px;
+behavior:url(border-radius.htc);  
+	background-image: -moz-linear-gradient(top, #151515, #A4A4A4); /* Firefox 3.6 */
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #A4A4A4),color-stop(1, #151515)); /* Safari & Chrome */
+	filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#151515', endColorstr='#A4A4A4'); /* IE6 & IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#151515', endColorstr='#A4A4A4')"; /* IE8 */
+}
+.divContainerDown
+{
+background-color: #9999ff;
+border: solid 1px #000000;
+position: relative;
+top: 1px;
+z-index: 3;
+width: 500px;
+padding: 4px;
+}
+.divContainerMain
+{
+background-color: #ccccff;
+padding: 8px;
+}
+
+.IMGFUCK {
+position: absolute;
+width: 100px;
+height: 30px;
+left: 800px;
+top: 70px;
+}
+
+.IMGFUCK2 {
+position: absolute;
+width: 125px;
+height: 30px;
+left: 500px;
+top: 70px;
+}
+
+.IMGFUCK3 {
+position: absolute;
+width: 150px;
+height: 30px;
+left: 500px;
+top: 70px;
+}
+
+.IMGFUCK4 {
+position: absolute;
+width: 175px;
+height: 30px;
+left: 500px;
+top: 70px;
+}
+
+.IMGFUCK5 {
+position: absolute;
+width: 160px;
+height: 30px;
+left: 500px;
+top: 70px;
+}
+
+.divFuckinTop {
+background: #ffb76b; /* old browsers */
+
+background: -moz-linear-gradient(top, #ffb76b 0%, #ffa73d 50%, #ff7c00 51%, #ff7f04 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb76b), color-stop(50%,#ffa73d), color-stop(51%,#ff7c00), color-stop(100%,#ff7f04)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #ffb76b 0%, #ffa73d 50%, #ff7c00 51%, #ff7f04 100%); /* opera */
+position:absolute;
+left:0px;
+top:0px;
+width: 100%;
+height: 75px;
+        color:Navy;
+        font-family: Arial;
+        font-weight:bold;
+        text-shadow: 0 1px 0 Blue;
+z-index:1000;
+filter:alpha(opacity=90);
+-moz-opacity:.90;
+opacity:.90;
+   box-shadow: 1px 1px 0px #000;
+   -webkit-box-shadow: 1px 1px 0px #000;
+   -moz-box-shadow: 1px 1px 0px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+.divFuckinBottom {
+background: #ffb76b; /* old browsers */
+
+background: -moz-linear-gradient(top, #ffb76b 0%, #ffa73d 50%, #ff7c00 51%, #ff7f04 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb76b), color-stop(50%,#ffa73d), color-stop(51%,#ff7c00), color-stop(100%,#ff7f04)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #ffb76b 0%, #ffa73d 50%, #ff7c00 51%, #ff7f04 100%); /* opera */
+width: 100%;
+height: 90px;
+   position: relative;
+clear:both;
+left:0px;
+text-align:center;
+left: 0px;
+        color:Navy;
+        font-family: Arial;
+        font-weight:bold;
+        text-shadow: 0 1px 0 Blue;
+z-index:1000;
+filter:alpha(opacity=90);
+-moz-opacity:.90;
+opacity:.90;
+   box-shadow: 4px 4px 3px #000;
+}
+
+#pie{
+	clear:left;
+	width:100%;
+	padding-top:5px;
+    text-align:center;
+	background:#494949;
+	color:#FFF;
+}
+#pie a{
+	color: #FFF;
+}
+
+.LOLBottom {
+position:absolute;
+bottom: 0px;
+left: 0px;
+}
+
+* { margin: 0px;
+padding: 0px; outline: 0;
+z-index: 20000;
+}
+
+#menu {  text-align: center;
+font-size: 0.7em;
+width: 847px;
+margin: 20px auto;
+background: url(http://i.imgur.com/W8iH6.png) repeat-x;
+z-index: 20000;
+}
+#menu ul { list-style-type: none;}
+#menu ul li.nivel1 { float: left;
+width: 162px;
+margin-right: 1px;
+z-index: 20000;
+}
+#menu ul li a {display: block;
+text-decoration: none;
+color: #006812;
+text-shadow: 0 1px 0 #41B054;
+background-color: #4CFE8D;
+border: solid 1px #fff;
+padding: 3px;
+left:-72px;
+top:-15px;
+position: relative;
+z-index: 20000;
+
+-webkit-border-top-right-radius: 10px;
+-webkit-border-bottom-right-radius: 10px;
+-webkit-border-bottom-left-radius: 10px;
+-webkit-border-top-left-radius: 10px;
+-moz-border-radius-topright: 10px;
+-moz-border-radius-bottomright: 10px;
+-moz-border-radius-bottomleft: 10px;
+-moz-border-radius-topleft: 10px;
+-ms-border-radius-topleft: 10px;
+-ms-border-radius-topright: 10px;
+-ms-border-radius-bottomleft: 10px;
+-ms-border-radius-bottomright: 10px;
+-khtml-border-radius-topleft:10px;
+-khtml-border-radius-topright:10px;
+-khtml-border-radius-bottomleft:10px;
+-khtml-border-radius-bottomright:10px;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
+border-bottom-left-radius: 10px;
+border-top-left-radius: 10px;
+behavior:url(border-radius.htc);
+}
+#background { display: block;
+text-decoration: none;
+background:#353842 url(http://cdn.etoro.com/imgs/newheader/menu_bg.png) repeat-x;
+position: absolute;
+top: 73px;
+width: 100%;
+height: 35px;
+z-index: 100;
+   box-shadow: 1px 1px 0px #000;
+   -webkit-box-shadow: 1px 1px 0px #000;
+   -moz-box-shadow: 1px 1px 0px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+#menu ul li:hover {position: relative; z-index: 20000;
+}
+#menu ul li a:hover, #menu ul li:hover a.nivel1 {background-color: #01A23C;
+color: #01FE5E;
+text-shadow: 0 1px 0 #2D7539;
+position: relative;
+z-index: 20000;
+border:3px ridge #ff8000;
+}
+#menu ul li a.nivel1 {display: block!important;display: none;
+position: relative;
+left:-70px;
+z-index: 20000;
+border:3px ridge #ff0000;
+}
+#menu ul li ul {display: none; z-index: 20000;
+}
+#menu ul li a:hover ul, #menu ul li:hover ul {display: block;
+position: absolute;left: 0px;
+z-index: 20000;
+}
+#menu ul li ul li a {width: 160px;
+padding: 3px 0px 3px 0px;
+border-top-color: #000;
+z-index: 20000;
+border:3px ridge #00f;
+}
+#menu ul li ul li a:hover {border-top-color: #00f;
+position: relative;
+z-index: 20000;
+border:3px ridge #000;
+}
+table.falsa {border-collapse:collapse;
+border:0px;
+float: left;
+position: relative;
+z-index: 20000;
+}
+
+.box {
+border: 5px ridge #000;
+}
+
+/* BOX txt Generales */
+
+.box_rss{background-repeat:no-repeat; float:left; background-position:top right; padding-right:8px; padding-top:4px;}
+.box_txt.ultimos_posts{width:346px!important;}
+.box_txt.ultimos_comments{width:329px!important;}
+.box_txt.box_buscadort{width: 889px!important;}
+.box_txt.box_r_buscadort{width:668px!important;}
+.box_txt.box_error{width:358px!important;}
+.box_txt.box_235-34{width:201px!important;}
+.box_txt.box_780-34{width:746px!important;}
+.box_txt.box_363-34{width:329px!important;}
+.box_txt.box_560-34{width:526px!important;}
+.box_txt.box_140-34{width:106px!important;}
+.box_txt.box_757-34{width:723px!important;}
+.box_txt.box_300-34{width:266px!important;}
+.box_txt.box_354-34{width:320px!important;}
+.box_txt.box_390-34{width:352px!important;}
+.box_txt.publicidad_r{width:180px!important;}
+.box_txt.img_aletat{width:126px!important;}
+.box_txt.alert{width:387px!important;}
+.box_txt.alert1{width:458px!important;}
+.box_txt.ed-ag-posts{width:652px!important;}
+
+/* Fin BOX txt Generales */
+
+/* BOX Tamaños */
+
+.box_235{height: 100%; width:233px!important; float:left; margin-right:8px;}
+.box_780{height: 100%; width:778px!important;}
+.box_363{height: 100%; width:361px!important;}
+.box_140{height: 100%; width:138px!important;}
+.box_354{height: 100%; width:354px!important;}
+.box_560{height: 100%; width:558px!important;}
+.box_300{height: 100%; width:298px!important;}
+.box_757{height: 100%; width:755px!important;}
+.box_390{height: 100%; width:384px!important;}
+.box_930{height: 100%; width:930px!important;margin-bottom:8px;}
+.ed-ag-post{height: 100%; width:684px; float:left;}
+.ultimos_postsa{height: 100%; float:left; width:378px; margin-right:8px;}
+.box_buscador{height: 100%; margin-bottom:8px; width: 919px;}
+.box_r_buscador{height: 100%; float:left; margin-bottom:8px; width:698px;}
+.box_errors{height: 100%; margin-bottom:8px; width:388px;}
+.publicidad{height: 100%; float:left; width:210px;}
+.box_alert1a{margin-right:8px; clear:left; width:490px;}
+.box_alert1b{margin-bottom:8px; clear:left; width:417px;}	
+.act_comments{float:left; clear:left; width:361px; margin-right:8px;}
+.img_aletat{float:left; clear:left; width:158px;}
+
+/* Fin BOX Tamaños */
+
+/* Título de los BOX generales */
+
+.box_title{ /* Titulo de los boxs */
+	background:#EDF2FA; 
+	padding:0px; 
+	background:url("file:///media/disk/1941-1280857044-redeclipse/redeclipse/theadbg.png") repeat scroll 0 0 transparent;
+	height:28px;
+	-moz-box-shadow: 0 0 7px #0000FF;
+	-webkit-box-shadow: 0 0 7px #0000FF;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color=#CDDAE9,direction=125,strength=5)";
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-top-right-radius:5px;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+}
+
+.box_txt { /* Textos de los titulos de los boxs */
+	background-repeat:no-repeat;
+	float:left;
+	padding: 5px 0 0 10px;
+	font-weight:bold;
+	color:#2FD526;
+	font-size: 13px;
+}
+.box_posts{ /* Box contenedor de los ultimos posts */
+	float:left;
+	padding: 4px;
+	width: 370px;
+	clear:left;
+	border:#000000 solid 1px;
+	margin: 0px 5px 5px 0px;
+	-moz-box-shadow:0 0 5px #E40C00;
+}
+
+/* Fin del titulo de BOX generales */
+</style>
+<script>
+  var navegador = navigator.userAgent;
+  if (navigator.userAgent.indexOf('MSIE') !=-1) {
+    document.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><style>#window3 {top:0px; left:0px; position:absolute; width:997px; height:5470px; z-index:9999;filter:alpha(opacity=60);float:left;-moz-opacity:.60;opacity:.60; background-color:#000000;}<\/style><script language="Javascript"> function ocultar(nombreCapa){ document.getElementById(nombreCapa).style.visibility="hidden"; } <\/script><\/script><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /\></head><body><div id="window20" style="position:absolute; z-index:9950; left:400px; top:200px; width:452px; height:207px; background-color:#FFF;"><\/div><div id="window3"><div id="window2" style="position:absolute; filter:alpha(opacity=999999);float:left;-moz-opacity:.999999;opacity:.999999; z-index:10101; left:400px; top:200px; width:450px;background-color:#FFF; borderheight: 35px;:1px solid #464f5a;"> <div style="padding-bottom:8px; width:450px; height:15px; background-color:#000; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);"><div style="position:absolute; top:1px; left:5px; font-size:16px; font-weight:bold; color:#FFFFFF;">Est&aacute; usando Internet Explorer deje de hacerlo, por favor.</div><div style="position:absolute; top:3px; left:377px; float:right;"></div></div><div  style="margin-left:5px;"><center><img src="http://icdn.pro/images/es/p/u/punto-de-exclamacion-precaucion-triangulo-de-senal-de-advertencia-icono-5918-48.png" /\></center><p><span style="color:darkred;">Esta usando un navegador antiguo o desactualizado, por favor, actualice su navegador o cambielo por otro m&aacute;s reciente, como (Firefox, Safari o Opera), si no lo hace la web no se mostrar&aacute; correctamente, gracias. <br>Att. Staff de la web.<\/span><br><p><center><input type="button" value="Cerrar" onclick="ocultar(\'window3\')" /\><\/center><br><\/div><\/div></\div><\/body><\/html>');
+} else if (navigator.userAgent.indexOf('Firefox') !=-1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('Chrome') !=-1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('Opera') !=-1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('NetScape') != -1) {
+    document.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><style>#window3 {top:0px; left:0px; position:absolute; width:997px; height:5470px; z-index:9999;filter:alpha(opacity=60);float:left;-moz-opacity:.60;opacity:.60; background-color:#000000;}<\/style><script language="Javascript"> function ocultar(nombreCapa){ document.getElementById(nombreCapa).style.visibility="hidden"; } <\/script><\/script><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /\></head><body><div id="window20" style="position:absolute; z-index:9950; left:400px; top:200px; width:452px; height:207px; background-color:#FFF;"><\/div><div id="window3"><div id="window2" style="position:absolute; filter:alpha(opacity=999999);float:left;-moz-opacity:.999999;opacity:.999999; z-index:10101; left:400px; top:200px; width:450px;background-color:#FFF; border:1px solid #464f5a;"> <div style="padding-bottom:8px; width:450px; height:15px; background-color:#000; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);"><div style="position:absolute; top:1px; left:5px; font-size:16px; font-weight:bold; color:#FFFFFF;">Est&aacute; usando NetScape deje de hacerlo, por favor.</div><div style="position:absolute; top:3px; left:377px; float:right;"></div></div><div  style="margin-left:5px;"><center><img src="http://icdn.pro/images/es/p/u/punto-de-exclamacion-precaucion-triangulo-de-senal-de-advertencia-icono-5918-48.png" /\></center><p><span style="color:darkred;">Esta usando un navegador antiguo o desactualizado, por favor, actualice su navegador o cambielo por otro m&aacute;s reciente, como (Firefox, Safari o Opera), si no lo hace la web no se mostrar&aacute; correctamente, gracias. <br>Att. Staff de la web.<\/span><br><p><center><input type="button" value="Cerrar" onclick="ocultar(\'window3\')" /\><\/center><br><\/div><\/div></\div><\/body><\/html>');
+  } else if (navigator.userAgent.indexOf('Flock') != -1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('Safari') != -1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('iPhone') != -1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('iPod') != -1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('iPad') != -1) {
+    document.write('');
+  } else {
+    document.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><style>#window3 {top:0px; left:0px; position:absolute; width:997px; height:5470px; z-index:9999;filter:alpha(opacity=60);float:left;-moz-opacity:.60;opacity:.60; background-color:#000000;}<\/style><script language="Javascript"> function ocultar(nombreCapa){ document.getElementById(nombreCapa).style.visibility="hidden"; } <\/script><\/script><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /\></head><body><div id="window20" style="position:absolute; z-index:9950; left:400px; top:200px; width:452px; height:207px; background-color:#FFF;"><\/div><div id="window3"><div id="window2" style="position:absolute; filter:alpha(opacity=999999);float:left;-moz-opacity:.999999;opacity:.999999; z-index:10101; left:400px; top:200px; width:450px;background-color:#FFF; border:1px solid #464f5a;"> <div style="padding-bottom:8px; width:450px; height:15px; background-color:#000; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);"><div style="position:absolute; top:1px; left:5px; font-size:16px; font-weight:bold; color:#FFFFFF;">Sitio restringido para su navegador, lo sentimos</div><div style="position:absolute; top:3px; left:377px; float:right;"></div></div><div  style="margin-left:5px;"><center><img src="http://wikanda.sevillapedia.es/imagenes/Icono_error.png" /\></center><p><span style="color:darkred;">Sentimos decirle, que por motivos de seguridad, usted tiene restringido al sitio, ya que no se sabe que navegador est&aacute; utilizando, lo sentimos. <br>Por favor intente utilizar otros tipos de navegadores como (Firefox, Chrome u Opera). <br>Si sigue sin funcionar, por favor, lea este tutorial, gracias. <br>Att. Staff de la web.<\/span><br><\/div><\/div></\div><\/body><\/html>');
+  }
+</script>
+<script language="Javascript"> 
+function mostrar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="visible"; 
+} 
+function ocultar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="hidden"; 
+} 
+</script> 
+<script src="SP Tabs JS.js"></script>
+<script src="ajustador de dimensiones.js"></script>
+<script>
+function ocultar_div() {
+div = document.getElementById('loading_12');
+div.style.display = 'none';
+}
+var recarga = setTimeout('ocultar_div()', 2500);
+</script>
+
+</head>
+
+<link rel="shortcut icon" href="http://www.veryicon.com/icon/png/Game/Super%20Mario/Chain%20Chomp.png" type="image/x-icon" />
+
+
+<title>Inicio de Spirate! Aports</title>
+
+<body>
+<div id="loading_12" onLoad="recarga" align="center" style="background-color:#FFFFFF; width:100%;"><img src="http://www.webscriptlab.com/file/loading/output/13093727421.gif" /> ... Espere un momento, la web está cargando...</div>
+<div class="body1">
+<div class="divFuckinTop">
+<img src="http://spirate.net/logopor2.png" style="position:absolute; left:5px; top:5px;" />
+<div style="position:absolute; top:52px; left:10px; font-family: Arial; font-size: 15px; font-weight:Bold; color:Orange;">Lleno de todo tipo de cosas</div></div>
+<div id="background">
+<div id="menu">
+<ul>
+  <li class="nivel1"><a href="#" class="nivel1">Inicio</a>
+<!--[if lte IE 6]><a href="#">Inicio<table class="falsa"><tr><td><![endif]-->
+
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+  </li>
+  <li class="nivel1"><a href="#" class="nivel1">Comunidades</a>
+<!--[if lte IE 6]><a href="#" class="nivel1ie">Comunidades<table class="falsa"><tr><td><![endif]-->
+
+	<ul>
+		<li><a href="#">Mis comunidades</a></li>
+		<li><a href="#">Destacados</a></li>
+		<li><a href="#">Tops</a></li>
+
+		<li><a href="#">Favoritas</a></li>
+		<li><a href="#">Crea tu comunidad</a></li>
+
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+  <li class="nivel1"><a href="#" class="nivel1">Tops</a>
+<!--[if lte IE 6]><a href="#" class="nivel1ie">Tops<table class="falsa"><tr><td><![endif]-->
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+
+  <li class="nivel1"><a href="#" class="nivel1">Postear</a>
+<!--[if lte IE 6]><a href="#" class="nivel1ie">Postear<table class="falsa"><tr><td><![endif]-->
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+</ul>
+</div>
+</div>
+<script>search3_d() + search3_p() + search3_1d()</script><center><span id="capa1" onclick="mostrar('window')">Herramientas</span> <img src="file:///media/disk/Foroactivo/Foro/Admin/Themes/Default/Avanzado/Subs/General/2_files/editer.png" border="0" title="Informaci&oacute;n sobre el Creador" /></center></div>
+<div id="window" style="position:absolute; z-index:10; left:350px; top:160px; width:400px;background-color:#dde3eb; border:1px solid #464f5a; visibility:hidden"> 
+    
+   <div style="padding-bottom:8px; width:400px; height:10px; background-color:#718191; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);">
+
+      <div style="position:absolute; top:1px; left:5px; font-size:16px; font-weight:bold; color:#FFFFFF;">Genera tu truco</div> 
+       
+      <div style="position:absolute; top:3px; left:385px; float:right;"> 
+        <div onclick="ocultar('window')"><img src="file:///home/usuario/Escritorio/%C3%81lvaro/Accesos%20directos/SP%20%28Small%20Pirate%29/EDITS/close_dialog.png" border="0" title="Cerrar" /></div>
+
+      </div> 
+       
+   </div> 
+
+   <div style="margin-left:5px; margin-top:5px;">
+<input type="button" value="Busqueda" /> <input type="button" value="Trucos" /> <input type="button" value="Herramientas" /><br><input type="button" value="Busqueda" /> <input type="button" value="Busqueda" />
+   
+   </div>     
+   
+<br/> 
+
+</div> 
+<script>tab2_d() + tab2_p() + tab2_1d();</script><div class="divEditable" style="position:absolute; left:0px;">IMG</div><div class="divEditable" style="position:absolute; left:55px;">IMG</div><div class="divEditable" style="position:absolute; left:110px;">IMG</div><div class="divEditable" style="position:absolute; left:165px; width:150px;">Name of count [x]</div><div class="divEditable" style="position:absolute; left:340px;">IMG</div></div>
+
+<div class="Menus1"><script>text0() + redimensionado0() + text0_1();</script><script>addon0_d() + addon0_p() + addon0_1d();</script>Filtrar por categor&iacute;as:<br><select><option>Categoría</option><option>Categor&iacute;a</option><option selected="yes">Nadaaaaaaaaaaaaaaaaaaaaaaaaaaa</option></select></span> <div class="divEditableI" style="position:absolute; left:5px; top:5px; width: 100px;">Inicio</div><div class="divEditableI" style="position:absolute; left:125px; top:5px; width: 100px;">Posts</div><div class="divEditableI" style="position:absolute; left:245px; top:5px; width: 100px;">Novatos</div><div class="divEditableI" style="position:absolute; left:365px; top:5px; width: 100px;">Destacados</div><div class="divEditableI" style="position:absolute; left:485px; top:5px; width: 100px;">Historial</div></span><script>text1() + redimensionado1() + text1_1();</script><center><span style="position:absolute; top:5px;">Mensaje TOP</span></center></span></div>
+<!--Menus-->
+<script>tab1_d() + tab1_p() + tab1_1d();</script><div class="divWapo SinIMG" id="sombraWapa" style="margin-left:0px;"><a href=" "><center>Inicio</center></a></div><div class="divWapo SinIMG" id="sombraWapa" style="margin-left:180px;"><center>Listas</center></div></div>
+<!--Fin de Menus-->
+<br><br><br><br><br><br><br><br><br><br><br><br><script>GlbTotal0() + GlbSolucion() + GlbTotal0_1()</script>
+<!--Inicio del Script by Seazoux-->
+<div id="content-1" style="position:relative; margin-left:3px;">
+Contenido aquí...<br>WTF?<br>LOL<br>Resultado = <script>fix()</script><br><script>resized_h1()</script></div>
+<!--Fin del Script by Seazoux-->
+</div>
+<script>GlbPieTotal1() + redimensionado4() + GlbPieTotal1_1();</script><div style="margin:5px;">Aqu&iacute; va el Footer con contenidos.<br><center>Probando... >=(</div></center></div>
+<br><br><div class="divFuckinBottom"><script>GlbFooterTotal0() + redimensionado3() + GlbFooterTotal0_1();</script><div style="text-align:center;"><span class="LOLFuckin3">&copy; Spirate &amp; SMF &amp; <a href="http://www.foroactivo.com" target="_blank" style="color: transparent;">foroactivo.com</a><br>Theme by: &Aacute;lvaro&#153; &amp; my PC &reg;<br>Para una mejor visualizaci&oacute;n de la web, tienes que tener 1024x600 y Webkit, de no ser as&iacute;, visita este tutorial.</span></div></div></div>
+</body>
+</html>

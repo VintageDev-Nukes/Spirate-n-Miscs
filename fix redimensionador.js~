@@ -1,0 +1,13 @@
+var redimensionador1 = document.documentElement.clientWidth - 55 ;
+function redimensionado1() {
+document.write (redimensionador1);
+}
+function text1() {
+document.write ("<span class=\"GloboTrans GlbMSNTOP\" style=\"position:absolute; top: -85px; left:-80px; width: ");
+}
+function text1_1() {
+document.write ("px; height: 30px;\">");
+}
+function text1_final() {
+document.write (text1() + redimensionado1() + text1_1());
+}

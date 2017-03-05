@@ -1,0 +1,333 @@
+body{background-color:#e9e9e9;font-size:10px;font-family:Arial, Tahoma, Sans-Serif;color:#000;margin:0;padding:0;letter-spacing:0.01em;}
+img{border:none;}
+input {outline: none;}
+:focus{outline:0;}
+a{font-weight:700;text-decoration:none;color:#4f8a10;}
+a:hover{text-decoration:underline;}
+a.sl{font-weight:700;text-decoration:none;color:#555;display:inline-block;line-height:1.25em;border-bottom:1px solid #92b847; cursor: pointer;}
+a.sl:hover{color:#92b847;border-bottom:1px solid #92b847;}
+a.cl{color:#00f; text-decoration:underline; font-weight:normal;}
+.clearing{clear:both;}
+a.NoArrow:hover {
+border:1px solid #d0d0d0;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+padding:2px 16px 2px 16px !important;
+}
+
+    .header{}
+    div.header{ background:#353842 url(http://cdn.etoro.com/imgs/newheader/log_bg.png) repeat-x; width:100%; height:57px; border-bottom: 1px solid #353842;}
+     .header>div{width:967px; margin:auto;}
+      .header>div img {float:left;}
+     .login {
+            float:right;
+            margin-top:16px;
+        }
+        .login_txt{
+        float:left;  text-align:right; font-size:13px; color:#fff; font-weight:bold;
+        vertical-align:middle;line-height:27px;
+        padding-right:10px;
+        }
+       .login input:-webkit-autofill { color: #000 !important;}
+      .login input[type=text], .login input[type=password]{
+          webkit-border-radius:3px;-moz-border-radius:3px; border-radius:3px;
+           background-color:#252831;
+           background-image:url(http://cdn.etoro.com/imgs/newheader/userpass.gif);
+           background-position:-12px -49px;
+            border:1px solid #252831;
+            color:#FFFFFF;
+            height:20px;
+            width:110px;
+            padding:3px 10px;
+            padding-top:5px/9;
+            }
+            .login input[type=text]{margin-right:2px;background-position:-12px -2px;}
+    .login input[type=text]:focus, .login input[type=password]:focus{border:1px solid #688da6;  background-position:-12px -21px;}
+     .login .img_btn{ float:right; width:75px;}
+     div.menu{ background:#353842 url(http://cdn.etoro.com/imgs/newheader/menu_bg.png) repeat-x; width:100%; height:33px; border-top: 1px solid #64697b;}
+     div.menu>div{width:967px; margin:auto;}
+
+.PMMenuContainer{position:relative; z-index:100; letter-spacing:.01em; font-family:arial, sans-serif; margin-top:3px;}
+.PMMenuContainer ul {padding:0;margin:0px;list-style-type:none;}
+.PMMenuContainer li {float:left;position:relative;background:transparent url(http://cdn.etoro.com/imgs/newheader/menusep.gif) no-repeat scroll right 1px;}
+.PMMenuContainer ul ul li:first-child{margin-top:3px; border-top:0;}
+.PMMenuContainer ul ul li:last-child a, .PMMenuContainer ul ul li:last-child a:hover{
+-webkit-border-bottom-right-radius: 3px;
+-webkit-border-bottom-left-radius: 3px;
+-moz-border-radius-bottomright: 3px;
+-moz-border-radius-bottomleft: 3px;
+border-bottom-right-radius: 3px;
+border-bottom-left-radius: 3px;
+}
+
+.PMMenuContainer a, .PMMenuContainer a:visited {
+color:#FFFFFF;
+display:block;
+font-family:Arial, Sans-Serif;
+font-size:15px;
+font-weight:bold;
+line-height:22px;
+padding:2px 17px 3px 17px;
+text-decoration:none;
+text-shadow:1px 1px 1px #000000;
+
+}
+.PMMenuContainer ul ul {visibility:hidden;position:absolute;height:0;top:31px;left:0; margin-top:3px\9; *margin-top:0; }
+.PMMenuContainer ul ul {top:28px;t\op:27px;}
+.PMMenuContainer table {position:absolute; top:0; left:0; border-collapse:collapse;}
+.PMMenuContainer ul ul a, .PMMenuContainer ul ul a:visited { 
+text-shadow:none; 
+background-color:#fff;
+ color:#000; 
+ height:auto; 
+ line-height:20px; 
+ padding:2px 16px 4px 19px;
+ width:174px;
+ font-weight:normal;
+ font-size:12px;
+ border-bottom:1px solid #dadada;
+ }
+.PMMenuContainer ul ul a, .PMMenuContainer ul ul a:visited {width:174px; border:1px solid #dadada; border-top: 0;}
+.PMMenuContainer ul ul a:hover{/*w\idth:181px; */} 
+.PMMenuContainer a:hover, .PMMenuContainer ul ul a:hover{text-decoration:none;  color:#000; } 
+ .PMMenuContainer :hover > a {
+text-shadow:none; color:#000;
+background:#fff;
+border:1px solid #d0d0d0;
+-webkit-border-top-left-radius: 3px;
+-webkit-border-top-right-radius: 3px;
+-moz-border-radius-topleft: 3px;
+-moz-border-radius-topright: 3px;
+border-top-left-radius: 3px;
+border-top-right-radius: 3px;
+padding:2px 16px 4px 16px;
+ }
+.PMMenuContainer ul ul li a:hover {
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+border-radius: 0px;
+line-height:21px;
+border:0;
+ border-left:1px solid #c4c4c4;
+  border-right:1px solid #c4c4c4;  
+width:177px;
+/*background:#7CA73B url(http://cdn.etoro.com/NewEtoroDotCom/images/menu_hor_arrow.gif) no-repeat 10px 10px;*/ 
+padding:2px 12px 4px 20px;
+color: #fff;
+background:#10affe;
+background: -moz-linear-gradient(top,#55c4fd,#10affe);
+  background: -webkit-gradient(linear, left top, left bottom, from(#55c4fd), to(#10affe));
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#55c4fd,endColorstr=#10affe,GradientType=0); zoom: 1;
+}
+
+.PMLanguageContainer a, .PMLanguageContainer a:visited {
+color:#FFFFFF;
+display:block;
+font-family:Arial, Sans-Serif;
+font-size:12px;
+font-weight:bold;
+line-height:29px;
+padding:0 0 2px 30px;
+text-decoration:none;
+text-shadow:1px 1px 1px #000000;
+}
+.PMMenuContainer ul li:hover ul, .PMMenuContainer ul a:hover ul{visibility:visible; }
+.PMLanguageContainer ul li ul {margin-top:1px; _margin-top:-5px; left:-204px; width:285px; top:28px;}
+.PMLanguageContainer {position:relative;z-index:100;letter-spacing:.01em;font-family:arial, sans-serif;	width:80px;}
+.PMLanguageContainer ul li {height: 28px; }
+.PMLanguageContainer ul {padding:0;	margin:3px 0px;	list-style-type:none;}
+.PMLanguageContainer li {float:right;position:relative; width:140px;background:url(http://cdn.etoro.com/imgs/newheader/arrow.gif)  0px 4px  no-repeat;}
+.PMLanguageContainer ul li:hover {
+border:1px solid #d0d0d0;
+-webkit-border-top-left-radius: 3px;
+-webkit-border-top-right-radius: 3px;
+-moz-border-radius-topleft: 3px;
+-moz-border-radius-topright: 3px;
+border-top-left-radius: 3px;
+border-top-right-radius: 3px;
+background:#fff url(http://cdn.etoro.com/controls/MyPrettyMenuStyles/images/arrow.gif) no-repeat 12px 12px; 
+}
+
+
+.PMLanguageContainer ul ul li {border-width:0 0px 1px 1px; border-style: solid; border-color: #dadada; background-image: none; background: #fff;}
+.PMLanguageContainer ul ul li:hover {
+background: -moz-linear-gradient(top,#55c4fd,#10affe); 
+ background: -webkit-gradient(linear, left top, left bottom, from(#55c4fd), to(#10affe));
+filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#55c4fd,endColorstr=#10affe,GradientType=0); zoom: 1;
+border-width:0 1px 0 0;
+ border-radius:0;
+ -moz-border-radius:0;
+ -webkit-border-radius:0;
+ padding-bottom: 1px;
+ }
+.PMLanguageContainer ul ul li a {width: 140px;}
+.PMLanguageContainer ul ul li:hover a {color: #fff;}
+.PMLanguageContainer ul ul {visibility:hidden;position:absolute;top:31px;left:0; border-right:1px solid #c4c4c4}
+.PMLanguageContainer table {position:absolute; top:0; left:0; border-collapse:collapse;}
+.PMLanguageContainer ul ul a, .PMLanguageContainer ul ul a:visited {text-shadow:none; background:transparent url(http://cdn.etoro.com/controls/MyPrettyMenuStyles/images/Flags_Sprite.gif) no-repeat scroll right center;	color:#000; height:auto; line-height:20px; padding:5px 6px 5px 10px ; width:118px; font-weight:normal; font-size:12px;}
+.PMLanguageContainer ul li:hover *, .PMLanguageContainer ul a:hover ul{visibility:visible;}
+
+/*here*/.PMLanguageContainer ul li:hover a{color:#000; text-shadow:none; }
+.menu_shadow{height:8px; z-index:1; margin-bottom:-8px; background: transparent url('http://cdn.etoro.com/imgs/newheader/menu-shadow.png') repeat-x  0 0px;}
+
+
+.menu_ph{width:830px; float:left;margin-left:1px;}
+.lang_ph{width:80px; float:right;}
+
+#wrapper {width:966px;margin:0 auto;}
+
+.caps {text-transform:uppercase;font-weight:700;font-size:13px;margin-left:0px;color:#444;}
+.signup {color:#444;}
+.signup a {color:#000;text-decoration:underline;}
+.login_fields_1, .login_fields_2 {background-color:#fff;border:1px solid #dedede;padding:1px;}
+.login_fields_2 {padding:0px;}
+.login_fields_1  input, .login_fields_2 input {border:0 none;height:19px;//height:17px;margin-left:5px;margin-top:2px;vertical-align:middle;width:120px;width:119px\9;_width:122px;}
+.login_fields_2 input {margin-top:0px;height:17px;}
+.horline {width:100%;height:5px;font-size:2px;background-color:#000;margin-top:12px;}
+.menu_div {background-color:#fff!important;width:886px;float:left;height:34px;margin:0;padding:0;}
+.language_container{float:right; background:#fff; height:34px;}
+#main {background-color:#e4e4e4;}
+.greenfield {z-index:0;width:965px;height:243px;background:#85AF3C url(http://cdn.etoro.com/NewEtoroDotCom/imgs/Web_bkg.jpg) no-repeat scroll right 0px;position:relative;}
+.open_placeholder {position:absolute; top:0; right:0; z-index:1;}
+.transbox {position:relative;width:247px;min-height:87px;_height:90px;/*background:#334316;*/color:#fff;margin:15px 0 0;}
+.transbox2 {position:relative;width:247px;min-height:87px;_height:90px;background:#000;color:#fff; opacity:0.6; filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);}
+.transbox h4 {font-size:1.5em;margin:0;padding:10px 10px 5px; position:absolute; top:0;}
+.transbox p {font-size:1.1em;margin:0;padding:0 10px;width:200px; position:absolute; top:30px;}
+.transbox img {width:30px;height:30px;position:absolute;right:10px;bottom:5px;border:0; position:absolute;}
+#columns {position:relative;width:963px;width:966px;overflow:hidden;background:#fff url(http://cdn.etoro.com/imgs/bbg.gif) repeat-y !important;}
+#left_column {float:left;width:690px;margin:0;padding:0;}
+.Content {font-size:12px;padding:10px 40px 30px 40px;width:608px; font-size:1.3em; line-height:140%; color:#404040;}
+         .Content h2{margin:0;color:#606060; padding-left:20px; width:450px; line-height:123%; font-size:23px; font-weight:normal; font-family: Georgia, serif; padding-bottom:20px;}
+         .Content h4, .Content h3{ margin:0;color:#606060; padding-left:20px;  font-weight:normal;  padding-top:20px; font-family: Georgia, serif; font-size:18px; letter-spacing:.04em; width:450px; line-height:120%;}
+
+/*New!*/.Content ul {padding-right:120px; color:#404040;}
+/*New!*/.Content p, .divp {padding-left:20px; padding-right:120px; line-height:137%; letter-spacing:.02em;}
+.Content a {font-weight:normal;text-decoration:underline;color:#4d7b42;}
+/*New!*/.Content p a:hover, .divp a:hover{color:#92b847;}
+.Content a:hover{color:#92b847;}
+.divp h4{padding-left:0;}
+/*New!*/.Content table {margin-left:20px;}
+/*New!*/.Content2 {font-size:1.3em;padding:20px;width:648px;}
+.asterisk p{margin:0;}
+.asterisk span{display:block;padding-left:50px !important; font-size:12px; letter-spacing:.02em !important; padding-top:20px; padding-bottom:20px;background:transparent url(/imgs/q.gif) no-repeat  33px 20px;}
+
+q{width:10px; font-style:normal; color:#92B847;font-size:35px; display:block; float:left; padding:4px 10px 50px 0px; quotes: none;}
+q:before, q:after{content:""; content: none;}
+
+#right_column {float:right;vertical-align:top;width:272px;width:274px\9;!width:272px;}
+#left_column, #right_column {}
+.bbd {margin-top:16px;background-image:url(http://cdn.etoro.com/imgs/bigicons.png);background-repeat:no-repeat;width:229px;height:92px;float:left;}
+.bbd1 {background-position:45px 0;}.bbd2 {background-position:-185px 0;}.bbd3 {background-position:-414px 0;width:232px;}
+.bigicons p,.bigicons h3 {width:160px;float:left;margin:5px 20px;_margin:10px!important;padding:0;}
+.bbd p span {display:inline-block; height:40px; }
+.bbd a{display:inline; height:auto;}
+.bbd a span{display:inline; height:auto;}
+.bigicons h3 {font-size:1.5em;color:#444;}
+.con {margin:20px 10px -4px;}.con2 {margin:10px 0px 23px;}
+.con_ttl {_padding-top:0;font-size:1.6em;font-weight:700;margin:0;padding:13px 20px;}
+.con_txt {font-size:1.2em;line-height:1.5em;margin:0;padding:0 20px;}
+div.prof_beg {float:left;width:49.9%;padding:0 0 95px;border-right:1px solid #e9e9e9;background:url(http://cdn.etoro.com/imgs/e_for_beg.png) no-repeat bottom right;}
+div.prof_pros {float:left;width:49.9%;padding:0 0 95px;background: #fff url(http://cdn.etoro.com/imgs/e_for_pro.png) no-repeat scroll 118px bottom;}
+.prof_beg p,.prof_pros p {font-size:1.6em;font-weight:700;margin:10px 0 10px 30px;}
+.prof_beg ul,.prof_pros ul {line-height:18px;list-style-image:none;list-style-position:outside;list-style-type:none;margin-left:-8px;margin-top:0;}
+.prof_beg li,.prof_pros li {background:transparent url(http://cdn.etoro.com/NewEtoroDotCom/imgs/bullets.png) no-repeat 0px 2px;	padding-left:12px;	//margin-left:40px;}
+.prof_beg li span, .prof_pros li span{font-size:12px;}
+.prof_beg a,.prof_pros a {display:inline-block;font-size:1.2em;margin:5px 35px;}
+.prof_beg img,.prof_pros img {float:right;margin-right:30px;}
+#dts_wrapper {width:642px;padding-left:23px;position:relative;overflow:hidden;}
+#dt1_wrapper, #dt2_wrapper {position:relative;width:50%;float:left;background-color:#f9f9f9;}
+#dt2_wrapper {float:right;}
+div.dt1 {background-image:url(http://cdn.etoro.com/NewEtoroDotCom/images/darkbg.gif);height:33px;width:320px;border-right:1px solid #2e2e2e;}
+.dt1 p,.dt2 p {font-weight:700;color:#fff;font-size:15px;margin:0;padding:8px 15px 0;}
+div.dt2 {background-image:url(http://cdn.etoro.com/NewEtoroDotCom/images/darkbg.gif);height:33px;width:320px;border-left:1px solid #535354;}
+.dt_content {border:1px solid #e9e9e9;}
+.dt_content ul {list-style:none;color:#85AF3C;font-size:16px;margin-left:-24px;!margin-left:15px;margin-top:5px;}
+.dt_content ul li {	background:transparent url(http://cdn.etoro.com/NewEtoroDotCom/imgs/bullets.png) no-repeat 0px -16px;padding-left:12px;}
+.dt_content ul li a {color:#000;font-weight:400;font-size:12px;line-height:20px;}
+div.dtc1 {background:#f4f4f4 url(http://cdn.etoro.com/imgs/learning.png) bottom right no-repeat;height:190px;overflow:hidden;}
+div.dtc2 {background:#f4f4f4 url(http://cdn.etoro.com/imgs/community.gif) bottom right no-repeat;height:190px;overflow:hidden;}
+#bshadow {position:relative;background:#e9e9e9 url(http://cdn.etoro.com/NewEtoroDotCom/imgs/FooterImg.png) bottom left no-repeat;width:100%;height:7px;top:-3px;}
+#footer {background-color:#e9e9e9;top:-3px;padding: 10px 0 0 0;}
+#rcc {width:228px;margin:8px auto 0; padding:18px 19px 5px 20px ; background:#f7f7f7;}
+.iframe_title {width:224px;height:33px;background:url(http://cdn.etoro.com/NewEtoroDotCom/images/iframe_title.gif) repeat-x;color:#fff;font-size:14px;font-weight:700;margin-top:18px;}
+.iframe_title p {padding:8px;}
+.iframe_title i {font-size:8px;font-weight:800;}
+.ifrm {border:1px solid #DADADA;border-top:0;width:222px;_width:220px;height:324px;}
+.footer_map {text-align:center;width:665px;float:left;margin-left:20px; margin-right: 10px;}
+.BottMenu td {border-right:1px solid #d1d1d1;font-size:12px;padding-left:15px;text-align:left;}
+.BottMenu a {color:#5e5e5e;font-weight:400;line-height:24px;}.BottMenu a:hover {color:#000000;}
+.footer_side_links {float:right;width:250px; text-align:left;}
+.p1,.p2,#p3 {padding-left:20px;background:url(http://cdn.etoro.com/NewEtoroDotCom/images/drs.gif) no-repeat;font-size:12px;line-height:24px;display:block;}
+.p2,#p3 {color:#6b6b6b;font-weight:400;}
+.p1 {background-position:0 4px;font-weight:700;font-size:14px;}
+a:hover.p2, a:hover#p3{color:#000 !important;}.p2 {background-position:0 -22px;}
+#p3 {background-position:0 -44px;}
+#btext {padding-top:10px;font-size:11px;width:775px;margin:0 auto;text-align:justify;}
+div.Bookmarks {padding-bottom:16px;padding-left:11px;}
+.signup,.bigicons p {font-size:1.2em;}
+.flash_placeholder {float:left;position:relative;}
+.transbox a,.dt1 a,.dt2 a {color:#fff;}
+.TablePaymentMethods div {height:43px;	background: url(http://cdn.etoro.com/Controls/Payment-Methods/payments_Sprite.png) no-repeat;float:left;}
+.pagetitle h1 {	
+margin:0;
+color:#7dc314;
+font-size:24px;
+font-weight:bold;
+padding: 30px 10px 0px 60px;
+ /*background:url("http://cdn.etoro.com/imgs/bbg.gif") repeat-y scroll 0 0 #FFFFFF !important;*/
+}
+.freehelp {	background: #e3e3e3;width:220px; padding:4px;	padding-bottom:2px;}
+.freehelp_content_1	{background:#fff url(http://cdn.etoro.com/imgs/freecall.png) no-repeat scroll center bottom;width:100%;min-height:93px;}
+.freehelp_content_2	{background:#fff url(http://cdn.etoro.com/imgs/freehelp.png) no-repeat scroll center bottom;width:100%;min-height:93px;}
+.fh_txt {font-size:13px;letter-spacing:0.01em;margin:0;padding:5px 0 5px 15px; width:155px;}
+.fh_title {display:inline-block;color:#4f8a10;font-size:16px !important;font-weight:bold;margin:0;padding-top:9px;padding-left:15px; width:160px; text-decoration:underline;}
+.start_trading {width:220px; background-color:#e3e3e3; padding:4px;}
+.start_trading_div {background:#fff; width:100%; min-height:92px; _height:92px; border-bottom:1px solid #e3e3e3;}
+.st_1, .st_2 {background:#fff; width:100%; min-height:92px; _height:92px; border-bottom:1px solid #e3e3e3;}
+.st_1, .st_2, .start_trading_div {position:relative;}
+.start_trading_link {padding:6px 5px; font-size:17px; color:#fff; font-weight:bold; display:inline-block;background:#3D4C5D url(/imgs/startbutton.gif) repeat-x 0 0; text-align:center; margin:10px 0; border:solid 4px #a2b3c4;width:210px; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px;}
+a:hover.start_trading_link {color:#fff;background:#3D4C5D url(/imgs/startbutton.gif) repeat-x 0 -10px; border:solid 4px #a2b3c4;text-decoration:none;}
+
+h6 {border-bottom:1px solid #585858;color:#585858;font-size:10pt;font-weight:bold;margin:0 0 10px;padding:0;}
+.Text2{width: 300px;border: 1px solid gray;}
+.Button{width: 100px;height: 30px;font-weight: bold;font-family: trebuchet ms,arial,tahoma,verdana,sans-serif;font-size: 14px;}
+.a1{cursor:pointer; font-weight:700;text-decoration:none;color:#92b847;}
+.a1:hover{text-decoration:underline;}
+.CopyRights1 {text-align: center; font-size: 11px; font-weight:700; color:#444; padding-bottom:15px;}
+.CopyRights1 a, .CopyRights2 a {color: #444;}
+.Disclaimer1 a, #btext a {color: #000;}
+.Top{float:right;}
+
+/*In the news*/
+.n_cite {border-bottom:solid 1px #c1c1c1; margin:20px 0 70px 20px; width:510px;}
+.n_cite img{margin-bottom:10px; padding-left:30px;}
+.n_cite p{ font-family:Georgia, Serif; color:#404040; line-height:25px; letter-spacing:.04em; font-size:15px; padding-top:18px; padding-left:30px; margin:0;}
+.n_cite em{ background: #fff url(imgs/n_q.png); width:33px; height:26px; display:block;position:relative;text-indent:-100px;top:-10px;}
+.n_cite a{font-size:15px; text-decoration:underline; display:block; padding:8px 0 40px; padding-left:30px;}
+.n_cite p img{padding:0; vertical-align:top; margin:0;}
+#fs{padding:0 0 40px 0; margin:0; font-family: Georgia, serif; font-size:16px;}
+.twitter_ico {width:36px; height:44px; margin-left:20px;}
+
+.slideshow{ position:relative; width:966px;height:240px; }
+.container{position:relative; width:965px;height:240px; margin:10px auto;}
+a.slideshow-control{ position:absolute; height:25px; bottom:0px; z-index:2;}
+a:hover.slideshow-control {}
+.previous, .next, .pause, .play{background:transparent url(/imgs/banners/prevnext.png);}
+.previous{background-position:0 0px;  left:442px; width:26px;}
+.next{background-position:27px 0; left:499px; width:26px;}
+.pause{background-position:58px -25px; left:468px; width:31px;}
+.play{background-position:58px 0px; left:468px; width:31px;}
+
+.con2 div.award{background:url("/imgs/award_bg.gif") repeat-x scroll center top #F4F4F4;border:1px solid #E9E9E9;margin-left:23px;margin-top:10px;width:640px;font-size:14px; }
+.con2 .award .title{padding:8px 0 0 0; margin:0;}
+.con2 .award .logoholder{float:left; padding:9px 0 9px 10px;}
+.con2 .award .textholder{float:right;width:514px;}
+.con2 .award a {color:#000; font-weight:normal;}
+.con2 .award a em{ font-style:normal; font-weight:bold; color:#567c1d;}
+
+#rcc .award{border: 4px solid #E3E3E3;margin:10px 0; background-color:#fff;}
+#rcc .award p{display:block; width:103px; font-size:12px; float:right; padding: 0 10px;}
+#rcc .award p strong{ font-weight:normal; color:#567c1d;}
+#rcc .award img{margin:8px 0 8px 4px; display:block; float:left;}
+

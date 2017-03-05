@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es">
+<head>
+<style type="text/css">
+textarea {
+font-family:arial;
+font-size: 12px;
+color:black;
+width: 1250px;
+height:600px;
+}
+.BotonGroso {
+background: #cedce7; /* old browsers */
+
+background: -moz-linear-gradient(top, #cedce7 0%, #596a72 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cedce7), color-stop(100%,#596a72)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedce7', endColorstr='#596a72',GradientType=0 ); /* ie */
+
+width: 75px;
+height: 30px;
+}
+</style>
+</head>
+<body>
+<b>T&iacute;tulo: </b><input style="width:1175px;" /><br><br>Men&uacute; BBCode:<br>
+<td><input class="BotonGroso" type="button" value="Negrita" id='[b][/b]' alt='a' onclick="document.getElementById('contenido-post').value += this.id;" /><input class="BotonGroso" type="button" value="Cursiva" id='[i][/i]' alt='a' onclick="document.getElementById('contenido-post').value += this.id;" /><input class="BotonGroso" type="button" value="Subrayado" id='[u][/u]' alt='a' onclick="document.getElementById('contenido-post').value += this.id;" /><input class="BotonGroso" type="button" value="Tachado" id='[s][/s]' alt='a' onclick="document.getElementById('contenido-post').value += this.id;" /><input class="BotonGroso" type="button" value="<b>B</b>" id='[b][/b]' alt='a' onclick="document.getElementById('contenido-post').value += this.id;" /></td>
+<!-- [...] --><Hr><br><b>Contenido:</b><br>
+<textarea type='text' id='contenido-post' value='' ></textarea>
+</body>
+</html>

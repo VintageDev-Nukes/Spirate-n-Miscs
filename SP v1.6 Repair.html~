@@ -1,0 +1,1471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css">
+
+/* Theme creado por: Alvaro */
+
+/* Version 1.4, llegar a la v2.0 para hacerla publica */
+
+/* 
+
+   _____       _           _        _                             _                __ 
+  / ____|     (_)         | |      | |     /\                    | |              /_ |
+ | (___  _ __  _ _ __ __ _| |_  ___| |    /  \   _ __   ___  _ __| |_ ___   __   __| |
+  \___ \| '_ \| | '__/ _` | __|/ _ \ |   / /\ \ | '_ \ / _ \| '__| __/ __|  \ \ / /| |
+  ____) | |_) | | | | (_| | |_|  __/_|  / ____ \| |_) | (_) | |  | |_\__ \  _\ V / | |
+ |_____/| .__/|_|_|  \__,_|\__|\___(_) /_/    \_\ .__/ \___/|_|   \__|___/ (_)\_/  |_|
+        | |                                     | |                                   
+        |_|                                     |_|                                   
+
+          Creado por: Alvaro, todos los derechos reservados, con copyright
+          Version en BETA y ADAPTACION
+          Saludos!
+
+*/
+
+body { font-family: Verdana, Arial, Helvetica, sans-serif, Courier New, Times New Roman;
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-position: center center;
+background-image: url(http://reshade.com/resize/constrain/centercrop/image-50921876-1024x600);
+}
+
+
+.GloboTrans {
+z-index:1; 
+filter:alpha(opacity=75); 
+-moz-opacity:.75;
+opacity:.75;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+.GloboTrans.GlbTransparent{
+background: #f5f6f6; /* old browsers */
+
+background: -moz-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f6f6), color-stop(21%,#dbdce2), color-stop(49%,#b8bac6), color-stop(80%,#dddfe3), color-stop(100%,#f5f6f6)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', endColorstr='#f5f6f6',GradientType=0 ); /* ie */
+
+background: -o-linear-gradient(top, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%); /* opera */
+	border:6px solid #000000;
+        width:1140px;
+	height:5100px;
+        position:absolute;
+        top:230px;
+        left:100px;
+        padding:5px;
+}
+.GloboTrans.GlbNavy{
+	background:#084B8A;
+	border:3px solid #0080FF;
+        color: Yellow;
+}
+.GloboTrans.GlbMSNTOP{
+	background:#0B615E;
+	border:3px solid #58FAAC;
+        color: Orange;
+   background-color: #090;
+   color: #fff;
+}
+
+.Globo{
+	padding:5px;
+	font-weight: bold;
+	text-shadow: #CCCCCC 0px 1px 1px;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+.Globo.GlbYellow{
+	background:#FFFFCC;
+	border:1px solid #FFCC33;
+}
+.Globo.GlbRed{
+	background:#FFEBE8;
+	border:1px solid #DD3C10;
+}
+.Globo.GlbGreen{
+	background:#E8FFEA;
+	border:1px solid #15DD10;
+}
+.Globo.GlbBlue{
+	background:#E9E8FF;
+	border:1px solid #1015DD;
+}
+.Globo.GlbBlack{
+	background:#ECECEC;
+	border:1px solid #000000;
+}
+.Globo.GlbFace{
+	background:#EDEFF4;
+	border:1px solid #D8DFEA;
+	padding:12px;
+}
+
+
+.LOLFuckin{
+font-size:18px;
+font-family:Verdana;
+font-weight:bold;
+}
+
+.divWapo {
+-webkit-border-top-right-radius: 15px;
+-webkit-border-bottom-right-radius: 2px;
+-webkit-border-bottom-left-radius: 2px;
+-webkit-border-top-left-radius: 15px;
+-moz-border-radius-topright: 15px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+-moz-border-radius-topleft: 15px;
+-ms-border-radius-topleft: 15px;
+-ms-border-radius-topright: 15px;
+-ms-border-radius-bottomleft: 2px;
+-ms-border-radius-bottomright: 2px;
+-khtml-border-radius-topleft:15px;
+-khtml-border-radius-topright:15px;
+-khtml-border-radius-bottomleft:2px;
+-khtml-border-radius-bottomright:2px;
+background: silver url("images/roundedcorners.svg");
+border-top-right-radius: 15px;
+border-bottom-right-radius: 2px;
+border-bottom-left-radius: 2px;
+border-top-left-radius: 15px;
+behavior:url(border-radius.htc);
+background: #959595; /* old browsers */
+
+background: -moz-linear-gradient(top, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#959595), color-stop(46%,#0d0d0d), color-stop(50%,#010101), color-stop(53%,#0a0a0a), color-stop(76%,#4e4e4e), color-stop(87%,#383838), color-stop(100%,#1b1b1b)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#1b1b1b',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%); /* opera */
+position:absolute;
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+.divWapo.SinIMG {
+top:200px;
+border:5px ridge #ff0000;
+width:150px;
+height:20px;
+z-index:1;
+filter:alpha(opacity=80);
+-moz-opacity:.80;
+opacity:.80;
+}
+
+.divWapo.ConIMG {
+top:200px;
+border:5px ridge #ff0000;
+width:40px;
+height:20px;
+z-index:1;
+filter:alpha(opacity=80);
+-moz-opacity:.80;
+opacity:.80;
+}
+
+.divEditable {
+-webkit-border-top-right-radius: 15px;
+-webkit-border-bottom-right-radius: 2px;
+-webkit-border-bottom-left-radius: 2px;
+-webkit-border-top-left-radius: 15px;
+-moz-border-radius-topright: 15px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+-moz-border-radius-topleft: 15px;
+-ms-border-radius-topleft: 15px;
+-ms-border-radius-topright: 15px;
+-ms-border-radius-bottomleft: 2px;
+-ms-border-radius-bottomright: 2px;
+-khtml-border-radius-topleft:15px;
+-khtml-border-radius-topright:15px;
+-khtml-border-radius-bottomleft:2px;
+-khtml-border-radius-bottomright:2px;
+background: silver url("images/roundedcorners.svg");
+border-top-right-radius: 15px;
+border-bottom-right-radius: 2px;
+border-bottom-left-radius: 2px;
+border-top-left-radius: 15px;
+behavior:url(border-radius.htc);
+background: #959595; /* old browsers */
+
+background: -moz-linear-gradient(top, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#959595), color-stop(46%,#0d0d0d), color-stop(50%,#010101), color-stop(53%,#0a0a0a), color-stop(76%,#4e4e4e), color-stop(87%,#383838), color-stop(100%,#1b1b1b)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#1b1b1b',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%); /* opera */
+position:absolute;
+top: 45px;
+border:5px ridge #ff0000;
+text-align: center;
+text-top: -3px;
+color: DarkGreen;
+z-index:1000;
+filter:alpha(opacity=80);
+-moz-opacity:.80;
+opacity:.80;
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+.divEditableI {
+-webkit-border-top-right-radius: 15px;
+-webkit-border-bottom-right-radius: 2px;
+-webkit-border-bottom-left-radius: 2px;
+-webkit-border-top-left-radius: 15px;
+-moz-border-radius-topright: 15px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+-moz-border-radius-topleft: 15px;
+-ms-border-radius-topleft: 15px;
+-ms-border-radius-topright: 15px;
+-ms-border-radius-bottomleft: 2px;
+-ms-border-radius-bottomright: 2px;
+-khtml-border-radius-topleft:15px;
+-khtml-border-radius-topright:15px;
+-khtml-border-radius-bottomleft:2px;
+-khtml-border-radius-bottomright:2px;
+background: silver url("images/roundedcorners.svg");
+border-top-right-radius: 15px;
+border-bottom-right-radius: 2px;
+border-bottom-left-radius: 2px;
+border-top-left-radius: 15px;
+behavior:url(border-radius.htc);
+background: #959595; /* old browsers */
+
+background: -moz-linear-gradient(top, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#959595), color-stop(46%,#0d0d0d), color-stop(50%,#010101), color-stop(53%,#0a0a0a), color-stop(76%,#4e4e4e), color-stop(87%,#383838), color-stop(100%,#1b1b1b)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#1b1b1b',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%); /* opera */
+position:absolute;
+top: 50px;
+border:5px ridge #ff0000;
+text-align: center;
+text-top: -3px;
+color: DarkGreen;
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+#sombraWapa {
+   background-color: #090;
+   color: #fff;
+   
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+.divXulo {
+background: #f3c5bd; /* old browsers */
+
+background: -moz-linear-gradient(top, #f3c5bd 0%, #e86c57 50%, #ea2803 51%, #ff6600 75%, #c72200 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3c5bd), color-stop(50%,#e86c57), color-stop(51%,#ea2803), color-stop(75%,#ff6600), color-stop(100%,#c72200)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3c5bd', endColorstr='#c72200',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #f3c5bd 0%,#e86c57 50%,#ea2803 51%,#ff6600 75%,#c72200 100%); /* opera */
+border:3px ridge black;
+position:absolute;
+left: 10px;
+top: 10px;
+width: 1300px;
+
+-webkit-border-top-right-radius: 10px;
+-webkit-border-bottom-right-radius: 10px;
+-webkit-border-bottom-left-radius: 10px;
+-webkit-border-top-left-radius: 10px;
+-moz-border-radius-topright: 10px;
+-moz-border-radius-bottomright: 10px;
+-moz-border-radius-bottomleft: 10px;
+-moz-border-radius-topleft: 10px;
+-ms-border-radius-topleft: 10px;
+-ms-border-radius-topright: 10px;
+-ms-border-radius-bottomleft: 10px;
+-ms-border-radius-bottomright: 10px;
+-khtml-border-radius-topleft:10px;
+-khtml-border-radius-topright:10px;
+-khtml-border-radius-bottomleft:10px;
+-khtml-border-radius-bottomright:10px;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
+border-bottom-left-radius: 10px;
+border-top-left-radius: 10px;
+behavior:url(border-radius.htc);
+   box-shadow: 4px 4px 3px #000;
+   -webkit-box-shadow: 4px 4px 3px #000;
+   -moz-box-shadow: 4px 4px 3px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+.divFuck {
+        color:Orange;
+        font-family: Arial;
+        font-weight:bold;
+        text-shadow: 0 2px 0 navy;
+        text-align:center;
+}
+
+div {
+        color:Red;
+        font-family: Arial;
+        font-weight:bold;
+        text-shadow: 0 1px 0 navy;
+}
+
+span {
+        color:DarkGreen;
+        font-family: Arial;
+        font-weight:bold;
+        text-shadow: 0 1px 0 navy;
+}
+
+#inv {
+color: transparent;
+}
+
+.LOLloco {
+position:absolute;
+left: 1px;
+top: 80px;
+border: 3px ridge gray;
+background-color: #848484;
+font-family: Arial;
+font-size: 15px;
+color: Black;
+        text-shadow: 0 1px 0 navy;
+        text-align:center;
+}
+
+.LOLFuckin2{
+font-family:Verdana;
+font-weight:bold;
+font-size:22px;
+}
+
+.LOLFuckin3{
+font-size:15px;
+font-family:Verdana;
+font-weight:bold;
+}
+
+<!--
+  A:link {COLOR: orange; TEXT-DECORATION: none}
+  A:visited {COLOR: yellow; TEXT-DECORATION: none}
+  A:active {COLOR: black; TEXT-DECORATION: none}
+  A:hover {COLOR: blue; TEXT-DECORATION: none} -->
+
+.calloutUp
+{
+height: 0;
+width: 0;
+border-bottom: 12px solid #000000;
+border-left: 12px dotted transparent;
+border-right: 12px dotted transparent;
+left: 0px;
+top: 0px;
+margin-left: 20px;
+z-index: 10;
+}
+.calloutUp2
+{
+position: relative;
+left: -10px;
+top: 2px;
+height: 0;
+width: 0;
+border-bottom: 10px solid #9999ff;
+border-left: 10px dotted transparent;
+border-right: 10px dotted transparent;
+z-index: 11;
+}
+.calloutDownI
+{
+height: 0;
+width: 0;
+border-bottom: 12px solid #585858;
+border-left: 12px dotted transparent;
+border-right: 12px dotted transparent;
+left: 0px;
+top: 12px;
+margin-left: -6px;
+margin-top:30px;
+z-index: 10;
+-webkit-transform: rotate(270deg);
+-moz-transform: rotate(270deg);
+rotation: 270deg;
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+.calloutDownI2
+{
+position: relative;
+left: -10px;
+top: 2px;
+height: 0;
+width: 0;
+border-bottom: 10px solid #585858;
+border-left: 10px dotted transparent;
+border-right: 10px dotted transparent;
+z-index: 11;
+-webkit-transform: rotate(360deg);
+-moz-transform: rotate(360deg);
+rotation: 360deg;
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=4);
+}
+.calloutDown
+{
+height: 0;
+width: 0;
+border-top: 12px solid #000000;
+border-left: 12px dotted transparent;
+border-right: 12px dotted transparent;
+left: 0px;
+top: 0px;
+margin-left: 20px;
+z-index: 11;
+}
+.calloutDown2
+{
+position: relative;
+left: -9px;
+top: -12px;
+height: 0;
+width: 0;
+border-top: 10px solid #9999ff;
+border-left: 10px dotted transparent;
+border-right: 10px dotted transparent;
+z-index: 10;
+}
+.divContainerUp
+{
+background-color: #9999ff;
+border: solid 1px #000000;
+position: relative;
+top: -1px;
+z-index: 9;
+width: 500px;
+padding: 4px;
+}
+.divContainerDownI
+{
+font-family: Arial;
+font-size: 11px;
+font-weight: Bold;
+color: White;
+border: solid 3px #FF8000;
+position: absolute;
+margin-top: 85px;
+margin-left: 50px;
+z-index: 9;
+width: 150px;
+padding: 4px;
+border.radius: 5px;
+ -moz-border-radius:5px;
+ -webkit-border-radius:5px;
+behavior:url(border-radius.htc);  
+	background-image: -moz-linear-gradient(top, #151515, #A4A4A4); /* Firefox 3.6 */
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #A4A4A4),color-stop(1, #151515)); /* Safari & Chrome */
+	filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#151515', endColorstr='#A4A4A4'); /* IE6 & IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#151515', endColorstr='#A4A4A4')"; /* IE8 */
+}
+.divContainerDown
+{
+background-color: #9999ff;
+border: solid 1px #000000;
+position: relative;
+top: 1px;
+z-index: 3;
+width: 500px;
+padding: 4px;
+}
+.divContainerMain
+{
+background-color: #ccccff;
+padding: 8px;
+}
+
+.IMGFUCK {
+position: absolute;
+width: 100px;
+height: 30px;
+left: 800px;
+top: 70px;
+}
+
+.IMGFUCK2 {
+position: absolute;
+width: 125px;
+height: 30px;
+left: 500px;
+top: 70px;
+}
+
+.IMGFUCK3 {
+position: absolute;
+width: 150px;
+height: 30px;
+left: 500px;
+top: 70px;
+}
+
+.IMGFUCK4 {
+position: absolute;
+width: 175px;
+height: 30px;
+left: 500px;
+top: 70px;
+}
+
+.IMGFUCK5 {
+position: absolute;
+width: 160px;
+height: 30px;
+left: 500px;
+top: 70px;
+}
+
+.divFuckinTop {
+background: #ffb76b; /* old browsers */
+
+background: -moz-linear-gradient(top, #ffb76b 0%, #ffa73d 50%, #ff7c00 51%, #ff7f04 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb76b), color-stop(50%,#ffa73d), color-stop(51%,#ff7c00), color-stop(100%,#ff7f04)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #ffb76b 0%, #ffa73d 50%, #ff7c00 51%, #ff7f04 100%); /* opera */
+position:absolute;
+left:0px;
+top:0px;
+width: 1350px;
+height: 75px;
+        color:Navy;
+        font-family: Arial;
+        font-weight:bold;
+        text-shadow: 0 1px 0 Blue;
+z-index:1000;
+filter:alpha(opacity=90);
+-moz-opacity:.90;
+opacity:.90;
+   box-shadow: 1px 1px 0px #000;
+   -webkit-box-shadow: 1px 1px 0px #000;
+   -moz-box-shadow: 1px 1px 0px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+
+.divFuckinBottom {
+background: #ffb76b; /* old browsers */
+
+background: -moz-linear-gradient(top, #ffb76b 0%, #ffa73d 50%, #ff7c00 51%, #ff7f04 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb76b), color-stop(50%,#ffa73d), color-stop(51%,#ff7c00), color-stop(100%,#ff7f04)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #ffb76b 0%, #ffa73d 50%, #ff7c00 51%, #ff7f04 100%); /* opera */
+width: 1350px;
+height: 90px;
+   position: absolute;
+   bottom: -5000px;
+clear:both;
+left:0px;
+text-align:center;
+left: 0px;
+        color:Navy;
+        font-family: Arial;
+        font-weight:bold;
+        text-shadow: 0 1px 0 Blue;
+z-index:1000;
+filter:alpha(opacity=90);
+-moz-opacity:.90;
+opacity:.90;
+   box-shadow: 4px 4px 3px #000;
+}
+
+#pie{
+	clear:left;
+	width:100%;
+	padding-top:5px;
+    text-align:center;
+	background:#494949;
+	color:#FFF;
+}
+#pie a{
+	color: #FFF;
+}
+
+.LOLBottom {
+position:absolute;
+bottom: 0px;
+left: 0px;
+}
+
+* { margin: 0px;
+padding: 0px; outline: 0;
+z-index: 200;
+}
+html, body { width: 100%;}
+
+#menu {  text-align: center;
+font-size: 0.7em;
+width: 1200px;
+margin: 20px auto;
+background: url(http://i.imgur.com/W8iH6.png) repeat-x;
+z-index: 200;
+}
+#menu ul { list-style-type: none;}
+#menu ul li.nivel1 { float: left;
+width: 162px;
+margin-right: 1px;
+z-index: 200;
+}
+#menu ul li a {display: block;
+text-decoration: none;
+color: #006812;
+text-shadow: 0 1px 0 #41B054;
+background-color: #4CFE8D;
+border: solid 1px #fff;
+padding: 3px;
+left:-70px;
+top:-15px;
+position: relative;
+z-index: 200;
+
+-webkit-border-top-right-radius: 10px;
+-webkit-border-bottom-right-radius: 10px;
+-webkit-border-bottom-left-radius: 10px;
+-webkit-border-top-left-radius: 10px;
+-moz-border-radius-topright: 10px;
+-moz-border-radius-bottomright: 10px;
+-moz-border-radius-bottomleft: 10px;
+-moz-border-radius-topleft: 10px;
+-ms-border-radius-topleft: 10px;
+-ms-border-radius-topright: 10px;
+-ms-border-radius-bottomleft: 10px;
+-ms-border-radius-bottomright: 10px;
+-khtml-border-radius-topleft:10px;
+-khtml-border-radius-topright:10px;
+-khtml-border-radius-bottomleft:10px;
+-khtml-border-radius-bottomright:10px;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
+border-bottom-left-radius: 10px;
+border-top-left-radius: 10px;
+behavior:url(border-radius.htc);
+}
+#background { display: block;
+text-decoration: none;
+background:#353842 url(http://cdn.etoro.com/imgs/newheader/menu_bg.png) repeat-x;
+position: absolute;
+top: 73px;
+width: 1350px;
+height: 35px;
+z-index: 100;
+   box-shadow: 1px 1px 0px #000;
+   -webkit-box-shadow: 1px 1px 0px #000;
+   -moz-box-shadow: 1px 1px 0px #000;
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+#menu ul li:hover {position: relative; z-index: 200;
+}
+#menu ul li a:hover, #menu ul li:hover a.nivel1 {background-color: #01A23C;
+color: #01FE5E;
+text-shadow: 0 1px 0 #2D7539;
+position: relative;
+z-index: 200;
+border:3px ridge #ff8000;
+}
+#menu ul li a.nivel1 {display: block!important;display: none;
+position: relative;
+left:-70px;
+z-index: 200;
+border:3px ridge #ff0000;
+}
+#menu ul li ul {display: none; z-index: 200;
+}
+#menu ul li a:hover ul, #menu ul li:hover ul {display: block;
+position: absolute;left: 0px;
+z-index: 200;
+}
+#menu ul li ul li a {width: 160px;
+padding: 3px 0px 3px 0px;
+border-top-color: #000;
+z-index: 200;
+border:3px ridge #00f;
+}
+#menu ul li ul li a:hover {border-top-color: #00f;
+position: relative;
+z-index: 200;
+border:3px ridge #000;
+}
+table.falsa {border-collapse:collapse;
+border:0px;
+float: left;
+position: relative;
+z-index: 200;
+}
+
+.box {
+border: 5px ridge #000;
+}
+
+/* BOX txt Generales */
+
+.box_rss{background-repeat:no-repeat; float:left; background-position:top right; padding-right:8px; padding-top:4px;}
+.box_txt.ultimos_posts{width:346px!important;}
+.box_txt.ultimos_comments{width:329px!important;}
+.box_txt.box_buscadort{width: 889px!important;}
+.box_txt.box_r_buscadort{width:668px!important;}
+.box_txt.box_error{width:358px!important;}
+.box_txt.box_235-34{width:201px!important;}
+.box_txt.box_780-34{width:746px!important;}
+.box_txt.box_363-34{width:329px!important;}
+.box_txt.box_560-34{width:526px!important;}
+.box_txt.box_140-34{width:106px!important;}
+.box_txt.box_757-34{width:723px!important;}
+.box_txt.box_300-34{width:266px!important;}
+.box_txt.box_354-34{width:320px!important;}
+.box_txt.box_390-34{width:352px!important;}
+.box_txt.publicidad_r{width:180px!important;}
+.box_txt.img_aletat{width:126px!important;}
+.box_txt.alert{width:387px!important;}
+.box_txt.alert1{width:458px!important;}
+.box_txt.ed-ag-posts{width:652px!important;}
+
+/* Fin BOX txt Generales */
+
+/* BOX Tamaños */
+
+.box_235{height: 100%; width:233px!important; float:left; margin-right:8px;}
+.box_780{height: 100%; width:778px!important;}
+.box_363{height: 100%; width:361px!important;}
+.box_140{height: 100%; width:138px!important;}
+.box_354{height: 100%; width:354px!important;}
+.box_560{height: 100%; width:558px!important;}
+.box_300{height: 100%; width:298px!important;}
+.box_757{height: 100%; width:755px!important;}
+.box_390{height: 100%; width:384px!important;}
+.box_930{height: 100%; width:930px!important;margin-bottom:8px;}
+.ed-ag-post{height: 100%; width:684px; float:left;}
+.ultimos_postsa{height: 100%; float:left; width:378px; margin-right:8px;}
+.box_buscador{height: 100%; margin-bottom:8px; width: 919px;}
+.box_r_buscador{height: 100%; float:left; margin-bottom:8px; width:698px;}
+.box_errors{height: 100%; margin-bottom:8px; width:388px;}
+.publicidad{height: 100%; float:left; width:210px;}
+.box_alert1a{margin-right:8px; clear:left; width:490px;}
+.box_alert1b{margin-bottom:8px; clear:left; width:417px;}	
+.act_comments{float:left; clear:left; width:361px; margin-right:8px;}
+.img_aletat{float:left; clear:left; width:158px;}
+
+/* Fin BOX Tamaños */
+
+/* Título de los BOX generales */
+
+.box_title{ /* Titulo de los boxs */
+	background:#EDF2FA; 
+	padding:0px; 
+	background:url("file:///media/disk/1941-1280857044-redeclipse/redeclipse/theadbg.png") repeat scroll 0 0 transparent;
+	height:28px;
+	-moz-box-shadow: 0 0 7px #0000FF;
+	-webkit-box-shadow: 0 0 7px #0000FF;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color=#CDDAE9,direction=125,strength=5)";
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-top-right-radius:5px;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+}
+
+.box_txt { /* Textos de los titulos de los boxs */
+	background-repeat:no-repeat;
+	float:left;
+	padding: 5px 0 0 10px;
+	font-weight:bold;
+	color:#2FD526;
+	font-size: 13px;
+}
+.box_posts{ /* Box contenedor de los ultimos posts */
+	float:left;
+	padding: 4px;
+	width: 370px;
+	clear:left;
+	border:#000000 solid 1px;
+	margin: 0px 5px 5px 0px;
+	-moz-box-shadow:0 0 5px #E40C00;
+}
+
+/* Fin del titulo de BOX generales */
+</style> <script src="http://www.google.es/jsapi" language="javascript"></script> 
+<script src="background-web.jsxxx" language="javascript"></script><script>style</script> 
+<script>
+  var navegador = navigator.userAgent;
+  if (navigator.userAgent.indexOf('MSIE') !=-1) {
+    document.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><style>#window3 {top:0px; left:0px; position:absolute; width:1350px; height:5470px; z-index:9999;filter:alpha(opacity=60);float:left;-moz-opacity:.60;opacity:.60; background-color:#000000;}<\/style><script language="Javascript"> function ocultar(nombreCapa){ document.getElementById(nombreCapa).style.visibility="hidden"; } <\/script><\/script><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /\></head><body><div id="window20" style="position:absolute; z-index:9950; left:400px; top:200px; width:452px; height:207px; background-color:#FFF;"><\/div><div id="window3"><div id="window2" style="position:absolute; filter:alpha(opacity=999999);float:left;-moz-opacity:.999999;opacity:.999999; z-index:10101; left:400px; top:200px; width:450px;background-color:#FFF; border:1px solid #464f5a;"> <div style="padding-bottom:8px; width:450px; height:15px; background-color:#000; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);"><div style="position:absolute; top:1px; left:5px; font-size:16px; font-weight:bold; color:#FFFFFF;">Est&aacute; usando Internet Explorer deje de hacerlo, por favor.</div><div style="position:absolute; top:3px; left:377px; float:right;"></div></div><div  style="margin-left:5px;"><center><img src="http://icdn.pro/images/es/p/u/punto-de-exclamacion-precaucion-triangulo-de-senal-de-advertencia-icono-5918-48.png" /\></center><p><span style="color:darkred;">Esta usando un navegador antiguo o desactualizado, por favor, actualice su navegador o cambielo por otro m&aacute;s reciente, como (Firefox, Safari o Opera), si no lo hace la web no se mostrar&aacute; correctamente, gracias. <br>Att. Staff de la web.<\/span><br><p><center><input type="button" value="Cerrar" onclick="ocultar(\'window3\')" /\><\/center><br><\/div><\/div></\div><\/body><\/html>');
+} else if (navigator.userAgent.indexOf('Firefox') !=-1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('Chrome') !=-1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('Opera') !=-1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('NetScape') != -1) {
+    document.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><style>#window3 {top:0px; left:0px; position:absolute; width:1350px; height:5470px; z-index:9999;filter:alpha(opacity=60);float:left;-moz-opacity:.60;opacity:.60; background-color:#000000;}<\/style><script language="Javascript"> function ocultar(nombreCapa){ document.getElementById(nombreCapa).style.visibility="hidden"; } <\/script><\/script><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /\></head><body><div id="window20" style="position:absolute; z-index:9950; left:400px; top:200px; width:452px; height:207px; background-color:#FFF;"><\/div><div id="window3"><div id="window2" style="position:absolute; filter:alpha(opacity=999999);float:left;-moz-opacity:.999999;opacity:.999999; z-index:10101; left:400px; top:200px; width:450px;background-color:#FFF; border:1px solid #464f5a;"> <div style="padding-bottom:8px; width:450px; height:15px; background-color:#000; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);"><div style="position:absolute; top:1px; left:5px; font-size:16px; font-weight:bold; color:#FFFFFF;">Est&aacute; usando NetScape deje de hacerlo, por favor.</div><div style="position:absolute; top:3px; left:377px; float:right;"></div></div><div  style="margin-left:5px;"><center><img src="http://icdn.pro/images/es/p/u/punto-de-exclamacion-precaucion-triangulo-de-senal-de-advertencia-icono-5918-48.png" /\></center><p><span style="color:darkred;">Esta usando un navegador antiguo o desactualizado, por favor, actualice su navegador o cambielo por otro m&aacute;s reciente, como (Firefox, Safari o Opera), si no lo hace la web no se mostrar&aacute; correctamente, gracias. <br>Att. Staff de la web.<\/span><br><p><center><input type="button" value="Cerrar" onclick="ocultar(\'window3\')" /\><\/center><br><\/div><\/div></\div><\/body><\/html>');
+  } else if (navigator.userAgent.indexOf('Flock') != -1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('Safari') != -1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('iPhone') != -1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('iPod') != -1) {
+    document.write('');
+  } else if (navigator.userAgent.indexOf('iPad') != -1) {
+    document.write('');
+  } else {
+    document.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><style>#window3 {top:0px; left:0px; position:absolute; width:1350px; height:5470px; z-index:9999;filter:alpha(opacity=60);float:left;-moz-opacity:.60;opacity:.60; background-color:#000000;}<\/style><script language="Javascript"> function ocultar(nombreCapa){ document.getElementById(nombreCapa).style.visibility="hidden"; } <\/script><\/script><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /\></head><body><div id="window20" style="position:absolute; z-index:9950; left:400px; top:200px; width:452px; height:207px; background-color:#FFF;"><\/div><div id="window3"><div id="window2" style="position:absolute; filter:alpha(opacity=999999);float:left;-moz-opacity:.999999;opacity:.999999; z-index:10101; left:400px; top:200px; width:450px;background-color:#FFF; border:1px solid #464f5a;"> <div style="padding-bottom:8px; width:450px; height:15px; background-color:#000; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);"><div style="position:absolute; top:1px; left:5px; font-size:16px; font-weight:bold; color:#FFFFFF;">Sitio restringido para su navegador, lo sentimos</div><div style="position:absolute; top:3px; left:377px; float:right;"></div></div><div  style="margin-left:5px;"><center><img src="http://wikanda.sevillapedia.es/imagenes/Icono_error.png" /\></center><p><span style="color:darkred;">Sentimos decirle, que por motivos de seguridad, usted tiene restringido al sitio, ya que no se sabe que navegador est&aacute; utilizando, lo sentimos. <br>Por favor intente utilizar otros tipos de navegadores como (Firefox, Chrome u Opera). <br>Si sigue sin funcionar, por favor, lea este tutorial, gracias. <br>Att. Staff de la web.<\/span><br><\/div><\/div></\div><\/body><\/html>');
+  }
+</script>
+
+<script language="Javascript"> 
+function mostrar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="visible"; 
+} 
+function ocultar(nombreCapa){ 
+document.getElementById(nombreCapa).style.visibility="hidden"; 
+} 
+</script> 
+<script src="SP Tabs JS.js"></script>
+</head>
+
+<link rel="shortcut icon" href="http://www.veryicon.com/icon/png/Game/Super%20Mario/Chain%20Chomp.png" type="image/x-icon" />
+
+
+<title>Inicio de Spirate! Aports</title>
+
+<body>
+<div class="divFuckinTop">
+<img src="http://spirate.net/logopor2.png" style="position:absolute; left:5px; top:5px;" />
+<div style="position:absolute; top:52px; left:10px; font-family: Arial; font-size: 15px; font-weight:Bold; color:Orange;">Lleno de todo tipo de cosas</div></div>
+<div id="background">
+<div id="menu">
+<ul>
+  <li class="nivel1"><a href="#" class="nivel1">Inicio</a>
+<!--[if lte IE 6]><a href="#">Inicio<table class="falsa"><tr><td><![endif]-->
+
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+  </li>
+  <li class="nivel1"><a href="#" class="nivel1">Comunidades</a>
+<!--[if lte IE 6]><a href="#" class="nivel1ie">Comunidades<table class="falsa"><tr><td><![endif]-->
+
+	<ul>
+		<li><a href="#">Mis comunidades</a></li>
+		<li><a href="#">Destacados</a></li>
+		<li><a href="#">Tops</a></li>
+
+		<li><a href="#">Favoritas</a></li>
+		<li><a href="#">Crea tu comunidad</a></li>
+
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+  <li class="nivel1"><a href="#" class="nivel1">Tops</a>
+<!--[if lte IE 6]><a href="#" class="nivel1ie">Tops<table class="falsa"><tr><td><![endif]-->
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+
+  <li class="nivel1"><a href="#" class="nivel1">Postear</a>
+<!--[if lte IE 6]><a href="#" class="nivel1ie">Postear<table class="falsa"><tr><td><![endif]-->
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+</ul>
+</div>
+</div>
+<div style="background-color: #D8D8D8; border: 1px solid #0B6138; height: 18px; width: 130px; position:absolute; top:80px; left:1100px; z-index: 5000; -moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px;"><center><span id="capa1" onclick="mostrar('window')">Herramientas</span> <img src="file:///media/disk/Foroactivo/Foro/Admin/Themes/Default/Avanzado/Subs/General/2_files/editer.png" border="0" title="Informaci&oacute;n sobre el Creador" /></center></div>
+<div id="window" style="position:absolute; z-index:10; left:350px; top:160px; width:400px;background-color:#dde3eb; border:1px solid #464f5a; visibility:hidden"> 
+    
+   <div style="padding-bottom:8px; width:400px; height:10px; background-color:#718191; border-bottom:1px solid #464f5a;" onMouseDown="beginDrag(this.parentNode, event);">
+
+      <div style="position:absolute; top:1px; left:5px; font-size:16px; font-weight:bold; color:#FFFFFF;">Genera tu truco</div> 
+       
+      <div style="position:absolute; top:3px; left:385px; float:right;"> 
+        <div onclick="ocultar('window')"><img src="file:///home/usuario/Escritorio/%C3%81lvaro/Accesos%20directos/SP%20%28Small%20Pirate%29/EDITS/close_dialog.png" border="0" title="Cerrar" /></div>
+
+      </div> 
+       
+   </div> 
+
+   <div style="margin-left:5px; margin-top:5px;">
+<input type="button" value="Busqueda" /> <input type="button" value="Trucos" /> <input type="button" value="Herramientas" /><br><input type="button" value="Busqueda" /> <input type="button" value="Busqueda" />
+   
+   </div>     
+   
+<br/> 
+
+</div> 
+<div class="divEditable" style="position:absolute; left:950px;">IMG</div><div class="divEditable" style="position:absolute; left:1005px;">IMG</div><div class="divEditable" style="position:absolute; left:1060px;">IMG</div><div class="divEditable" style="position:absolute; left:1115px; width:150px;">Name of count [x]</div><div class="divEditable" style="position:absolute; left:1280px;">IMG</div>
+
+<div class="divFuck"><div class="divWapo SinIMG" id="sombraWapa" style="position:absolute; left:930px;"><a href=" ">Inicio</a></div><div class="divWapo SinIMG" id="sombraWapa" style="position:absolute; left:1100px;">Listas</div></div>
+<div class="GloboTrans GlbTransparent"><span class="GloboTrans GlbNavy" style="position:absolute; top: -127px; left: -105px; width: 1327px; height: 35px;"><span style="position:absolute; left:1066px; top:0px; z-index:10000; color:Red; font-size:12px; font-weight:Bold;">Filtrar por categor&iacute;as:<br><select><option>Categoría</option><option>Categor&iacute;a</option><option selected="yes">Nadaaaaaaaaaaaaaaaaaaaaaaaaaaa</option></select></span> <div class="divEditableI" style="position:absolute; left:5px; top:5px; width: 100px;">Inicio</div><div class="divEditableI" style="position:absolute; left:125px; top:5px; width: 100px;">Posts</div><div class="divEditableI" style="position:absolute; left:245px; top:5px; width: 100px;">Novatos</div><div class="divEditableI" style="position:absolute; left:365px; top:5px; width: 100px;">Destacados</div><div class="divEditableI" style="position:absolute; left:485px; top:5px; width: 100px;">Historial</div></span><span class="GloboTrans GlbMSNTOP" style="position:absolute; top: -85px; left:-80px; width: 1277px; height: 30px;"><center><span style="position:absolute; top:5px; z-index:10000;">Mensaje TOP</span></center></span>
+
+<script>Code()</script>T&iacute;tulo<script>Code0()</script>Hola?<br><br><br><br><br><br><br><br><br><br>Hola<br><br><br><br><br><br><br><br><br><br><br><br>Hola?<br><br><br><br><br><br><br><script>Code1()</script><script>Code2()</script>+ Info sobre el script<script>Code3()</script>
+<hr>Hola, bienvenidos a la prueba del foro de &Aacute;lvaro, gracias por visitarla.<p>Todas tus estad&iacute;sticas:<p>
+<!--Inicio del Script by Seazoux-->
+{FORUMNAME} fue creado el {FORUMBIRTHDAY}, es decir, lleva exactamente {FORUMAGE} días de vida. Hasta ahora sus {FORUMCOUNTUSER} usuarios han escrito {FORUMCOUNTPOST} temas en los {FORUMCOUNTFORUM} foros que existen. Tu, {USERNAME}, has escrito {USERCOUNTPOST} posts desde que te registraste el {USERREGDATE}.<p>
+<script>document.write (document.location.hostname);</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="content-language" content="es"> 
+<meta name="Keywords" content="conocer direccion ip, saber direccion ip, tu direccion ip, cual es mi direccion ip, origen ip, API Google, localización geográfica, determinar origen, saber tus características, mostrar ip">
+<meta name="Description" content="Conocer y saber tu dirección IP, mostrar los datos que esta ofrece, proxy, navegador, sistema operativo, origen, localización geográfica en Google Maps, etc">
+<meta name="author" content="Norfi Carrodeguas">
+<meta name="date" content="September 28, 2010">
+<meta name="Robots" content="index, follow">
+<script type="text/javascript" src="saber-direccion-ip.php_files/hora.js"></script>
+<script type="text/javascript" src="saber-direccion-ip.php_files/nav.js"></script>
+<script type="text/javascript" src="saber-direccion-ip.php_files/cookies-java.js"></script>
+<script language="JavaScript1.5" type="text/javascript">
+    jsver = "1.5";
+</script>
+<script language="JavaScript1.6" type="text/javascript">
+    jsver = "1.6";
+</script>
+<script language="JavaScript1.7" type="text/javascript">
+    jsver = "1.7";
+</script>
+<script language="JavaScript1.8" type="text/javascript">
+    jsver = "1.8";
+</script>
+<!-- Cargador Api Ajax -->
+<script type="text/javascript" src="saber-direccion-ip.php_files/jsapi"></script>
+<!-- Cargador Google maps -->
+<script type="text/javascript">
+//<![CDATA[ 
+  google.load("maps", "2", {callback: initialize});
+
+  function initialize() {
+     var zoom = 4;
+    var latlng = new google.maps.LatLng(37.4419, -100.1419);
+    var location = "Showing default location for map.";
+
+
+    // If ClientLocation was filled in by the loader, use that info instead
+    if (google.loader.ClientLocation) {
+      zoom = 8;
+      latlng = new google.maps.LatLng(google.loader.ClientLocation.latitude, google.loader.ClientLocation.longitude);
+     location = "Tu localización en el mapa : " + getFormattedLocation() + ""; 
+    } 
+   
+    document.getElementById("location").innerHTML = location;
+    var map = new google.maps.Map2(document.getElementById('map'));
+    map.setCenter(latlng, zoom);
+    map.addControl(new GLargeMapControl()); 
+    map.addControl(new GMapTypeControl()); 
+  }
+
+  function getFormattedLocation() {
+    if (google.loader.ClientLocation.address.country_code == "US" &&
+      google.loader.ClientLocation.address.region) {
+      return google.loader.ClientLocation.address.city + ", " 
+          + google.loader.ClientLocation.address.region.toUpperCase();
+    } else {
+      return  google.loader.ClientLocation.address.city + ", "
+          + google.loader.ClientLocation.address.country_code;
+    }
+  }
+//]]>
+</script><script src="saber-direccion-ip.php_files/maps" type="text/javascript"></script>
+<style type="text/css">@media print{.gmnoprint{display:none}}@media screen{.gmnoscreen{display:none}}</style><script src="saber-direccion-ip.php_files/mod_dragmod_ctrapi.js" charset="UTF-8" type="text/javascript"></script></head>
+<body>
+	<div id="page">
+		<div id="content">
+		  <div class="post">
+<div id="migaspan">
+<a href="http://*******.com/index.html">Spirate Aports</a> » 
+<a href="http://*******.com/redes/index.html">Herramientas para usar en la red</a> » 
+Conocer cual es tu dirección IP
+</div><br>
+				<div class="entry">
+				 <h1>Conocer tu dirección IP, mostrar tu localización geográfica</h1>
+<div class="muestra"><a href="http://*******.com/redes/velocidad-conexion-internet.html">Medir tu velocidad de internet</a> | <a href="http://*******.com/redes/saber-direccion-ip.php">Saber tu direccion IP</a> | <a href="http://*******.com/redes/informacion-dominio.html">Informacion de un dominio</a> | <a href="http://*******.com/redes/horarios-ciudades.html">Horario mundial</a> </div><br>
+
+<!-- Mapa -->
+<div style="width: 750px; height: 250px; margin-left: 50px; border: 4px solid rgb(195, 217, 255); position: relative; background-color: rgb(229, 227, 223);" id="map"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0; cursor: -moz-grab;"><div style="position: absolute; left: 0px; top: 0px; display: none;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/transparent.png" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></div><div style="position: absolute; left: 0px; top: 0px;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix123y99z8sGali.png" style="position: absolute; left: -97px; top: -100px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix123y100z8sGalil.png" style="position: absolute; left: -97px; top: 156px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix123y101z8sGalile.png" style="position: absolute; left: -97px; top: 412px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix124y99z8sGalileo.png" style="position: absolute; left: 159px; top: -100px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix124y100z8s.png" style="position: absolute; left: 159px; top: 156px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix124y101z8sG.png" style="position: absolute; left: 159px; top: 412px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix125y99z8sGa.png" style="position: absolute; left: 415px; top: -100px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix125y100z8sGal.png" style="position: absolute; left: 415px; top: 156px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix125y101z8sGali.png" style="position: absolute; left: 415px; top: 412px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix126y99z8sGalil.png" style="position: absolute; left: 671px; top: -100px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix126y100z8sGalile.png" style="position: absolute; left: 671px; top: 156px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix126y101z8sGalileo.png" style="position: absolute; left: 671px; top: 412px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix127y99z8s.png" style="position: absolute; left: 927px; top: -100px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix127y100z8sG.png" style="position: absolute; left: 927px; top: 156px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><img src="saber-direccion-ip.php_files/lyrsm152hlessrcapix127y101z8sGa.png" style="position: absolute; left: 927px; top: 412px; width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 100;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 104; cursor: default;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; cursor: default;"></div></div></div><div style="-moz-user-select: none; z-index: 0; position: absolute; left: 2px; bottom: 2px;" class="gmnoprint"><a href="http://maps.google.com/maps?ll=36.717,-4.417&amp;spn=1.136048,4.163818&amp;z=8&amp;key=ABQIAAAAnP8JWZ5h8E7LFAD9NqVUwxSeX1v6nbhYXW-wX1PxoOWc4Ggu3BSJDJ9DsFY8gXkhAgs1GxBeYOlatg&amp;mapclient=jsapi&amp;oi=map_misc&amp;ct=api_logo" target="_blank" title="Haz clic para visualizar esta zona en Google Maps"><img src="saber-direccion-ip.php_files/poweredby.png" style="width: 62px; height: 30px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; cursor: pointer;"></a></div><div dir="ltr" style="-moz-user-select: none; z-index: 0; position: absolute; right: 3px; bottom: 2px; color: black; font-family: Arial,sans-serif; font-size: 11px; white-space: nowrap; text-align: right;"><span>Datos de mapa ©2011 Tele Atlas - </span><a style="color: rgb(119, 119, 204);" class="gmnoprint terms-of-use-link" target="_blank" href="http://www.google.com/intl/es_ALL/help/terms_maps.html">Términos de uso</a></div><div class="gmnoprint" style="width: 59px; height: 109px; -moz-user-select: none; z-index: 0; position: absolute; left: 7px; top: 7px; overflow: hidden; text-align: left;"><div style="position: absolute; left: 0px; top: 0px; width: 59px; height: 62px;"><div style="width: 59px; height: 62px; overflow: hidden; position: absolute; left: 0px; top: 0px;"><img src="saber-direccion-ip.php_files/mapcontrols2.png" style="position: absolute; left: 0px; top: 0px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div log="pan_up" title="Vista panorámica hacia arriba" style="position: absolute; left: 20px; top: 0px; width: 18px; height: 18px; cursor: pointer;"></div><div log="pan_lt" title="Vista panorámica a la izquierda" style="position: absolute; left: 0px; top: 20px; width: 18px; height: 18px; cursor: pointer;"></div><div log="pan_rt" title="Vista panorámica a la derecha" style="position: absolute; left: 40px; top: 20px; width: 18px; height: 18px; cursor: pointer;"></div><div log="pan_down" title="Vista panorámica hacia abajo" style="position: absolute; left: 20px; top: 40px; width: 18px; height: 18px; cursor: pointer;"></div><div log="center_result" title="Volver al último resultado" style="position: absolute; left: 20px; top: 20px; width: 18px; height: 18px; cursor: pointer;"></div></div><div style="position: absolute; left: 0px; top: 62px; width: 59px; height: 24px; overflow: hidden; z-index: 1;"><div style="width: 59px; height: 292px; overflow: hidden;"><img src="saber-direccion-ip.php_files/mapcontrols2.png" style="position: absolute; left: 0px; top: -62px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div title="Aumentar" style="position: absolute; left: 20px; top: 0px; width: 18px; height: 18px; cursor: pointer;"></div></div><div style="position: absolute; left: 0px; top: 79px; width: 59px; height: 30px; text-align: left;"><div style="width: 59px; height: 30px; overflow: hidden; position: absolute;"><img src="saber-direccion-ip.php_files/mapcontrols2.png" style="position: absolute; left: 0px; top: -354px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div title="Reducir" style="position: absolute; left: 20px; top: 11px; width: 18px; height: 18px; cursor: pointer;"></div></div><div style="position: absolute; left: 19px; top: 86px; width: 22px; height: 10px; z-index: 2; visibility: hidden; cursor: pointer;"><div title="Arrastra para ampliar o reducir" style="width: 22px; height: 14px; overflow: hidden; visibility: hidden; position: absolute; left: 0px; top: 104px; cursor: -moz-grab;"><img src="saber-direccion-ip.php_files/mapcontrols2.png" style="position: absolute; left: 0px; top: -384px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></div></div><div style="-moz-user-select: none; z-index: 0; position: absolute; right: 7px; top: 7px; color: black; font-family: Arial,sans-serif; font-size: small; width: 200px; height: 22px;" class="gmnoprint"><div title="Mostrar callejero" style="position: absolute; background-color: white; border: 1px solid black; text-align: center; width: 5em; right: 10.2em; cursor: pointer;"><div style="font-size: 12px; font-weight: bold; border-width: 1px; border-style: solid; border-color: rgb(52, 86, 132) rgb(108, 157, 223) rgb(108, 157, 223) rgb(52, 86, 132); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-image: none;">Mapa</div></div><div title="Mostrar imágenes por satélite" style="position: absolute; background-color: white; border: 1px solid black; text-align: center; width: 5em; right: 5.1em; cursor: pointer;"><div style="font-size: 12px; border-width: 1px; border-style: solid; border-color: white rgb(176, 176, 176) rgb(176, 176, 176) white; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-image: none;">Satélite</div></div><div title="Mostrar imágenes con nombres de calle" style="position: absolute; background-color: white; border: 1px solid black; text-align: center; width: 5em; right: 0em; cursor: pointer;"><div style="font-size: 12px; border-width: 1px; border-style: solid; border-color: white rgb(176, 176, 176) rgb(176, 176, 176) white; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-image: none;">Híbrido</div></div></div></div>
+<div id="location">Tu localización en el mapa : , </div>
+<div style="clear: both;">&nbsp;</div>			
+
+<div id="ip2">
+<div style="font-size:22px;font-weight:bold" align="center">
+Tu dirección IP es : <script type="text/javascript" src="http://www.mi-ip.net/texto.php"></script>
+</div>
+</div><br>
+<div class="marco">
+<div style="font-size:16px" align="left">Conocer tu dirección IP actual,
+ mostrar todos los datos que esta permite saber de ti, tu navegador, 
+sistema operativo, tu origen, localización geográfica y otros.<br> La 
+dirección IP es un número de identificación que se le asigna 
+automáticamente  a cada computadora que se conecta a la red, ya sea una 
+red local, inalámbrica o internet. Es única para cada equipo y su 
+formato consta de cuatro grupos de tres cifras separados por puntos, un 
+ejemplo es: 200.57.124.121. Para leer más información técnica referida a
+ las direcciones IP, sus tipos y características accede a esta página: 
+<a href="http://*******.com/internet/saber-ip.php" onclick="window.open(this.href);return false;"><img src="saber-direccion-ip.php_files/arrow16.png" alt="Saber tu Dirección IP. Información sobre los tipos de direcciones y sus características" height="16" width="16"> Saber tu Dirección IP. Información sobre los tipos de direcciones IP y sus características</a><br>
+				
+Mediante la dirección IP, el servidor puede saber algunos datos de los 
+equipos que establecen conexión con él. Por eso al administrador de 
+cualquier sitio web le es posible conocer información relacionada con 
+los usuarios como el navegador que usas, tu sistema operativo, tu 
+localización geográfica, etc. <br>
+Todo lo anterior es posible debido a los encabezados http, estos no son 
+más que una serie de datos que envía tu navegador web al hacer una 
+petición a un sitio o página web, se efectúa bastante rápido y de forma 
+transparente para el usuario, es decir ni te enteras, entre los datos 
+que se envían figuran entre otros:<br>
+La dirección IP desde donde se hace la solicitud, La dirección IP del 
+proxy por el que pasa tu solicitud, el nombre del host, el nombre de tu 
+proveedor de internet,  el puerto empleado por tu PC,  la dirección de 
+la página anterior que dirige a la página actual, etc.<br>
+Además el contenido de la cabecera User-Agent propio de tu navegador, 
+parámetro importantísimo que  incluye el navegador que usas, su versión,
+ tu sistema operativo, el service pack instalado, etc.
+En el artículo: 
+<a href="http://*******.com/utiles/internet-explorer-causas-afectan-rendimiento.html#agente_usuario" onclick="window.open(this.href);return false;"><img src="saber-direccion-ip.php_files/arrow16.png" alt="Chequear el largo de la cadena del agente de usuario de tu navegador" height="16" width="16"> Chequear el largo de la cadena del agente de usuario de tu navegador</a>
+puedes leer sobre la importancia y la influencia que tiene en el 
+rendimiento de la navegación este parámetro (en algunos sitios más de 
+128 caracteres de la cadena del agente de usuario del navegador causan 
+problemas) , y en el artículo: 
+<a href="http://*******.com/inf/ver-encabezados-http.html" onclick="window.open(this.href);return false;"><img src="saber-direccion-ip.php_files/arrow16.png" alt="Los encabezados HTTP de los navegadores web" height="16" width="16"> Los encabezados HTTP de los navegadores web</a>
+puedes informarte sobre todos los encabezados usados por los navegadores<br><br>
+Todos estos datos son necesarios e imprescindibles y se usan por los 
+servidores para ofrecerte la respuesta adecuada a la petición que has 
+hecho, de acuerdo a tus características técnicas, por ejemplo Apple no 
+le sirve el mismo formato de página a una PC de escritorio que a un 
+Iphone, el Buscador Google tiene múltiples interfaces que se adaptan 
+automáticamente de acuerdo al sistema operativo que tiene instalado el 
+usuario, además hay repartidos geográficamente varios servidores para 
+darle servicio a cada zona en específico, si vives en México y escribes 
+en tu navegador www.google.com, veras que este reacomoda la dirección 
+cuando te devuelva el resultado a www.google.com.mx/, ya que determinó 
+tu situación geográfica.<br>
+Todas las características anteriores también son utilizadas de forma 
+negativa por algunos  "dueños" de la información para discriminar a los 
+usuarios por su procedencia geográfica, por eso es que hay quienes optan
+ por esconder su dirección IP para así poder acceder a servicios que les
+ son negados. Lee más sobre este tema en el artículo: 
+<a href="http://*******.com/articulos/esconder-ip.html" onclick="window.open(this.href);return false;"><img src="saber-direccion-ip.php_files/arrow16.png" alt="Esconder tu dirección IP y navegar anónimamente" height="16" width="16"> Esconder tu dirección IP y navegar de forma anónima.</a><br><br>
+
+<h2>Datos que proporcionan tu dirección IP.</h2><br>
+A continuación puedes leer algunos de los datos de que se pueden 
+disponer analizando la dirección IP con la que te has conectado a este 
+sitio. El header o encabezado de tu navegador al hacer la petición a 
+esta página, dejan los siguientes datos sobre ti que son posible de 
+conocer utilizando el lenguaje php:
+</div><br>
+
+<div id="ip">
+<div style="font-size:13px" align="center">
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="80%">
+<tbody><tr><td>Tu dirección IP es:</td><td><script type="text/javascript" src="http://www.mi-ip.net/texto.php"></script></td></tr><tr><td>La dirección IP de tu proxy es:</td><td>88.15.90.27</td></tr><tr><td>Nombre de tu host:</td><td><script>document.write (java.net.InetAddress.getLocalHost());</script></td></tr><tr><td>Vienes de la página:</td><td>http://www.google.es/search?q=ver+tu+sistema+operativo+con+js&amp;ie=utf-8&amp;oe=utf-8&amp;aq=t&amp;rls=org.mozilla:es-ES:official&amp;client=firefox-a</td></tr><tr><td>Conectado a traves del puerto:</td><td>4417</td></tr><tr><td>Tu sistema operativo es:</td><td>Linux</td></tr></tbody></table>
+</div><br>
+<div style="font-size:13px" align="center">
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="80%">
+<tbody><tr><td>Tu agente de usuario es:</td><td>Mozilla/5.0 (X11; Linux i686; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</td></tr></tbody></table>
+</div><br>
+<h2>Datos que se extraen mediante Javascript.</h2><br>
+
+<div style="font-size:16px" align="left">Utilizando el lenguaje  
+javascript también podemos obtener información diferente, si te interesa
+ ver el código empleado en cada parámetro oprime el siguiente botón:
+<input value="Ver el código HTML" onclick='window.location = "view-source:" + window.location.href' type="button">
+, pero tu navegador soporta Javascript? <span style="color:green;font-weight:bold">
+<script type="text/javascript">
+      document.write('Tu navegador tiene Javascript habilitado!, soporta la version ' + jsver + '');
+    </script>Tu navegador tiene Javascript habilitado!, soporta la version 1.8</span>
+    <noscript>
+<b>Tu navegador no soporta Javascript o la tiene deshabilitada, accede a las opciones y verifica si existe alguna casilla desmarcada con el nombre &quot;Enable Javascript&quot;.</b>
+    </noscript></div><br> 
+
+<div style="font-size:13px" align="center">
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="80%">
+<tbody><tr>
+<td width="40%">Tu zona horaria es:</td>
+<td width="60%"><script type="text/javascript">checkTimeZone();</script>
+</td>
+</tr>
+<tr>
+<td>Tu navegador de internet es:</td>
+<td><script type="text/javascript">document.write (BrowserDetect.browser+' v.'+BrowserDetect.version );</script></td>
+</tr>
+<tr>
+<td>Pluggins instalados en el navegador:</td>
+<td><a href="javascript:pinst();">Ver la lista de pluggins instalados</a></td>
+</tr>
+<tr>
+<td>Medida de tu navegador (1)</td>
+<td><script type="text/javascript">document.write (window.innerWidth,' x ',window.innerHeight,' pixeles ');
+</script> </td>
+</tr>
+<tr>
+<td>Medida de tu navegador (2)</td>
+<td><script type="text/javascript">document.write (document.documentElement.clientWidth,' x ',document.documentElement.clientHeight,' pixeles ');
+</script> </td>
+</tr>
+<tr>
+<td>Tu historial de navegación</td>
+<td><script type="text/javascript">var times=history.length; document.write(+times+' paginas en esta sesión');</script></td>
+</tr>
+<tr>
+<td>Tu plataforma</td>
+<td><script type="text/javascript">document.write(navigator.platform,'');</script></td>
+</tr>
+<tr>
+<td>Tu Navegador acepta Cookies?</td>
+<td><script type="text/javascript">if (cookiesAreEnabled()){
+document.write("Si")
+}
+else
+{
+document.write("No")
+}</script></td>
+</tr>
+<tr>
+<td>Tienes Java instalado?</td>
+<td><script type="text/javascript">document.write (tienejava());</script></td>
+</tr>
+<tr>
+<td>Resolución de tu pantalla, Ancho</td>
+<td><script type="text/javascript">document.write(window.screen.width, " pixeles")</script></td></tr>
+<tr>
+<td>Resolución de tu pantalla, Altura</td>
+<td><script type="text/javascript">document.write(window.screen.height, " pixeles")</script></td></tr>
+<tr>
+<td>Profundidad del color en Bits</td>
+<td><script type="text/javascript">
+var colorDepth = window.screen.colorDepth;
+if (colorDepth == 4)
+	document.write("16 colors");
+else if (colorDepth == 8)	
+	document.write("256 colors");
+else if (colorDepth > 8)
+	document.write(colorDepth + " bits colors");
+else
+	document.write("Unknown");
+</script></td></tr>
+<tr>
+<td>Ancho de tu pantalla en pixeles</td>
+<td><script type="text/javascript">
+if (document.all) 
+	document.write(document.body.offsetWidth);
+else
+	document.write(window.innerWidth, " pixeles"); 
+</script></td></tr>
+<tr>
+<td>Altura de tu pantalla en pixeles</td>
+<td><script type="text/javascript">
+if (document.all) 
+	document.write(document.body.offsetHeight);
+else
+	document.write(window.innerHeight, " pixeles"); 
+</script></td></tr>
+<tr>
+<td>Fecha actual</td>
+<td>
+<script type="text/javascript">document.write (fechahoy());</script>
+</td></tr>
+<tr>
+<td>Hora local en tu PC</td>
+<td>
+<span id="hora_cl">12:12:55</span>
+<script type="text/javascript">
+<!--// document.write(fecha);
+setInterval('hora_cam()',1000) //-->
+</script></td></tr>
+<tr>
+<td>Dirección URL completa a esta página</td>
+<td>
+<script type="text/javascript">document.write(document.URL);</script>
+</td></tr>
+<tr>
+<td>Fecha y hora de la última actualización</td>
+<td>
+<script type="text/javascript">document.write(document.lastModified);</script>
+</td></tr>
+<tr>
+<td>Nombre de tu dominio</td>
+<td>
+<script type="text/javascript">document.write(document.domain);</script>
+</td></tr>
+<!-- <tr>
+<td>Agente de usuario de tu navegador</td>
+<td>
+<script type="text/javascript">document.write(navigator.userAgent);</script>
+</td></tr> -->
+</tbody></table>
+(1) window.innerWidth/Height no soportado por Internet Explorer.<br>
+(2) document.documentElement.clientHeight/Width, todos los navegadores.<br>
+</div></div>
+Si te interesa Javascript entra en esta página. te gustará: <br>
+<h3><a href="http://*******.com/web/javascript-facil-paginas-web-ejemplos.html" onclick="window.open(this.href);return false;"><img src="saber-direccion-ip.php_files/arrow16.png" alt="Javascript fácil en páginas web, tutorial y ejemplos para descargar gratis" height="16" width="16"> Javascript fácil en páginas web, tutorial y ejemplos para descargar gratis</a></h3>
+
+<h3><a href="http://*******.com/internet/navegadores-web-informacion-pluggins.html" onclick="window.open(this.href);return false;"><img src="saber-direccion-ip.php_files/arrow16.png" alt="Navegadores web plugins instalados, escaneo e información online" height="16" width="16"> Navegadores web plugins instalados, escaneo e información online.</a></h3><br>
+</div></div>
+<br>
+<h2>Conocer tu localización geográfica mediante la dirección IP:</h2><br>
+<div class="marco">
+<div style="font-size:16px" align="left">Google entre las diversas 
+facilidades que ofrece a los desarrolladores independientes, proporciona
+ una API, especie de un código que se impregna en una página web y 
+permite mediante la identificación del header o cabecera de la misma, 
+determinar la dirección IP de su origen y localizar su ubicación en el 
+mapa de una forma aproximada. Es decir al tu conectarte a este sitio, 
+cargas la API de Google el que devuelve rápidamente tu localización en 
+pequeño mapa. <br>
+Funciona también si te conectas a este sitio a través de un servidor 
+proxy, en ese caso por supuesto se revelará en esta página la dirección y
+ la localización del servidor proxy, no la tuya.<br>
+Esta utilidad está disponible de forma gratuita para cualquier usuario accediendo a:
+<a href="http://code.google.com/apis/maps/signup.html" onclick="window.open(this.href);return false;">Google Code</a>,
+
+solo es requisito estar registrado en Google, después que te 
+proporcionen tu clave, la que es personal, el código necesario para 
+insertarla puedes extraerlo de esta misma página mirando el código 
+fuente.<br>
+A continuación te muestro los datos de la ubicación geográfica que 
+ofrece la dirección IP con la cual te has conectado a este sitio que 
+corresponde con el mapa que se muestra al inicio de la página.
+</div></div><br>
+<table class="reference" align="center" border="1" cellpadding="0" cellspacing="0" width="50%">
+<tbody><tr>
+<td width="30%">Tu pais es:</td>
+<td width="30%"><script type="text/javascript">
+if(google.loader.ClientLocation) 
+{ 
+document.write (" "+ google.loader.ClientLocation.address.country);}
+</script> </td></tr>
+<tr>
+<td>Tu bandera:</td>
+<td>
+<img src="saber-direccion-ip.php_files/flag.gif" alt="IP Address Lookup" height="54" width="103">
+</td></tr>
+<tr>
+<td>Codigo del pais:</td>
+<td><script type="text/javascript">
+if(google.loader.ClientLocation) 
+{ 
+document.write (" "+ google.loader.ClientLocation.address.country_code);}
+</script> </td></tr>
+<tr>
+<td>Tu ciudad:</td>
+<td><script type="text/javascript">
+if(google.loader.ClientLocation) 
+{ 
+document.write (" "+ google.loader.ClientLocation.address.city);}
+</script> </td></tr>
+<tr>
+<td>Tu region:</td>
+<td><script type="text/javascript">
+if(google.loader.ClientLocation) 
+{ 
+document.write (" "+ google.loader.ClientLocation.address.region);}
+</script> </td></tr>
+<tr>
+<td>Latitud:</td>
+<td><script type="text/javascript">
+if(google.loader.ClientLocation) 
+{ 
+document.write(+ google.loader.ClientLocation.latitude);}
+</script>36.717</td></tr>
+<tr>
+<td>Longitud:</td>
+<td><script type="text/javascript">
+if(google.loader.ClientLocation) 
+{ 
+document.write (+ google.loader.ClientLocation.longitude);}
+</script>-4.417</td></tr>
+</tbody></table><br>
+<hr style="border:1px solid #000;width:90%;">	
+
+<div id="direccionip"></div>
+<h2>Herramientas para conocer la dirección IP.</h2><br>
+
+<h3>Bookmarklet  para saber tu dirección IP. </h3><br>
+<div class="tipcontent" align="center">
+Los Bookmarklets son una especie de marcadores que contienen un 
+fragmento de código javascript, que permiten realizar tareas útiles y no
+ se instalan como los complementos, ni consumen recursos en el 
+navegador. Este lo verás como un botón en tu barra de marcadores y al 
+dar un clic en el cada vez que tengas conexión, abrirá una pequeña 
+ventana que te mostrará tu dirección IP actual y la de tu proxy, si te 
+conectas a traves de uno, para usarlo arrástralo a la barra de 
+marcadores de tu navegador. Si usas Internet Explorer agrégalo en el 
+icono verde que aparece en tu Barra de comandos.</div><div style="clear: both;">&nbsp;</div>
+
+<!-- Direccion IP -->	
+<div style="font-size:18px;font-weight:bold;border:2px solid black;padding:4px;" align="center">
+Tu dirección IP es : <script type="text/javascript" src="http://www.mi-ip.net/texto.php"></script>
+</div><br>
+
+<h2><a href="javascript:window.open('http://*******.com/internet/direccion-ip.php',%20'test','scrollbars=no,width=360,height=134,left=30,top=30,location=no,menubar=no,resizable=no,scrollbars=no,status=no,titlebar=no,toolbar=no');void%200" title="Esto es un bookmarklet, arrástralo a la barra de marcadores de tu navegador para crear un botón, que te permitirá saber tu dirección IP al navegar en internet"><img src="saber-direccion-ip.php_files/bookm48.png" alt="Bookmarklet para conocer tu dirección IP" height="48" width="48">Dirección IP</a></h2>
+
+<hr style="border:1px solid #000;width:90%;">		
+<h3>Web Slice  para Internet Explorer. </h3>
+<!-- Web Slice direccion IP -->
+<div class="hslice" id="slice1" align="center">
+<div class="entry-title"><b>Dirección IP</b></div>
+<div class="entry-content"></div>
+<a rel="entry-content" href="http://*******.com/internet/direccion-ip.php"></a>
+Web Slice, solo para Internet Explorer +8, te permite tener en tu barra 
+de favoritos una pequeña pantalla con la información de tu dirección IP 
+actual, para instalarlo selecciona el botón verde a la izquierda.
+</div>	
+<hr style="border:1px solid #000;width:90%;">	
+<div id="localip"></div>
+<h3>Bookmarklet  para tu localización. </h3><br>
+
+<div align="center">Bookmarklet  para tu localización, arrástralo a la 
+barra de marcadores de tu navegador para crear un botón, que te 
+permitirá saber tu dirección IP y tu localización cuando lo ejecutes.<br>
+<!-- Bookmarklet localizacion IP -->
+<a href="javascript:window.open('http://*******.com/test/localizacion.php',%20'test','scrollbars=no,width=260,height=250,left=20,top=20,location=no,menubar=no,resizable=no,scrollbars=no,status=no,titlebar=no,toolbar=no');void%200" title="Esto es un bookmarklet, arrástralo a la barra de marcadores de tu navegador para crear un botón, que te permitirá saber tu dirección IP y tu localización cuando lo ejecutes"><img src="saber-direccion-ip.php_files/direccion-loc-ip.png" alt="Direccion IP" height="51" width="108"></a></div>
+
+<hr style="border:1px solid #000;width:90%;">	
+<h3>Iframe para insertar  en páginas web. </h3><br>		
+<div align="center">Si tienes una página web y quieres mostrar todos estos datos <br>	
+a tus visitantes es fácil, copia el código que está más abajo y pégalo <br>	
+en el lugar del body de tu pagina donde quieras que aparezca. <br>
+<!-- Codigo para tabla chica -->	
+<em>Marco pequeño</em>	<br>
+
+<textarea onclick="this.select()" cols="70" rows="4" style="background-color: rgb(255, 255, 224);">&lt;div
+ align="center"&gt;
+&lt;iframe name="iframe" id="ip" 
+src="http://*******.com/tools/saber-direccion-ip.php#ip2" width="900" 
+height="40"  frameborder="0" scrolling="no" 
+&gt;&lt;/iframe&gt;&lt;/div&gt;
+</textarea><br>
+
+<!-- Codigo para tabla grande --> 
+<em>Tabla completa</em><br>
+<textarea onclick="this.select()" cols="70" rows="4" style="background-color: rgb(255, 255, 224);">&lt;div
+ align="center"&gt;
+&lt;iframe name="iframe" id="ip" 
+src="http://*******.com/tools/saber-direccion-ip.php#ip" width="900" 
+height="620"  frameborder="0" scrolling="no" 
+&gt;&lt;/iframe&gt;&lt;/div&gt;
+</textarea>
+</div>
+</div><br><br>
+
+<!-- Bloque de RSS -->
+<a href="http://*******.com/rss.xml"><img class="aladerecha" style="padding: 10px;" src="saber-direccion-ip.php_files/rss2.png" alt="Noticias del sitio" title="Clic aquí para suscribirte a la fuente de noticias o feeds de este sitio" height="64" width="64"></a>
+
+<div class="tipcontent" style="padding:6px">				
+Si te interesó el contenido de esta página asegúrate de suscribirte a la
+ fuente de noticias o feeds de este sitio, para eso da un clic en el 
+icono a la derecha, o agrega manualmente la dirección del feed o RSS a 
+tu lector de noticias, si no posees ninguno y no sabes cómo obtenerlo o 
+instalarlo lee el siguiente artículo: <a href="http://*******.com/articulos/suscribirse-fuentes-noticias-rss.html">Suscribirse y utilizar el servicio de fuentes de noticias RSS</a></div>	<br><br>
+
+<!-- Buscador Google grande en mi sitio-->
+<div id="buscador2">		
+<form method="get" action="http://www.google.com/search" onsubmit="Gsitesearch(this)">
+<input name="q" type="hidden">
+<input size="62" name="qfront" value="Buscar en este sitio......" onblur="if(this.value=='') this.value='Buscar en este sitio......';" onfocus="if(this.value=='Buscar en este sitio......') this.value='';" title="Escribe la palabra o término a buscar en este sitio y oprime Enter" type="text">&nbsp;
+<input value="Buscar" type="submit"> 
+</form></div><br><br>
+<br></div>				
+	</div><!-- end #content -->				
+		<div style="clear: both;">&nbsp;</div>	
+<!-- end #page -->	
+<!-- Flecha ir arriba -->	
+<a href="#inicio"><img id="up" src="saber-direccion-ip.php_files/go_up.gif" alt="" height="21" width="62"></a>	
+		<!-- Vinculos de abajo -->
+<div id="post3">
+<div><a href="http://*******.com/index.html">Inicio</a> | <a href="http://*******.com/internet/index.html">Internet</a> | <a href="http://*******.com/web/index.html">Diseño Web</a> | <a href="http://*******.com/utiles/index.html">Modificar Windows</a> | <a href="http://*******.com/articulos/index.html">Como lo Hago</a> | <a href="http://*******.com/descargas-gratis/index.html">Descargas</a> | <a href="http://*******.com/inf/index.html">Informaciones</a> | <a href="http://*******.com/recuperar/index.html">Recuperar</a> | <a href="http://*******.com/contact.html">Contacto</a> | <a href="http://*******.com/sitemap.html">Mapa del Sitio</a></div></div>
+	<div id="footer">
+	<p>Para mas información escríbeme <img src="saber-direccion-ip.php_files/email.gif" alt="" height="27" width="30"><a href="mailto:info@*******.com?subject=Mi%20opinion"> email</a></p>
+		<p>Copyright (c) 2011 Norfi Carrodeguas</p>
+	</div>
+	<!-- end #footer -->
+<!-- Script del Buscador -->
+<script type="text/javascript">
+var domainroot="*******.com"
+function Gsitesearch(curobj){
+curobj.q.value="site:"+domainroot+" "+curobj.qfront.value
+}
+</script>
+
+
+
+<script src="saber-direccion-ip.php_files/main.js"></script></body></html>
+<!--Fin del Script by Seazoux-->
+<p>
+&#65083;&#9523;&#9552;&#19968;<br>
+<p>
+&#9555;&#9574;&#9574;&#9472;<br>
+<p>
+&#65083;&#12487;&#9523;&#9552;–--<br>
+<p>
+&#65083;&#12487;&#9552;&#19968;<br>
+<p>
+=-&#12487;&#19968;<br>
+&#65083;&#9574;&#821;&#821;&#839;&#831;&#831;&#831;&#831;&#9572;&#9472;&#9472;
+<p>
+¯&#831;¯¯¯&#831;&#831;¯&#831;&#831;'&#831;&#831;&#831;&#831;&#831;&#831;&#831;'&#831;&#831;'&#831;&#831;&#831;&#831;&#831;'&#831;&#831;&#831;)<br>&#839;&#831;&#831;)&#831;&#831;&#831;&#831; '&#831;&#831;&#831;&#831;&#831;&#831;\&#831;&#831;&#821;&#839;\ 
+<p>
+&#63254;&#831; &#831;&#831;&#831;&#831;'&#831;&#831;&#821;&#839; '&#63254;&#831;&#831; &#831;&#831;&#831; <br>
+<p>
+/&#831;&#831;&#821;&#839;/&#831;&#831;"&#831;<br>
+&#63254;&#831;&#831;&#831;&#831;
+<p>
+/&#831;&#831;&#821;&#839;/&#831;&#831;"&#831;&#831;&#831;&#831;&#831; &#831;&#831;&#831;&#831; (LOL)   &#831;&#831;&#831;&#831;&#831;&#831;&#831;'&#831;&#831;&#831;&#831;&#831;'\&#831;&#831;&#821;&#839;\ 
+&#1641;(&#9679;&#814;&#814;&#771;•&#771;)=/&#831;&#831;&#821;&#839;/'&#831;&#831; &#831;&#831; &#831;&#831;'&#831;'\&#831;&#831;&#821;&#839;\=(•&#771;&#9679;&#814;&#814;&#771;)&#1782; 
+<p>
+&#831; &#831; &#831;&#831;&#831;&#831;&#831;’&#831;’\&#831;&#831;&#821;&#839;\=(•&#810;&#9679;)=/<br>&#831;&#831;&#821;&#839;/’&#831;&#831; &#831; &#831; &#831; &#831; &#65279;
+<p>
+&#9523;&#9552;<br>
+<p>
+&#831; &#831; &#831;&#831;'&#831;&#831;\&#821;&#839;&#831;&#831;\<br>
+&#9604;&#65083;&#9605;&#9552;&#9552;&#9552;<br>
+&#65083;&#27668;&#9552;&#19968;<br>
+&#65083;&#9577;&#9472;&#9472;<br>
+&#65083;&#822;&#9574;&#831;&#838;&#794;&#9473;&#19968;<br>
+&#65083;&#9531;&#19968;<br>
+&#65083;&#9574;&#9574;&#8594;<br>
+&#9604;&#65083;&#9531;&#9552;&#9523;&#19968;°<br>
+&#65083;&#9523;&#12487;&#9552;&#19968;<br>
+&#65083;&#9523;&#9552;&#19968;<br>
+&#65083;&#9523;&#19968;<br>
+&#65083;&#9523;&#9552;&#19968;<br>
+&#9604;&#65083;&#9523;&#19968;<br>
+&#9484;&#9574;&#9572;&#9472;
+<p>
+&#65083;-&#12487;&#19968;
+<p>
+&#9992;&#1769;&#1769; &#10017;&#9760;   &#831; &#831; &#831;&#831;'&#831;&#831;\&#821;&#839;&#831;&#831;\ x2 = DEAD!<p>
+
+</div>
+<div class="divFuckinBottom"><div class="divXulo"><div style="text-align:center;"><span class="LOLFuckin3">&copy; Spirate &amp; SMF &amp; <a href="http://www.foroactivo.com" target="_blank" style="color: transparent;">foroactivo.com</a><br>Theme by: &Aacute;lvaro&#153; &amp; my PC &reg;<br>Para una mejor visualizaciones de la web, tienes que tener 1280x800 y Mozilla Firefox, de no ser as&iacute;, visita este tutorial.</span></div>
+
+</div>
+</body>
